@@ -4,6 +4,9 @@ build/
 # Source code
 src/main/java/com/mojang/*
 src/main/java/net/minecraft/*
+src/main/resources/assets/
+src/main/resources/data/
+
 root/
 
 # Ignore Gradle GUI config
@@ -17,3 +20,7 @@ gradle-app.setting
 *.iml
 
 libs/
+
+log4j2.xml
+pack.mcmeta
+version.json
