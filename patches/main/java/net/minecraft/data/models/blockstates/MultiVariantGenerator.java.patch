@@ -1,0 +1,14 @@
+--- a/main/java/net/minecraft/data/models/blockstates/MultiVariantGenerator.java
++++ b/main/java/net/minecraft/data/models/blockstates/MultiVariantGenerator.java
+@@ -30,9 +30,9 @@
+    public MultiVariantGenerator m_125271_(PropertyDispatch p_125272_) {
+       p_125272_.m_7336_().forEach((p_125263_) -> {
+          if (this.f_125246_.m_49965_().m_61081_(p_125263_.m_61708_()) != p_125263_) {
+-            throw new IllegalStateException("Property " + p_125263_ + " is not defined for block " + this.f_125246_);
++            throw new IllegalStateException("プロパティ "+ p_125263_ +" がブロックに定義されていません " + this.f_125246_);
+          } else if (!this.f_125248_.add(p_125263_)) {
+-            throw new IllegalStateException("Values of property " + p_125263_ + " already defined for block " + this.f_125246_);
++            throw new IllegalStateException("プロパティ "+ p_125263_ +" の値はすでにブロックに定義されています" + this.f_125246_);
+          }
+       });
+       this.f_125249_.add(p_125272_);

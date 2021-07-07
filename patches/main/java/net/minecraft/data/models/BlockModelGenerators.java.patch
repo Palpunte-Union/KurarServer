@@ -1,0 +1,29 @@
+--- a/main/java/net/minecraft/data/models/BlockModelGenerators.java
++++ b/main/java/net/minecraft/data/models/BlockModelGenerators.java
+@@ -404,7 +404,7 @@
+          case ASCENDING_SOUTH:
+             return Variant.m_125501_().m_125511_(VariantProperties.f_125520_, p_124706_ ? resourcelocation5 : resourcelocation2);
+          default:
+-            throw new UnsupportedOperationException("Fix you generator!");
++            throw new UnsupportedOperationException("ジェネレーターを修正してください!");
+          }
+       });
+       this.m_124728_(p_124975_);
+@@ -1114,7 +1114,7 @@
+       case EAST_UP:
+          return p_124637_.m_125511_(VariantProperties.f_125519_, VariantProperties.Rotation.R90);
+       default:
+-         throw new UnsupportedOperationException("Rotation " + p_124636_ + " can't be expressed with existing x and y values");
++         throw new UnsupportedOperationException("回転 "+ p_124636_ +"は、既存のx値とy値では表現できません");
+       }
+    }
+ 
+@@ -1687,7 +1687,7 @@
+ 
+       public BlockModelGenerators.BlockFamilyProvider m_125053_(Block p_125054_) {
+          if (this.f_125031_ == null) {
+-            throw new IllegalStateException("Full block not generated yet");
++            throw new IllegalStateException("完全なブロックはまだ生成されていません");
+          } else {
+             ResourceLocation resourcelocation = ModelTemplates.f_125627_.m_125592_(p_125054_, this.f_125030_, BlockModelGenerators.this.f_124478_);
+             ResourceLocation resourcelocation1 = ModelTemplates.f_125628_.m_125592_(p_125054_, this.f_125030_, BlockModelGenerators.this.f_124478_);

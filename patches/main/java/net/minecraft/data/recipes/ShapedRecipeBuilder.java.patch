@@ -1,0 +1,32 @@
+--- a/main/java/net/minecraft/data/recipes/ShapedRecipeBuilder.java
++++ b/main/java/net/minecraft/data/recipes/ShapedRecipeBuilder.java
+@@ -58,9 +58,9 @@
+ 
+    public ShapedRecipeBuilder m_126124_(Character p_126125_, Ingredient p_126126_) {
+       if (this.f_126109_.containsKey(p_126125_)) {
+-         throw new IllegalArgumentException("Symbol '" + p_126125_ + "' is already defined!");
++         throw new IllegalArgumentException("シンボル '"+ p_126125_ +"'はすでに定義されています！");
+       } else if (p_126125_ == ' ') {
+-         throw new IllegalArgumentException("Symbol ' ' (whitespace) is reserved and cannot be defined");
++         throw new IllegalArgumentException("記号 ' '(空白)は予約されており、定義できません");
+       } else {
+          this.f_126109_.put(p_126125_, p_126126_);
+          return this;
+@@ -69,7 +69,7 @@
+ 
+    public ShapedRecipeBuilder m_126130_(String p_126131_) {
+       if (!this.f_126108_.isEmpty() && p_126131_.length() != this.f_126108_.get(0).length()) {
+-         throw new IllegalArgumentException("Pattern must be the same width on every line!");
++         throw new IllegalArgumentException("パターンはすべての行で同じ幅でなければなりません!");
+       } else {
+          this.f_126108_.add(p_126131_);
+          return this;
+@@ -93,7 +93,7 @@
+    public void m_126137_(Consumer<FinishedRecipe> p_126138_, String p_126139_) {
+       ResourceLocation resourcelocation = Registry.f_122827_.m_7981_(this.f_126106_);
+       if ((new ResourceLocation(p_126139_)).equals(resourcelocation)) {
+-         throw new IllegalStateException("Shaped Recipe " + p_126139_ + " should remove its 'save' argument");
++         throw new IllegalStateException("Shaped Recipe "+ p_126139_ +"は 'save'引数を削除する必要があります");
+       } else {
+          this.m_126140_(p_126138_, new ResourceLocation(p_126139_));
+       }

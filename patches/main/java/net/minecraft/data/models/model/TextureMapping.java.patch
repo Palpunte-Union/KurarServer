@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/data/models/model/TextureMapping.java
++++ b/main/java/net/minecraft/data/models/model/TextureMapping.java
+@@ -37,7 +37,7 @@
+          }
+       }
+ 
+-      throw new IllegalStateException("Can't find texture for slot " + p_125757_);
++      throw new IllegalStateException("スロットのテクスチャが見つかりません " + p_125757_);
+    }
+ 
+    public TextureMapping m_125785_(TextureSlot p_125786_, ResourceLocation p_125787_) {

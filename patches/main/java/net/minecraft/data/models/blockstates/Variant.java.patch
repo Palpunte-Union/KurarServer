@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/data/models/blockstates/Variant.java
++++ b/main/java/net/minecraft/data/models/blockstates/Variant.java
+@@ -14,7 +14,7 @@
+    public <T> Variant m_125511_(VariantProperty<T> p_125512_, T p_125513_) {
+       VariantProperty<?>.Value variantproperty = this.f_125499_.put(p_125512_, p_125512_.m_125553_(p_125513_));
+       if (variantproperty != null) {
+-         throw new IllegalStateException("Replacing value of " + variantproperty + " with " + p_125513_);
++         throw new IllegalStateException(variantproperty + "の値を" + p_125513_ + "に置き換えます");
+       } else {
+          return this;
+       }

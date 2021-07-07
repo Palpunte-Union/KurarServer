@@ -1,0 +1,29 @@
+--- a/main/java/net/minecraft/data/recipes/RecipeProvider.java
++++ b/main/java/net/minecraft/data/recipes/RecipeProvider.java
+@@ -52,7 +52,7 @@
+       Set<ResourceLocation> set = Sets.newHashSet();
+       m_125992_((p_125991_) -> {
+          if (!set.add(p_125991_.m_6445_())) {
+-            throw new IllegalStateException("Duplicate recipe " + p_125991_.m_6445_());
++            throw new IllegalStateException("重複したレシピ " + p_125991_.m_6445_());
+          } else {
+             m_125983_(p_125982_, p_125991_.m_125966_(), path.resolve("data/" + p_125991_.m_6445_().m_135827_() + "/recipes/" + p_125991_.m_6445_().m_135815_() + ".json"));
+             JsonObject jsonobject = p_125991_.m_5860_();
+@@ -79,7 +79,7 @@
+ 
+          p_125984_.m_123940_(p_125986_, s1);
+       } catch (IOException ioexception) {
+-         f_125968_.error("Couldn't save recipe {}", p_125986_, ioexception);
++         f_125968_.error("レシピを保存できませんでした {}", p_125986_, ioexception);
+       }
+ 
+    }
+@@ -98,7 +98,7 @@
+ 
+          p_126014_.m_123940_(p_126016_, s1);
+       } catch (IOException ioexception) {
+-         f_125968_.error("Couldn't save recipe advancement {}", p_126016_, ioexception);
++         f_125968_.error("レシピの進歩を保存できませんでした {}", p_126016_, ioexception);
+       }
+ 
+    }

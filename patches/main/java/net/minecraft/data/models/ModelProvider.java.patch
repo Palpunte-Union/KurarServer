@@ -1,0 +1,38 @@
+--- a/main/java/net/minecraft/data/models/ModelProvider.java
++++ b/main/java/net/minecraft/data/models/ModelProvider.java
+@@ -43,7 +43,7 @@
+          Block block = p_125120_.m_6968_();
+          BlockStateGenerator blockstategenerator = map.put(block, p_125120_);
+          if (blockstategenerator != null) {
+-            throw new IllegalStateException("Duplicate blockstate definition for " + block);
++            throw new IllegalStateException("重複ブロック状態定義 " + block);
+          }
+       };
+       Map<ResourceLocation, Supplier<JsonElement>> map1 = Maps.newHashMap();
+@@ -51,7 +51,7 @@
+       BiConsumer<ResourceLocation, Supplier<JsonElement>> biconsumer = (p_125123_, p_125124_) -> {
+          Supplier<JsonElement> supplier = map1.put(p_125123_, p_125124_);
+          if (supplier != null) {
+-            throw new IllegalStateException("Duplicate model definition for " + p_125123_);
++            throw new IllegalStateException("重複モデル定義 " + p_125123_);
+          }
+       };
+       Consumer<Item> consumer1 = set::add;
+@@ -61,7 +61,7 @@
+          return !map.containsKey(p_125117_);
+       }).collect(Collectors.toList());
+       if (!list.isEmpty()) {
+-         throw new IllegalStateException("Missing blockstate definitions for: " + list);
++         throw new IllegalStateException("ブロック状態定義がありません: " + list);
+       } else {
+          Registry.f_122824_.forEach((p_125128_) -> {
+             Item item = Item.f_41373_.get(p_125128_);
+@@ -89,7 +89,7 @@
+          try {
+             DataProvider.m_123920_(f_125096_, p_125105_, p_125134_.get(), path);
+          } catch (Exception exception) {
+-            f_125095_.error("Couldn't save {}", path, exception);
++            f_125095_.error("保存できませんでした {}", path, exception);
+          }
+ 
+       });

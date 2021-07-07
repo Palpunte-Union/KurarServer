@@ -1,0 +1,19 @@
+--- a/main/java/net/minecraft/data/advancements/AdvancementProvider.java
++++ b/main/java/net/minecraft/data/advancements/AdvancementProvider.java
+@@ -32,14 +32,14 @@
+       Set<ResourceLocation> set = Sets.newHashSet();
+       Consumer<Advancement> consumer = (p_123977_) -> {
+          if (!set.add(p_123977_.m_138327_())) {
+-            throw new IllegalStateException("Duplicate advancement " + p_123977_.m_138327_());
++            throw new IllegalStateException("重複した進歩 " + p_123977_.m_138327_());
+          } else {
+             Path path1 = m_123970_(path, p_123977_);
+ 
+             try {
+                DataProvider.m_123920_(f_123961_, p_123969_, p_123977_.m_138313_().m_138400_(), path1);
+             } catch (IOException ioexception) {
+-               f_123960_.error("Couldn't save advancement {}", path1, ioexception);
++               f_123960_.error("進歩を保存できませんでした: {}", path1, ioexception);
+             }
+ 
+          }

@@ -1,0 +1,20 @@
+--- a/main/java/net/minecraft/data/loot/BlockLoot.java
++++ b/main/java/net/minecraft/data/loot/BlockLoot.java
+@@ -1073,7 +1073,7 @@
+          if (resourcelocation != BuiltInLootTables.f_78712_ && set.add(resourcelocation)) {
+             LootTable.Builder loottable$builder = this.f_124070_.remove(resourcelocation);
+             if (loottable$builder == null) {
+-               throw new IllegalStateException(String.format("Missing loottable '%s' for '%s'", resourcelocation, Registry.f_122824_.m_7981_(block)));
++               throw new IllegalStateException(String.format("'%s'の略奪可能な '%s'がありません", resourcelocation, Registry.f_122824_.m_7981_(block)));
+             }
+ 
+             p_124179_.accept(resourcelocation, loottable$builder);
+@@ -1081,7 +1081,7 @@
+       }
+ 
+       if (!this.f_124070_.isEmpty()) {
+-         throw new IllegalStateException("Created block loot tables for non-blocks: " + this.f_124070_.keySet());
++         throw new IllegalStateException("非ブロック用のブロックルートテーブルを作成しました: " + this.f_124070_.keySet());
+       }
+    }
+ 

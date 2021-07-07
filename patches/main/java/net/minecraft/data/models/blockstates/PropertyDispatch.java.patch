@@ -1,0 +1,20 @@
+--- a/main/java/net/minecraft/data/models/blockstates/PropertyDispatch.java
++++ b/main/java/net/minecraft/data/models/blockstates/PropertyDispatch.java
+@@ -18,7 +18,7 @@
+    protected void m_125319_(Selector p_125320_, List<Variant> p_125321_) {
+       List<Variant> list = this.f_125291_.put(p_125320_, p_125321_);
+       if (list != null) {
+-         throw new IllegalStateException("Value " + p_125320_ + " is already defined");
++         throw new IllegalStateException("値 "+ p_125320_ +"はすでに定義されています");
+       }
+    }
+ 
+@@ -41,7 +41,7 @@
+          return !this.f_125291_.containsKey(p_125318_);
+       }).collect(Collectors.toList());
+       if (!list1.isEmpty()) {
+-         throw new IllegalStateException("Missing definition for properties: " + list1);
++         throw new IllegalStateException("プロパティの定義がありません: " + list1);
+       }
+    }
+ 

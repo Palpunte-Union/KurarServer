@@ -1,0 +1,41 @@
+--- a/main/java/net/minecraft/data/loot/LootTableProvider.java
++++ b/main/java/net/minecraft/data/loot/LootTableProvider.java
+@@ -43,7 +43,7 @@
+       this.f_124434_.forEach((p_124458_) -> {
+          p_124458_.getFirst().get().accept((p_124462_, p_124463_) -> {
+             if (map.put(p_124462_, p_124463_.m_79165_(p_124458_.getSecond()).m_79167_()) != null) {
+-               throw new IllegalStateException("Duplicate loot table " + p_124462_);
++               throw new IllegalStateException("ルートテーブルの複製 " + p_124462_);
+             }
+          });
+       });
+@@ -52,7 +52,7 @@
+       }, map::get);
+ 
+       for(ResourceLocation resourcelocation : Sets.difference(BuiltInLootTables.m_78766_(), map.keySet())) {
+-         validationcontext.m_79357_("Missing built-in table: " + resourcelocation);
++         validationcontext.m_79357_("組み込みテーブルがありません: " + resourcelocation);
+       }
+ 
+       map.forEach((p_124441_, p_124442_) -> {
+@@ -61,9 +61,9 @@
+       Multimap<String, String> multimap = validationcontext.m_79352_();
+       if (!multimap.isEmpty()) {
+          multimap.forEach((p_124446_, p_124447_) -> {
+-            f_124431_.warn("Found validation problem in " + p_124446_ + ": " + p_124447_);
++            f_124431_.warn("検証の問題が見つかりました " + p_124446_ + ": " + p_124447_);
+          });
+-         throw new IllegalStateException("Failed to validate loot tables, see logs");
++         throw new IllegalStateException("ルートテーブルの検証に失敗しました。ログを参照してください");
+       } else {
+          map.forEach((p_124451_, p_124452_) -> {
+             Path path1 = m_124453_(path, p_124451_);
+@@ -71,7 +71,7 @@
+             try {
+                DataProvider.m_123920_(f_124432_, p_124444_, LootTables.m_79200_(p_124452_), path1);
+             } catch (IOException ioexception) {
+-               f_124431_.error("Couldn't save loot table {}", path1, ioexception);
++               f_124431_.error("ルートテーブルを保存できませんでした{}", path1, ioexception);
+             }
+ 
+          });

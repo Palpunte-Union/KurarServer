@@ -1,0 +1,17 @@
+--- a/main/java/net/minecraft/data/loot/EntityLoot.java
++++ b/main/java/net/minecraft/data/loot/EntityLoot.java
+@@ -147,12 +147,12 @@
+          ResourceLocation resourcelocation = entitytype.m_20677_();
+          if (!f_124367_.contains(entitytype) && entitytype.m_20674_() == MobCategory.MISC) {
+             if (resourcelocation != BuiltInLootTables.f_78712_ && this.f_124368_.remove(resourcelocation) != null) {
+-               throw new IllegalStateException(String.format("Weird loottable '%s' for '%s', not a LivingEntity so should not have loot", resourcelocation, Registry.f_122826_.m_7981_(entitytype)));
++               throw new IllegalStateException(String.format("LivingEntityではなく '%s'の奇妙な略奪可能な '%s'なので、略奪するべきではありません", resourcelocation, Registry.f_122826_.m_7981_(entitytype)));
+             }
+          } else if (resourcelocation != BuiltInLootTables.f_78712_ && set.add(resourcelocation)) {
+             LootTable.Builder loottable$builder = this.f_124368_.remove(resourcelocation);
+             if (loottable$builder == null) {
+-               throw new IllegalStateException(String.format("Missing loottable '%s' for '%s'", resourcelocation, Registry.f_122826_.m_7981_(entitytype)));
++               throw new IllegalStateException(String.format("'%s'の略奪可能な '%s'がありません", resourcelocation, Registry.f_122826_.m_7981_(entitytype)));
+             }
+ 
+             p_124377_.accept(resourcelocation, loottable$builder);
