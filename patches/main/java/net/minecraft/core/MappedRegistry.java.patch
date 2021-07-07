@@ -1,0 +1,25 @@
+--- a/main/java/net/minecraft/core/MappedRegistry.java
++++ b/main/java/net/minecraft/core/MappedRegistry.java
+@@ -78,11 +78,11 @@
+       this.f_122673_.put((T)p_122693_, p_122691_);
+       this.f_122671_ = null;
+       if (p_122695_ && this.f_122675_.containsKey(p_122692_)) {
+-         f_122670_.debug("Adding duplicate key '{}' to registry", (Object)p_122692_);
++         f_122670_.debug("レジストリに重複キー '{}' を追加する", (Object)p_122692_);
+       }
+ 
+       if (this.f_122674_.containsValue(p_122693_)) {
+-         f_122670_.error("Adding duplicate value '{}' to registry", p_122693_);
++         f_122670_.error("レジストリに重複する値 '{}' を追加する", p_122693_);
+       }
+ 
+       this.f_122674_.put(p_122692_.m_135782_(), (T)p_122693_);
+@@ -110,7 +110,7 @@
+       } else {
+          i = this.f_122673_.getInt(t);
+          if (p_122708_.isPresent() && p_122708_.getAsInt() != i) {
+-            throw new IllegalStateException("ID mismatch");
++            throw new IllegalStateException("IDの不一致");
+          }
+ 
+          this.f_122673_.removeInt(t);

@@ -1,0 +1,52 @@
+--- a/main/java/net/minecraft/core/RegistryAccess.java
++++ b/main/java/net/minecraft/core/RegistryAccess.java
+@@ -60,7 +60,7 @@
+ 
+    public <E> WritableRegistry<E> m_123090_(ResourceKey<? extends Registry<E>> p_123091_) {
+       return this.m_6632_(p_123091_).orElseThrow(() -> {
+-         return new IllegalStateException("Missing registry: " + p_123091_);
++         return new IllegalStateException("レジストリがありません: " + p_123091_);
+       });
+    }
+ 
+@@ -109,7 +109,7 @@
+       Registry<R> registry = (Registry<R>)BuiltinRegistries.f_123858_;
+       Registry<?> registry1 = registry.m_6246_(p_123080_);
+       if (registry1 == null) {
+-         throw new IllegalStateException("Missing builtin registry: " + p_123080_);
++         throw new IllegalStateException("組み込みレジストリがありません: " + p_123080_);
+       } else {
+          m_123068_(p_123079_, registry1);
+       }
+@@ -117,7 +117,7 @@
+ 
+    private static <E> void m_123068_(RegistryAccess.RegistryHolder p_123069_, Registry<E> p_123070_) {
+       WritableRegistry<E> writableregistry = p_123069_.<E>m_6632_(p_123070_.m_123023_()).orElseThrow(() -> {
+-         return new IllegalStateException("Missing registry: " + p_123070_.m_123023_());
++         return new IllegalStateException("レジストリがありません: " + p_123070_.m_123023_());
+       });
+ 
+       for(Entry<ResourceKey<E>, E> entry : p_123070_.m_6579_()) {
+@@ -139,11 +139,11 @@
+       MappedRegistry<E> mappedregistry = Optional.ofNullable((MappedRegistry<E>)p_123083_.f_123113_.get(resourcekey)).map((p_123065_) -> {
+          return p_123065_;
+       }).orElseThrow(() -> {
+-         return new IllegalStateException("Missing registry: " + resourcekey);
++         return new IllegalStateException("レジストリがありません: " + resourcekey);
+       });
+       DataResult<MappedRegistry<E>> dataresult = p_123082_.m_135662_(mappedregistry, p_123084_.m_123108_(), p_123084_.m_123109_());
+       dataresult.error().ifPresent((p_123063_) -> {
+-         f_123047_.error("Error loading registry data: {}", (Object)p_123063_.message());
++         f_123047_.error("レジストリデータの読み込みエラー：{}", (Object)p_123063_.message());
+       });
+    }
+ 
+@@ -206,7 +206,7 @@
+          return Optional.ofNullable((RegistryAccess.RegistryData<E>)RegistryAccess.f_123048_.get(p_123138_)).map((p_123123_) -> {
+             return p_123123_.m_123110_();
+          }).map(DataResult::success).orElseGet(() -> {
+-            return DataResult.error("Unknown or not serializable registry: " + p_123138_);
++            return DataResult.error("不明またはシリアル化できないレジストリ: " + p_123138_);
+          });
+       }
+ 

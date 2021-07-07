@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/core/BlockPos.java
++++ b/main/java/net/minecraft/core/BlockPos.java
+@@ -463,7 +463,7 @@
+          case Z:
+             return this.m_122178_(this.m_123341_(), this.m_123342_(), Mth.m_14045_(this.m_123343_(), p_122149_, p_122150_));
+          default:
+-            throw new IllegalStateException("Unable to clamp axis " + p_122148_);
++            throw new IllegalStateException("軸をクランプできません: " + p_122148_);
+          }
+       }
+ 
