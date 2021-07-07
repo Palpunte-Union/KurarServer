@@ -19,7 +19,7 @@ gradle-app.setting
 .idea
 *.iml
 
-libs/
+libs/*.jar
 
 log4j2.xml
 pack.mcmeta
