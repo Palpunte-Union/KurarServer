@@ -9,11 +9,11 @@ buildscript {
     }
 }
 
-apply plugin: 'uk.jamierocks.propatcher'
-
 plugins {
     id 'com.github.johnrengelman.shadow' version '4.0.4'
 }
+
+apply plugin: 'uk.jamierocks.propatcher'
 
 group = 'com.github.eighty88'
 version = '1.16.5'
