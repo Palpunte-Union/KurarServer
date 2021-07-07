@@ -1,0 +1,42 @@
+--- a/main/java/net/minecraft/commands/Commands.java
++++ b/main/java/net/minecraft/commands/Commands.java
+@@ -188,7 +188,7 @@
+       }
+ 
+       this.f_82090_.findAmbiguities((p_82108_, p_82109_, p_82110_, p_82111_) -> {
+-         f_82089_.warn("Ambiguity between arguments {} and {} with inputs: {}", this.f_82090_.getPath(p_82109_), this.f_82090_.getPath(p_82110_), p_82111_);
++         f_82089_.warn("入力を伴う引数{}と{}の間のあいまいさ：{}", this.f_82090_.getPath(p_82109_), this.f_82090_.getPath(p_82110_), p_82111_);
+       });
+       this.f_82090_.setConsumer((p_82104_, p_82105_, p_82106_) -> {
+          p_82104_.getSource().m_81342_(p_82104_, p_82105_, p_82106_);
+@@ -232,7 +232,7 @@
+          } catch (Exception exception) {
+             MutableComponent mutablecomponent = new TextComponent(exception.getMessage() == null ? exception.getClass().getName() : exception.getMessage());
+             if (f_82089_.isDebugEnabled()) {
+-               f_82089_.error("Command exception: {}", p_82119_, exception);
++               f_82089_.error("コマンドの例外: {}", p_82119_, exception);
+                StackTraceElement[] astacktraceelement = exception.getStackTrace();
+ 
+                for(int i = 0; i < Math.min(astacktraceelement.length, 3); ++i) {
+@@ -245,7 +245,7 @@
+             }));
+             if (SharedConstants.f_136183_) {
+                p_82118_.m_81352_(new TextComponent(Util.m_137575_(exception)));
+-               f_82089_.error("'" + p_82119_ + "' threw an exception", (Throwable)exception);
++               f_82089_.error("'" + p_82119_ + "' は例外をスローしました", (Throwable)exception);
+             }
+ 
+             return 0;
+@@ -341,10 +341,10 @@
+          return !ArgumentTypes.m_121593_(p_82140_);
+       }).collect(Collectors.toSet());
+       if (!set1.isEmpty()) {
+-         f_82089_.warn("Missing type registration for following arguments:\n {}", set1.stream().map((p_82100_) -> {
++         f_82089_.warn("次の引数の型登録がありません:\n {}", set1.stream().map((p_82100_) -> {
+             return "\t" + p_82100_;
+          }).collect(Collectors.joining(",\n")));
+-         throw new IllegalStateException("Unregistered argument types");
++         throw new IllegalStateException("未登録の引数の種類です");
+       }
+    }
+ 

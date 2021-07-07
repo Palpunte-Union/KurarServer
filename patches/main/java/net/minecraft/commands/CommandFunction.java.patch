@@ -1,0 +1,25 @@
+--- a/main/java/net/minecraft/commands/CommandFunction.java
++++ b/main/java/net/minecraft/commands/CommandFunction.java
+@@ -40,11 +40,11 @@
+             if (stringreader.peek() == '/') {
+                stringreader.skip();
+                if (stringreader.peek() == '/') {
+-                  throw new IllegalArgumentException("Unknown or invalid command '" + s + "' on line " + j + " (if you intended to make a comment, use '#' not '//')");
++                  throw new IllegalArgumentException("不明または無効なコマンド '" + s + "' 行 " + j + " (コメントを作成する場合は、 '//'ではなく '#'を使用してください)");
+                }
+ 
+                String s1 = stringreader.readUnquotedString();
+-               throw new IllegalArgumentException("Unknown or invalid command '" + s + "' on line " + j + " (did you mean '" + s1 + "'? Do not use a preceding forwards slash.)");
++               throw new IllegalArgumentException("不明または無効なコマンド '" + s + "' 行 " + j + " ('"+ s1 +"'を意図しましたか?先行する前方スラッシュを使用しないでください。)");
+             }
+ 
+             try {
+@@ -55,7 +55,7 @@
+ 
+                list.add(new CommandFunction.CommandEntry(parseresults));
+             } catch (CommandSyntaxException commandsyntaxexception) {
+-               throw new IllegalArgumentException("Whilst parsing command on line " + j + ": " + commandsyntaxexception.getMessage());
++               throw new IllegalArgumentException("行 "+ j +"でコマンドを解析している間: " + commandsyntaxexception.getMessage());
+             }
+          }
+       }

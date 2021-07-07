@@ -1,0 +1,50 @@
+--- a/main/java/net/minecraft/commands/synchronization/ArgumentTypes.java
++++ b/main/java/net/minecraft/commands/synchronization/ArgumentTypes.java
+@@ -68,9 +68,9 @@
+    public static <T extends ArgumentType<?>> void m_121601_(String p_121602_, Class<T> p_121603_, ArgumentSerializer<T> p_121604_) {
+       ResourceLocation resourcelocation = new ResourceLocation(p_121602_);
+       if (f_121583_.containsKey(p_121603_)) {
+-         throw new IllegalArgumentException("Class " + p_121603_.getName() + " already has a serializer!");
++         throw new IllegalArgumentException("クラス " + p_121603_.getName() + " にはすでにシリアライザーがあります!");
+       } else if (f_121584_.containsKey(resourcelocation)) {
+-         throw new IllegalArgumentException("'" + resourcelocation + "' is already a registered serializer!");
++         throw new IllegalArgumentException("'" + resourcelocation + "' はすでに登録済みのシリアライザーです!");
+       } else {
+          ArgumentTypes.Entry<T> entry = new ArgumentTypes.Entry<>(p_121603_, p_121604_, resourcelocation);
+          f_121583_.put(p_121603_, entry);
+@@ -138,7 +138,7 @@
+    public static <T extends ArgumentType<?>> void m_121611_(FriendlyByteBuf p_121612_, T p_121613_) {
+       ArgumentTypes.Entry<T> entry = (ArgumentTypes.Entry<T>)m_121616_(p_121613_);
+       if (entry == null) {
+-         f_121582_.error("Could not serialize {} ({}) - will not be sent to client!", p_121613_, p_121613_.getClass());
++         f_121582_.error("{} ({})をシリアル化できませんでした-クライアントに送信されません！", p_121613_, p_121613_.getClass());
+          p_121612_.m_130085_(new ResourceLocation(""));
+       } else {
+          p_121612_.m_130085_(entry.f_121620_);
+@@ -151,7 +151,7 @@
+       ResourceLocation resourcelocation = p_121610_.m_130281_();
+       ArgumentTypes.Entry<?> entry = m_121614_(resourcelocation);
+       if (entry == null) {
+-         f_121582_.error("Could not deserialize {}", (Object)resourcelocation);
++         f_121582_.error("デシリアライズできませんでした {}", (Object)resourcelocation);
+          return null;
+       } else {
+          return entry.f_121619_.m_7813_(p_121610_);
+@@ -161,7 +161,7 @@
+    private static <T extends ArgumentType<?>> void m_121587_(JsonObject p_121588_, T p_121589_) {
+       ArgumentTypes.Entry<T> entry = (ArgumentTypes.Entry<T>)m_121616_(p_121589_);
+       if (entry == null) {
+-         f_121582_.error("Could not serialize argument {} ({})!", p_121589_, p_121589_.getClass());
++         f_121582_.error("引数をシリアル化できませんでした: {} ({})!", p_121589_, p_121589_.getClass());
+          p_121588_.addProperty("type", "unknown");
+       } else {
+          p_121588_.addProperty("type", "argument");
+@@ -184,7 +184,7 @@
+       } else if (p_121592_ instanceof ArgumentCommandNode) {
+          m_121587_(jsonobject, ((ArgumentCommandNode)p_121592_).getType());
+       } else {
+-         f_121582_.error("Could not serialize node {} ({})!", p_121592_, p_121592_.getClass());
++         f_121582_.error("ノードをシリアル化できませんでした: {} ({})!", p_121592_, p_121592_.getClass());
+          jsonobject.addProperty("type", "unknown");
+       }
+ 
