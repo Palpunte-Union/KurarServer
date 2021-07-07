@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/advancements/critereon/MobEffectsPredicate.java
++++ b/main/java/net/minecraft/advancements/critereon/MobEffectsPredicate.java
+@@ -69,7 +69,7 @@
+          for(Entry<String, JsonElement> entry : jsonobject.entrySet()) {
+             ResourceLocation resourcelocation = new ResourceLocation(entry.getKey());
+             MobEffect mobeffect = Registry.f_122823_.m_6612_(resourcelocation).orElseThrow(() -> {
+-               return new JsonSyntaxException("Unknown effect '" + resourcelocation + "'");
++               return new JsonSyntaxException("不明なエフェクトです: '" + resourcelocation + "'");
+             });
+             MobEffectsPredicate.MobEffectInstancePredicate mobeffectspredicate$mobeffectinstancepredicate = MobEffectsPredicate.MobEffectInstancePredicate.m_56579_(GsonHelper.m_13918_(entry.getValue(), entry.getKey()));
+             map.put(mobeffect, mobeffectspredicate$mobeffectinstancepredicate);

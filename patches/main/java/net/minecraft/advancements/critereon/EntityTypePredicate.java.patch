@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/advancements/critereon/EntityTypePredicate.java
++++ b/main/java/net/minecraft/advancements/critereon/EntityTypePredicate.java
+@@ -38,7 +38,7 @@
+          } else {
+             ResourceLocation resourcelocation = new ResourceLocation(s);
+             EntityType<?> entitytype = Registry.f_122826_.m_6612_(resourcelocation).orElseThrow(() -> {
+-               return new JsonSyntaxException("Unknown entity type '" + resourcelocation + "', valid types are: " + f_37637_.join(Registry.f_122826_.m_6566_()));
++               return new JsonSyntaxException("不明なエンティティの種類です: '" + resourcelocation + "', 有効なタイプ: " + f_37637_.join(Registry.f_122826_.m_6566_()));
+             });
+             return new EntityTypePredicate.TypePredicate(entitytype);
+          }

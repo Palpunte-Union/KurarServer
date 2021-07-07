@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/advancements/CriteriaTriggers.java
++++ b/main/java/net/minecraft/advancements/CriteriaTriggers.java
+@@ -90,7 +90,7 @@
+ 
+    private static <T extends CriterionTrigger<?>> T m_10595_(T p_10596_) {
+       if (f_10566_.containsKey(p_10596_.m_7295_())) {
+-         throw new IllegalArgumentException("Duplicate criterion id " + p_10596_.m_7295_());
++         throw new IllegalArgumentException("基準IDが重複しています: " + p_10596_.m_7295_());
+       } else {
+          f_10566_.put(p_10596_.m_7295_(), p_10596_);
+          return p_10596_;

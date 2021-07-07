@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/advancements/CriterionProgress.java
++++ b/main/java/net/minecraft/advancements/CriterionProgress.java
+@@ -61,7 +61,7 @@
+          criterionprogress.f_12908_ = f_12907_.parse(p_12913_);
+          return criterionprogress;
+       } catch (ParseException parseexception) {
+-         throw new JsonSyntaxException("Invalid datetime: " + p_12913_, parseexception);
++         throw new JsonSyntaxException("日時が無効です: " + p_12913_, parseexception);
+       }
+    }
+ }

@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/advancements/TreeNodePosition.java
++++ b/main/java/net/minecraft/advancements/TreeNodePosition.java
+@@ -20,7 +20,7 @@
+ 
+    public TreeNodePosition(Advancement p_16567_, @Nullable TreeNodePosition p_16568_, @Nullable TreeNodePosition p_16569_, int p_16570_, int p_16571_) {
+       if (p_16567_.m_138320_() == null) {
+-         throw new IllegalArgumentException("Can't position an invisible advancement!");
++         throw new IllegalArgumentException("目に見えない進歩を配置することはできません！");
+       } else {
+          this.f_16554_ = p_16567_;
+          this.f_16555_ = p_16568_;

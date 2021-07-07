@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/advancements/Criterion.java
++++ b/main/java/net/minecraft/advancements/Criterion.java
+@@ -31,7 +31,7 @@
+       ResourceLocation resourcelocation = new ResourceLocation(GsonHelper.m_13906_(p_11418_, "trigger"));
+       CriterionTrigger<?> criteriontrigger = CriteriaTriggers.m_10597_(resourcelocation);
+       if (criteriontrigger == null) {
+-         throw new JsonSyntaxException("Invalid criterion trigger: " + resourcelocation);
++         throw new JsonSyntaxException("無効な基準トリガー: " + resourcelocation);
+       } else {
+          CriterionTriggerInstance criteriontriggerinstance = criteriontrigger.m_5868_(GsonHelper.m_13841_(p_11418_, "conditions", new JsonObject()), p_11419_);
+          return new Criterion(criteriontriggerinstance);

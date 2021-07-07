@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/advancements/critereon/EnchantmentPredicate.java
++++ b/main/java/net/minecraft/advancements/critereon/EnchantmentPredicate.java
+@@ -72,7 +72,7 @@
+          if (jsonobject.has("enchantment")) {
+             ResourceLocation resourcelocation = new ResourceLocation(GsonHelper.m_13906_(jsonobject, "enchantment"));
+             enchantment = Registry.f_122825_.m_6612_(resourcelocation).orElseThrow(() -> {
+-               return new JsonSyntaxException("Unknown enchantment '" + resourcelocation + "'");
++               return new JsonSyntaxException("不明なエンチャントです: '" + resourcelocation + "'");
+             });
+          }
+ 

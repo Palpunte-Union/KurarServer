@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/advancements/FrameType.java
++++ b/main/java/net/minecraft/advancements/FrameType.java
+@@ -32,7 +32,7 @@
+          }
+       }
+ 
+-      throw new IllegalArgumentException("Unknown frame type '" + p_15550_ + "'");
++      throw new IllegalArgumentException("不明なフレームの種類 '" + p_15550_ + "'");
+    }
+ 
+    public ChatFormatting m_15552_() {

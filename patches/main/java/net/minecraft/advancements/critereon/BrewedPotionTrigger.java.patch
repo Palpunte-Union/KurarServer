@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/advancements/critereon/BrewedPotionTrigger.java
++++ b/main/java/net/minecraft/advancements/critereon/BrewedPotionTrigger.java
+@@ -21,7 +21,7 @@
+       if (p_19127_.has("potion")) {
+          ResourceLocation resourcelocation = new ResourceLocation(GsonHelper.m_13906_(p_19127_, "potion"));
+          potion = Registry.f_122828_.m_6612_(resourcelocation).orElseThrow(() -> {
+-            return new JsonSyntaxException("Unknown potion '" + resourcelocation + "'");
++            return new JsonSyntaxException("不明なポーションです: '" + resourcelocation + "'");
+          });
+       }
+ 

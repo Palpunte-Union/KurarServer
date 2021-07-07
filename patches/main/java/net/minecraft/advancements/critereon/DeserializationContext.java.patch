@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/advancements/critereon/DeserializationContext.java
++++ b/main/java/net/minecraft/advancements/critereon/DeserializationContext.java
+@@ -31,7 +31,7 @@
+       for(LootItemCondition lootitemcondition : alootitemcondition) {
+          lootitemcondition.m_6169_(validationcontext);
+          validationcontext.m_79352_().forEach((p_25880_, p_25881_) -> {
+-            f_25865_.warn("Found validation problem in advancement trigger {}/{}: {}", p_25876_, p_25880_, p_25881_);
++            f_25865_.warn("実績のトリガーの検証で問題が発生しました {}/{}: {}", p_25876_, p_25880_, p_25881_);
+          });
+       }
+ 

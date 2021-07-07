@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/advancements/critereon/BeeNestDestroyedTrigger.java
++++ b/main/java/net/minecraft/advancements/critereon/BeeNestDestroyedTrigger.java
+@@ -29,7 +29,7 @@
+       if (p_17488_.has("block")) {
+          ResourceLocation resourcelocation = new ResourceLocation(GsonHelper.m_13906_(p_17488_, "block"));
+          return Registry.f_122824_.m_6612_(resourcelocation).orElseThrow(() -> {
+-            return new JsonSyntaxException("Unknown block type '" + resourcelocation + "'");
++            return new JsonSyntaxException("不明なブロックの種類です: '" + resourcelocation + "'");
+          });
+       } else {
+          return null;

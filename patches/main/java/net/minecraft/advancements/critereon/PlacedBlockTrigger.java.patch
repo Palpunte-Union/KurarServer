@@ -1,0 +1,20 @@
+--- a/main/java/net/minecraft/advancements/critereon/PlacedBlockTrigger.java
++++ b/main/java/net/minecraft/advancements/critereon/PlacedBlockTrigger.java
+@@ -25,7 +25,7 @@
+       StatePropertiesPredicate statepropertiespredicate = StatePropertiesPredicate.m_67679_(p_59485_.get("state"));
+       if (block != null) {
+          statepropertiespredicate.m_67672_(block.m_49965_(), (p_59475_) -> {
+-            throw new JsonSyntaxException("Block " + block + " has no property " + p_59475_ + ":");
++            throw new JsonSyntaxException("ブロック \"" + block + "\" のプロパティがありません" + p_59475_ + ":");
+          });
+       }
+ 
+@@ -39,7 +39,7 @@
+       if (p_59483_.has("block")) {
+          ResourceLocation resourcelocation = new ResourceLocation(GsonHelper.m_13906_(p_59483_, "block"));
+          return Registry.f_122824_.m_6612_(resourcelocation).orElseThrow(() -> {
+-            return new JsonSyntaxException("Unknown block type '" + resourcelocation + "'");
++            return new JsonSyntaxException("不明なブロックの種類です: '" + resourcelocation + "'");
+          });
+       } else {
+          return null;

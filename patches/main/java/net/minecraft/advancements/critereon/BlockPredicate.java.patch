@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/advancements/critereon/BlockPredicate.java
++++ b/main/java/net/minecraft/advancements/critereon/BlockPredicate.java
+@@ -75,7 +75,7 @@
+             ResourceLocation resourcelocation1 = new ResourceLocation(GsonHelper.m_13906_(jsonobject, "tag"));
+             tag = SerializationTags.m_13199_().m_5883_().m_13404_(resourcelocation1);
+             if (tag == null) {
+-               throw new JsonSyntaxException("Unknown block tag '" + resourcelocation1 + "'");
++               throw new JsonSyntaxException("不明なブロックタグの種類です: '" + resourcelocation1 + "'");
+             }
+          }
+ 

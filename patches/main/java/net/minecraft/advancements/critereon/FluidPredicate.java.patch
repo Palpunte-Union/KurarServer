@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/advancements/critereon/FluidPredicate.java
++++ b/main/java/net/minecraft/advancements/critereon/FluidPredicate.java
+@@ -61,7 +61,7 @@
+             ResourceLocation resourcelocation1 = new ResourceLocation(GsonHelper.m_13906_(jsonobject, "tag"));
+             tag = SerializationTags.m_13199_().m_5879_().m_13404_(resourcelocation1);
+             if (tag == null) {
+-               throw new JsonSyntaxException("Unknown fluid tag '" + resourcelocation1 + "'");
++               throw new JsonSyntaxException("不明な液体のタグです: '" + resourcelocation1 + "'");
+             }
+          }
+ 

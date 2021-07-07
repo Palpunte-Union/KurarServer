@@ -1,0 +1,53 @@
+--- a/main/java/net/minecraft/advancements/Advancement.java
++++ b/main/java/net/minecraft/advancements/Advancement.java
+@@ -185,7 +185,7 @@
+ 
+       public Advancement.Builder m_138383_(String p_138384_, Criterion p_138385_) {
+          if (this.f_138336_.containsKey(p_138384_)) {
+-            throw new IllegalArgumentException("Duplicate criterion " + p_138384_);
++            throw new IllegalArgumentException("重複する基準 " + p_138384_);
+          } else {
+             this.f_138336_.put(p_138384_, p_138385_);
+             return this;
+@@ -213,7 +213,7 @@
+          if (!this.m_138392_((p_138407_) -> {
+             return null;
+          })) {
+-            throw new IllegalStateException("Tried to build incomplete advancement!");
++            throw new IllegalStateException("不完全な進歩を構築しようとしました！");
+          } else {
+             if (this.f_138337_ == null) {
+                this.f_138337_ = this.f_138338_.m_15985_(this.f_138336_.keySet());
+@@ -307,7 +307,7 @@
+          AdvancementRewards advancementrewards = p_138381_.has("rewards") ? AdvancementRewards.m_9991_(GsonHelper.m_13930_(p_138381_, "rewards")) : AdvancementRewards.f_9978_;
+          Map<String, Criterion> map = Criterion.m_11426_(GsonHelper.m_13930_(p_138381_, "criteria"), p_138382_);
+          if (map.isEmpty()) {
+-            throw new JsonSyntaxException("Advancement criteria cannot be empty");
++            throw new JsonSyntaxException("昇進基準を空にすることはできません");
+          } else {
+             JsonArray jsonarray = GsonHelper.m_13832_(p_138381_, "requirements", new JsonArray());
+             String[][] astring = new String[jsonarray.size()][];
+@@ -332,12 +332,12 @@
+ 
+             for(String[] astring1 : astring) {
+                if (astring1.length == 0 && map.isEmpty()) {
+-                  throw new JsonSyntaxException("Requirement entry cannot be empty");
++                  throw new JsonSyntaxException("要件エントリを空にすることはできません");
+                }
+ 
+                for(String s : astring1) {
+                   if (!map.containsKey(s)) {
+-                     throw new JsonSyntaxException("Unknown required criterion '" + s + "'");
++                     throw new JsonSyntaxException("不明な必須基準: '" + s + "'");
+                   }
+                }
+             }
+@@ -353,7 +353,7 @@
+                }
+ 
+                if (!flag) {
+-                  throw new JsonSyntaxException("Criterion '" + s1 + "' isn't a requirement for completion. This isn't supported behaviour, all criteria must be required.");
++                  throw new JsonSyntaxException("'" + s1 + "'は完了の要件ではありません。 これはサポートされている動作ではありません。すべての基準が必要です。");
+                }
+             }
+ 

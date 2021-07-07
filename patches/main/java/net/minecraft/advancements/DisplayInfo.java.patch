@@ -1,0 +1,32 @@
+--- a/main/java/net/minecraft/advancements/DisplayInfo.java
++++ b/main/java/net/minecraft/advancements/DisplayInfo.java
+@@ -76,17 +76,17 @@
+          boolean flag2 = GsonHelper.m_13855_(p_14982_, "hidden", false);
+          return new DisplayInfo(itemstack, component, component1, resourcelocation, frametype, flag, flag1, flag2);
+       } else {
+-         throw new JsonSyntaxException("Both title and description must be set");
++         throw new JsonSyntaxException("タイトルと説明の両方を設定する必要があります");
+       }
+    }
+ 
+    private static ItemStack m_14986_(JsonObject p_14987_) {
+       if (!p_14987_.has("item")) {
+-         throw new JsonSyntaxException("Unsupported icon type, currently only items are supported (add 'item' key)");
++         throw new JsonSyntaxException("サポートされていないアイコンタイプです。現在、アイテムのみがサポートされています('item'キーを追加）");
+       } else {
+          Item item = GsonHelper.m_13909_(p_14987_, "item");
+          if (p_14987_.has("data")) {
+-            throw new JsonParseException("Disallowed data tag found");
++            throw new JsonParseException("許可されていないデータタグが見つかりました");
+          } else {
+             ItemStack itemstack = new ItemStack(item);
+             if (p_14987_.has("nbt")) {
+@@ -94,7 +94,7 @@
+                   CompoundTag compoundtag = TagParser.m_129359_(GsonHelper.m_13805_(p_14987_.get("nbt"), "nbt"));
+                   itemstack.m_41751_(compoundtag);
+                } catch (CommandSyntaxException commandsyntaxexception) {
+-                  throw new JsonSyntaxException("Invalid nbt tag: " + commandsyntaxexception.getMessage());
++                  throw new JsonSyntaxException("無効なnbtタグ: " + commandsyntaxexception.getMessage());
+                }
+             }
+ 

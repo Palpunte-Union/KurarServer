@@ -1,0 +1,20 @@
+--- a/main/java/net/minecraft/advancements/critereon/SlideDownBlockTrigger.java
++++ b/main/java/net/minecraft/advancements/critereon/SlideDownBlockTrigger.java
+@@ -22,7 +22,7 @@
+       StatePropertiesPredicate statepropertiespredicate = StatePropertiesPredicate.m_67679_(p_66990_.get("state"));
+       if (block != null) {
+          statepropertiespredicate.m_67672_(block.m_49965_(), (p_66983_) -> {
+-            throw new JsonSyntaxException("Block " + block + " has no property " + p_66983_);
++            throw new JsonSyntaxException("ブロック \"" + block + "\" はプロパティを持っていません " + p_66983_);
+          });
+       }
+ 
+@@ -34,7 +34,7 @@
+       if (p_66988_.has("block")) {
+          ResourceLocation resourcelocation = new ResourceLocation(GsonHelper.m_13906_(p_66988_, "block"));
+          return Registry.f_122824_.m_6612_(resourcelocation).orElseThrow(() -> {
+-            return new JsonSyntaxException("Unknown block type '" + resourcelocation + "'");
++            return new JsonSyntaxException("不明なブロックの種類 '" + resourcelocation + "'");
+          });
+       } else {
+          return null;

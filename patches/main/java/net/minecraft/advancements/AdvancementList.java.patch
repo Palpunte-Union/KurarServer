@@ -1,0 +1,18 @@
+--- a/main/java/net/minecraft/advancements/AdvancementList.java
++++ b/main/java/net/minecraft/advancements/AdvancementList.java
+@@ -53,13 +53,13 @@
+ 
+          if (!flag) {
+             for(Entry<ResourceLocation, Advancement.Builder> entry1 : p_139334_.entrySet()) {
+-               f_139325_.error("Couldn't load advancement {}: {}", entry1.getKey(), entry1.getValue());
++               f_139325_.error("実績をロードできませんでした {}: {}", entry1.getKey(), entry1.getValue());
+             }
+             break;
+          }
+       }
+ 
+-      f_139325_.info("Loaded {} advancements", (int)this.f_139326_.size());
++      f_139325_.info("実績が {} 個読み込まれました。", (int)this.f_139326_.size());
+    }
+ 
+    public Iterable<Advancement> m_139343_() {

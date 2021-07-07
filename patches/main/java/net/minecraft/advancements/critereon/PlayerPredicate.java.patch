@@ -1,0 +1,20 @@
+--- a/main/java/net/minecraft/advancements/critereon/PlayerPredicate.java
++++ b/main/java/net/minecraft/advancements/critereon/PlayerPredicate.java
+@@ -120,7 +120,7 @@
+                ResourceLocation resourcelocation = new ResourceLocation(GsonHelper.m_13906_(jsonobject1, "type"));
+                StatType<?> stattype = Registry.f_122867_.m_7745_(resourcelocation);
+                if (stattype == null) {
+-                  throw new JsonParseException("Invalid stat type: " + resourcelocation);
++                  throw new JsonParseException("無効な統計の種類: " + resourcelocation);
+                }
+ 
+                ResourceLocation resourcelocation1 = new ResourceLocation(GsonHelper.m_13906_(jsonobject1, "stat"));
+@@ -158,7 +158,7 @@
+       Registry<T> registry = p_62268_.m_12893_();
+       T t = registry.m_7745_(p_62269_);
+       if (t == null) {
+-         throw new JsonParseException("Unknown object " + p_62269_ + " for stat type " + Registry.f_122867_.m_7981_(p_62268_));
++         throw new JsonParseException("不明なオブジェクト " + p_62269_ + " の統計の種類: " + Registry.f_122867_.m_7981_(p_62268_));
+       } else {
+          return p_62268_.m_12902_(t);
+       }

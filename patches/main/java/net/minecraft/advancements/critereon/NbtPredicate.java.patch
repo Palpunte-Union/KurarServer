@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/advancements/critereon/NbtPredicate.java
++++ b/main/java/net/minecraft/advancements/critereon/NbtPredicate.java
+@@ -50,7 +50,7 @@
+          try {
+             compoundtag = TagParser.m_129359_(GsonHelper.m_13805_(p_57482_, "nbt"));
+          } catch (CommandSyntaxException commandsyntaxexception) {
+-            throw new JsonSyntaxException("Invalid nbt tag: " + commandsyntaxexception.getMessage());
++            throw new JsonSyntaxException("無効なNBTタグ: " + commandsyntaxexception.getMessage());
+          }
+ 
+          return new NbtPredicate(compoundtag);
