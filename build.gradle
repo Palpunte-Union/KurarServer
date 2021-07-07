@@ -54,3 +54,7 @@ patches {
     target = file('src')
     patches = file('patches')
 }
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
