@@ -14,6 +14,7 @@ plugins {
 }
 
 apply plugin: 'uk.jamierocks.propatcher'
+apply plugin: 'java'
 
 group = 'com.github.eighty88'
 version = '1.16.5'
@@ -26,7 +27,7 @@ repositories {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: '*.jar')
 }
 
 jar {
