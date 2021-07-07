@@ -45,7 +45,7 @@ shadowJar {
 }
 
 patches {
-    rootDir = file('optifine')
+    rootDir = file('root')
     target = file('src')
     patches = file('patches')
 }

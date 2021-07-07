@@ -4,6 +4,7 @@ build/
 # Source code
 src/main/java/com/mojang/*
 src/main/java/net/minecraft/*
+root/
 
 # Ignore Gradle GUI config
 gradle-app.setting
