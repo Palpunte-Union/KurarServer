@@ -1,0 +1,32 @@
+plugins {
+    id 'com.github.johnrengelman.shadow' version '4.0.4'
+}
+
+group = 'com.github.eighty88'
+version = '1.16.5'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'net.minecraft.server.Main'
+    }
+}
+
+shadowJar {
+    archiveName = jar.archiveName
+
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+    exclude('dummyThing')
+    exclude('META-INF/maven/')
+    exclude('META-INF/nar/')
+    exclude('module-info.class')
+    exclude('META-INF/versions/')
+}
