@@ -1,0 +1,20 @@
+--- a/main/java/net/minecraft/network/chat/HoverEvent.java
++++ b/main/java/net/minecraft/network/chat/HoverEvent.java
+@@ -268,7 +268,7 @@
+                   CompoundTag compoundtag = TagParser.m_129359_(s);
+                   return new HoverEvent.ItemStackInfo(item, i, compoundtag);
+                } catch (CommandSyntaxException commandsyntaxexception) {
+-                  HoverEvent.f_130813_.warn("Failed to parse tag: {}", s, commandsyntaxexception);
++                  HoverEvent.f_130813_.warn("タグの解析に失敗しました: {}", s, commandsyntaxexception);
+                }
+             }
+ 
+@@ -282,7 +282,7 @@
+             CompoundTag compoundtag = TagParser.m_129359_(p_130909_.getString());
+             return new HoverEvent.ItemStackInfo(ItemStack.m_41712_(compoundtag));
+          } catch (CommandSyntaxException commandsyntaxexception) {
+-            HoverEvent.f_130813_.warn("Failed to parse item tag: {}", p_130909_, commandsyntaxexception);
++            HoverEvent.f_130813_.warn("アイテムタグの解析に失敗しました: {}", p_130909_, commandsyntaxexception);
+             return null;
+          }
+       }

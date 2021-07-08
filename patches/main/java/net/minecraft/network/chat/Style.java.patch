@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/network/chat/Style.java
++++ b/main/java/net/minecraft/network/chat/Style.java
+@@ -256,7 +256,7 @@
+             try {
+                return new ResourceLocation(s);
+             } catch (ResourceLocationException resourcelocationexception) {
+-               throw new JsonSyntaxException("Invalid font name: " + s);
++               throw new JsonSyntaxException("フォント名が無効です: " + s);
+             }
+          } else {
+             return null;

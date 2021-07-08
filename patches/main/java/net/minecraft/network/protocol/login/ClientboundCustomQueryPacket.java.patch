@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/network/protocol/login/ClientboundCustomQueryPacket.java
++++ b/main/java/net/minecraft/network/protocol/login/ClientboundCustomQueryPacket.java
+@@ -17,7 +17,7 @@
+       if (i >= 0 && i <= 1048576) {
+          this.f_134747_ = new FriendlyByteBuf(p_134750_.readBytes(i));
+       } else {
+-         throw new IOException("Payload may not be larger than 1048576 bytes");
++         throw new IOException("ペイロードは1048576バイトを超えてはなりません");
+       }
+    }
+ 

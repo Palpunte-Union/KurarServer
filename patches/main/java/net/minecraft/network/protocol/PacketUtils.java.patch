@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/network/protocol/PacketUtils.java
++++ b/main/java/net/minecraft/network/protocol/PacketUtils.java
+@@ -20,7 +20,7 @@
+             if (p_131365_.m_6198_().m_129536_()) {
+                p_131364_.m_5797_(p_131365_);
+             } else {
+-               f_131354_.debug("Ignoring packet due to disconnection: " + p_131364_);
++               f_131354_.debug("切断によるパケットの無視: " + p_131364_);
+             }
+ 
+          });

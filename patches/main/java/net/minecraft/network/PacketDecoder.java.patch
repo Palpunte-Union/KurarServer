@@ -1,0 +1,16 @@
+--- a/main/java/net/minecraft/network/PacketDecoder.java
++++ b/main/java/net/minecraft/network/PacketDecoder.java
+@@ -27,11 +27,11 @@
+          int i = friendlybytebuf.m_130242_();
+          Packet<?> packet = p_130535_.channel().attr(Connection.f_129461_).get().m_129594_(this.f_130530_, i);
+          if (packet == null) {
+-            throw new IOException("Bad packet id " + i);
++            throw new IOException("不正なパケットID " + i);
+          } else {
+             packet.m_5778_(friendlybytebuf);
+             if (friendlybytebuf.readableBytes() > 0) {
+-               throw new IOException("Packet " + p_130535_.channel().attr(Connection.f_129461_).get().m_129582_() + "/" + i + " (" + packet.getClass().getSimpleName() + ") was larger than I expected, found " + friendlybytebuf.readableBytes() + " bytes extra whilst reading packet " + i);
++               throw new IOException("パケット" + p_130535_.channel().attr(Connection.f_129461_).get().m_129582_()+ "/" + i + "（" + packet.getClass().getSimpleName()+ ")が 予想していたのですが、パケットの読み取り中にfriendlybytebuf(読み取り可能バイト: " + i +")が余分に見つかりました");
+             } else {
+                p_130537_.add(packet);
+                if (f_130528_.isDebugEnabled()) {

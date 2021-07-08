@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/network/chat/NbtComponent.java
++++ b/main/java/net/minecraft/network/chat/NbtComponent.java
+@@ -74,7 +74,7 @@
+                MutableComponent mutablecomponent = Component.Serializer.m_130701_(p_130971_);
+                return Stream.of(ComponentUtils.m_130731_(p_130964_, mutablecomponent, p_130965_, p_130966_));
+             } catch (Exception exception) {
+-               f_130953_.warn("Failed to parse component: " + p_130971_, (Throwable)exception);
++               f_130953_.warn("コンポーネントの解析に失敗しました: " + p_130971_, (Throwable)exception);
+                return Stream.of();
+             }
+          }).reduce((p_130975_, p_130976_) -> {

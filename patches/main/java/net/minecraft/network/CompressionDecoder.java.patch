@@ -1,0 +1,16 @@
+--- a/main/java/net/minecraft/network/CompressionDecoder.java
++++ b/main/java/net/minecraft/network/CompressionDecoder.java
+@@ -25,11 +25,11 @@
+             p_129443_.add(friendlybytebuf.readBytes(friendlybytebuf.readableBytes()));
+          } else {
+             if (i < this.f_129435_) {
+-               throw new DecoderException("Badly compressed packet - size of " + i + " is below server threshold of " + this.f_129435_);
++               throw new DecoderException("正しく圧縮されていないパケット- "+ i +"のサイズがサーバーのしきい値を下回っています " + this.f_129435_);
+             }
+ 
+             if (i > 2097152) {
+-               throw new DecoderException("Badly compressed packet - size of " + i + " is larger than protocol maximum of " + 2097152);
++               throw new DecoderException("圧縮が不十分なパケット- "+ i + "のサイズがプロトコルの最大値よりも大きい " + 2097152);
+             }
+ 
+             byte[] abyte = new byte[friendlybytebuf.readableBytes()];

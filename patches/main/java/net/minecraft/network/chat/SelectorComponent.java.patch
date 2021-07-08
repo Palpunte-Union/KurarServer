@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/network/chat/SelectorComponent.java
++++ b/main/java/net/minecraft/network/chat/SelectorComponent.java
+@@ -24,7 +24,7 @@
+          EntitySelectorParser entityselectorparser = new EntitySelectorParser(new StringReader(p_131086_));
+          entityselector = entityselectorparser.m_121377_();
+       } catch (CommandSyntaxException commandsyntaxexception) {
+-         f_131081_.warn("Invalid selector component: {}", p_131086_, commandsyntaxexception.getMessage());
++         f_131081_.warn("無効なセレクタコンポーネント: {}", p_131086_, commandsyntaxexception.getMessage());
+       }
+ 
+       this.f_131083_ = entityselector;

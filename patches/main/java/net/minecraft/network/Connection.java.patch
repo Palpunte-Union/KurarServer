@@ -1,0 +1,40 @@
+--- a/main/java/net/minecraft/network/Connection.java
++++ b/main/java/net/minecraft/network/Connection.java
+@@ -85,7 +85,7 @@
+    public void m_129498_(ConnectionProtocol p_129499_) {
+       this.f_129468_.attr(f_129461_).set(p_129499_);
+       this.f_129468_.config().setAutoRead(true);
+-      f_129465_.debug("Enabled auto read");
++      f_129465_.debug("自動読み取りを有効にする");
+    }
+ 
+    public void channelInactive(ChannelHandlerContext p_129527_) throws Exception {
+@@ -94,24 +94,24 @@
+ 
+    public void exceptionCaught(ChannelHandlerContext p_129533_, Throwable p_129534_) {
+       if (p_129534_ instanceof SkipPacketException) {
+-         f_129465_.debug("Skipping packet due to errors", p_129534_.getCause());
++         f_129465_.debug("エラーのためにパケットをスキップする", p_129534_.getCause());
+       } else {
+          boolean flag = !this.f_129479_;
+          this.f_129479_ = true;
+          if (this.f_129468_.isOpen()) {
+             if (p_129534_ instanceof TimeoutException) {
+-               f_129465_.debug("Timeout", p_129534_);
++               f_129465_.debug("タイムアウト", p_129534_);
+                this.m_129507_(new TranslatableComponent("disconnect.timeout"));
+             } else {
+                Component component = new TranslatableComponent("disconnect.genericReason", "Internal Exception: " + p_129534_);
+                if (flag) {
+-                  f_129465_.debug("Failed to sent packet", p_129534_);
++                  f_129465_.debug("パケットの送信に失敗しました", p_129534_);
+                   this.m_129514_(new ClientboundDisconnectPacket(component), (p_129511_) -> {
+                      this.m_129507_(component);
+                   });
+                   this.m_129540_();
+                } else {
+-                  f_129465_.debug("Double fault", p_129534_);
++                  f_129465_.debug("二重障害", p_129534_);
+                   this.m_129507_(component);
+                }
+             }

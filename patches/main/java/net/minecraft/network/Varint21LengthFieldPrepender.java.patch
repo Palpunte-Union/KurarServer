@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/network/Varint21LengthFieldPrepender.java
++++ b/main/java/net/minecraft/network/Varint21LengthFieldPrepender.java
+@@ -11,7 +11,7 @@
+       int i = p_130572_.readableBytes();
+       int j = FriendlyByteBuf.m_130053_(i);
+       if (j > 3) {
+-         throw new IllegalArgumentException("unable to fit " + i + " into " + 3);
++         throw new IllegalArgumentException(i + "を3に収めることができません");
+       } else {
+          FriendlyByteBuf friendlybytebuf = new FriendlyByteBuf(p_130573_);
+          friendlybytebuf.ensureWritable(j + i);

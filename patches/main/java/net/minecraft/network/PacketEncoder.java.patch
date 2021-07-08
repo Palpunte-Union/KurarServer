@@ -1,0 +1,20 @@
+--- a/main/java/net/minecraft/network/PacketEncoder.java
++++ b/main/java/net/minecraft/network/PacketEncoder.java
+@@ -23,7 +23,7 @@
+    protected void encode(ChannelHandlerContext p_130545_, Packet<?> p_130546_, ByteBuf p_130547_) throws Exception {
+       ConnectionProtocol connectionprotocol = p_130545_.channel().attr(Connection.f_129461_).get();
+       if (connectionprotocol == null) {
+-         throw new RuntimeException("ConnectionProtocol unknown: " + p_130546_);
++         throw new RuntimeException("不明なConnectionProtocol: " + p_130546_);
+       } else {
+          Integer integer = connectionprotocol.m_129597_(this.f_130540_, p_130546_);
+          if (f_130538_.isDebugEnabled()) {
+@@ -31,7 +31,7 @@
+          }
+ 
+          if (integer == null) {
+-            throw new IOException("Can't serialize unregistered packet");
++            throw new IOException("未登録のパケットをシリアル化できません");
+          } else {
+             FriendlyByteBuf friendlybytebuf = new FriendlyByteBuf(p_130547_);
+             friendlybytebuf.m_130130_(integer);

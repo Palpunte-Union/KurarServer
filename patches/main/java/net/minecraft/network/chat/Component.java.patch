@@ -1,0 +1,92 @@
+--- a/main/java/net/minecraft/network/chat/Component.java
++++ b/main/java/net/minecraft/network/chat/Component.java
+@@ -91,7 +91,7 @@
+             field.setAccessible(true);
+             return field;
+          } catch (NoSuchFieldException nosuchfieldexception) {
+-            throw new IllegalStateException("Couldn't get field 'pos' for JsonReader", nosuchfieldexception);
++            throw new IllegalStateException("JsonReaderのフィールド'pos'を取得できませんでした", nosuchfieldexception);
+          }
+       });
+       private static final Field f_130687_ = Util.m_137537_(() -> {
+@@ -101,7 +101,7 @@
+             field.setAccessible(true);
+             return field;
+          } catch (NoSuchFieldException nosuchfieldexception) {
+-            throw new IllegalStateException("Couldn't get field 'lineStart' for JsonReader", nosuchfieldexception);
++            throw new IllegalStateException("JsonReaderのフィールド'lineStart'を取得できませんでした", nosuchfieldexception);
+          }
+       });
+ 
+@@ -124,7 +124,7 @@
+ 
+                return mutablecomponent1;
+             } else {
+-               throw new JsonParseException("Don't know how to turn " + p_130694_ + " into a Component");
++               throw new JsonParseException(p_130694_ + "をコンポーネントに変換する方法がわからない");
+             }
+          } else {
+             JsonObject jsonobject = p_130694_.getAsJsonObject();
+@@ -154,7 +154,7 @@
+             } else if (jsonobject.has("score")) {
+                JsonObject jsonobject1 = GsonHelper.m_13930_(jsonobject, "score");
+                if (!jsonobject1.has("name") || !jsonobject1.has("objective")) {
+-                  throw new JsonParseException("A score component needs a least a name and an objective");
++                  throw new JsonParseException("スコアコンポーネントには、少なくとも名前と目的が必要です");
+                }
+ 
+                mutablecomponent = new ScoreComponent(GsonHelper.m_13906_(jsonobject1, "name"), GsonHelper.m_13906_(jsonobject1, "objective"));
+@@ -164,7 +164,7 @@
+                mutablecomponent = new KeybindComponent(GsonHelper.m_13906_(jsonobject, "keybind"));
+             } else {
+                if (!jsonobject.has("nbt")) {
+-                  throw new JsonParseException("Don't know how to turn " + p_130694_ + " into a Component");
++                  throw new JsonParseException(p_130694_ + "をコンポーネントに変換する方法がわからない");
+                }
+ 
+                String s1 = GsonHelper.m_13906_(jsonobject, "nbt");
+@@ -175,7 +175,7 @@
+                   mutablecomponent = new NbtComponent.EntityNbtComponent(s1, flag, GsonHelper.m_13906_(jsonobject, "entity"));
+                } else {
+                   if (!jsonobject.has("storage")) {
+-                     throw new JsonParseException("Don't know how to turn " + p_130694_ + " into a Component");
++                     throw new JsonParseException(p_130694_ +"をコンポーネントに変換する方法がわからない");
+                   }
+ 
+                   mutablecomponent = new NbtComponent.StorageNbtComponent(s1, flag, new ResourceLocation(GsonHelper.m_13906_(jsonobject, "storage")));
+@@ -185,7 +185,7 @@
+             if (jsonobject.has("extra")) {
+                JsonArray jsonarray2 = GsonHelper.m_13933_(jsonobject, "extra");
+                if (jsonarray2.size() <= 0) {
+-                  throw new JsonParseException("Unexpected empty array of components");
++                  throw new JsonParseException("コンポーネントの予期しない空の配列");
+                }
+ 
+                for(int j = 0; j < jsonarray2.size(); ++j) {
+@@ -258,7 +258,7 @@
+             jsonobject.addProperty("keybind", keybindcomponent.m_130935_());
+          } else {
+             if (!(p_130706_ instanceof NbtComponent)) {
+-               throw new IllegalArgumentException("Don't know how to serialize " + p_130706_ + " as a Component");
++               throw new IllegalArgumentException(p_130706_+ "をコンポーネントとしてシリアル化する方法がわからない");
+             }
+ 
+             NbtComponent nbtcomponent = (NbtComponent)p_130706_;
+@@ -272,7 +272,7 @@
+                jsonobject.addProperty("entity", nbtcomponent$entitynbtcomponent.m_131024_());
+             } else {
+                if (!(p_130706_ instanceof NbtComponent.StorageNbtComponent)) {
+-                  throw new IllegalArgumentException("Don't know how to serialize " + p_130706_ + " as a Component");
++                  throw new IllegalArgumentException(p_130706_ + "をコンポーネントとしてシリアル化する方法がわからない");
+                }
+ 
+                NbtComponent.StorageNbtComponent nbtcomponent$storagenbtcomponent = (NbtComponent.StorageNbtComponent)p_130706_;
+@@ -322,7 +322,7 @@
+          try {
+             return f_130686_.getInt(p_130698_) - f_130687_.getInt(p_130698_) + 1;
+          } catch (IllegalAccessException illegalaccessexception) {
+-            throw new IllegalStateException("Couldn't read position of JsonReader", illegalaccessexception);
++            throw new IllegalStateException("JsonReaderの位置を読み取れませんでした", illegalaccessexception);
+          }
+       }
+    }

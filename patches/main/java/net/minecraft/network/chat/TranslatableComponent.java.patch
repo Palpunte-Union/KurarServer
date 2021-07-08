@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/network/chat/TranslatableComponent.java
++++ b/main/java/net/minecraft/network/chat/TranslatableComponent.java
+@@ -76,7 +76,7 @@
+                this.f_131301_.add(f_131296_);
+             } else {
+                if (!"s".equals(s4)) {
+-                  throw new TranslatableFormatException(this, "Unsupported format: '" + s1 + "'");
++                  throw new TranslatableFormatException(this, "サポートされていない形式: '" + s1 + "'");
+                }
+ 
+                String s2 = matcher.group(1);

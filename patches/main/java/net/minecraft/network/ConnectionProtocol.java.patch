@@ -1,0 +1,28 @@
+--- a/main/java/net/minecraft/network/ConnectionProtocol.java
++++ b/main/java/net/minecraft/network/ConnectionProtocol.java
+@@ -215,14 +215,14 @@
+       for(ConnectionProtocol connectionprotocol : values()) {
+          int i = connectionprotocol.m_129582_();
+          if (i < -1 || i > 2) {
+-            throw new Error("Invalid protocol ID " + Integer.toString(i));
++            throw new Error("無効なプロトコルID " + Integer.toString(i));
+          }
+ 
+          f_129571_[i - -1] = connectionprotocol;
+          connectionprotocol.f_129574_.forEach((p_129590_, p_129591_) -> {
+             p_129591_.m_129609_().forEach((p_129587_) -> {
+                if (f_129572_.containsKey(p_129587_) && f_129572_.get(p_129587_) != connectionprotocol) {
+-                  throw new IllegalStateException("Packet " + p_129587_ + " is already assigned to protocol " + f_129572_.get(p_129587_) + " - can't reassign to " + connectionprotocol);
++                  throw new IllegalStateException("Packet" + p_129587_ + "はすでにプロトコル" + f_129572_.get(p_129587_)+ "に割り当てられています- " + connectionprotocol + "に再割り当てできません");
+                } else {
+                   f_129572_.put(p_129587_, connectionprotocol);
+                }
+@@ -245,7 +245,7 @@
+          int i = this.f_129605_.size();
+          int j = this.f_129604_.put(p_129617_, i);
+          if (j != -1) {
+-            String s = "Packet " + p_129617_ + " is already registered to ID " + j;
++            String s = "パケット"+ p_129617_ +"はすでにIDに登録されています " + j;
+             LogManager.getLogger().fatal(s);
+             throw new IllegalArgumentException(s);
+          } else {

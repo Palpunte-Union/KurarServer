@@ -1,0 +1,83 @@
+--- a/main/java/net/minecraft/network/FriendlyByteBuf.java
++++ b/main/java/net/minecraft/network/FriendlyByteBuf.java
+@@ -57,7 +57,7 @@
+       CompoundTag compoundtag = this.m_130261_();
+       DataResult<T> dataresult = p_130058_.parse(NbtOps.f_128958_, compoundtag);
+       if (dataresult.error().isPresent()) {
+-         throw new IOException("Failed to decode: " + dataresult.error().get().message() + " " + compoundtag);
++         throw new IOException("デコードに失敗しました: " + dataresult.error().get().message() + " " + compoundtag);
+       } else {
+          return dataresult.result().get();
+       }
+@@ -66,7 +66,7 @@
+    public <T> void m_130059_(Codec<T> p_130060_, T p_130061_) throws IOException {
+       DataResult<Tag> dataresult = p_130060_.encodeStart(NbtOps.f_128958_, p_130061_);
+       if (dataresult.error().isPresent()) {
+-         throw new IOException("Failed to encode: " + dataresult.error().get().message() + " " + p_130061_);
++         throw new IOException("デコードに失敗しました: " + dataresult.error().get().message() + " " + p_130061_);
+       } else {
+          this.m_130079_((CompoundTag)dataresult.result().get());
+       }
+@@ -85,7 +85,7 @@
+    public byte[] m_130101_(int p_130102_) {
+       int i = this.m_130242_();
+       if (i > p_130102_) {
+-         throw new DecoderException("ByteArray with size " + i + " is bigger than allowed " + p_130102_);
++         throw new DecoderException("サイズが"+ i +"のByteArrayが許可されているサイズよりも大きい " + p_130102_);
+       } else {
+          byte[] abyte = new byte[i];
+          this.readBytes(abyte);
+@@ -110,7 +110,7 @@
+    public int[] m_130116_(int p_130117_) {
+       int i = this.m_130242_();
+       if (i > p_130117_) {
+-         throw new DecoderException("VarIntArray with size " + i + " is bigger than allowed " + p_130117_);
++         throw new DecoderException("サイズが"+ i +"のVarIntArrayが許可されているサイズよりも大きい " + p_130117_);
+       } else {
+          int[] aint = new int[i];
+ 
+@@ -166,7 +166,7 @@
+          b0 = this.readByte();
+          i |= (b0 & 127) << j++ * 7;
+          if (j > 5) {
+-            throw new RuntimeException("VarInt too big");
++            throw new RuntimeException("VarIntが大きすぎます");
+          }
+       } while((b0 & 128) == 128);
+ 
+@@ -182,7 +182,7 @@
+          b0 = this.readByte();
+          i |= (long)(b0 & 127) << j++ * 7;
+          if (j > 10) {
+-            throw new RuntimeException("VarLong too big");
++            throw new RuntimeException("VarLongが大きすぎます");
+          }
+       } while((b0 & 128) == 128);
+ 
+@@ -294,14 +294,14 @@
+    public String m_130136_(int p_130137_) {
+       int i = this.m_130242_();
+       if (i > p_130137_ * 4) {
+-         throw new DecoderException("The received encoded string buffer length is longer than maximum allowed (" + i + " > " + p_130137_ * 4 + ")");
++         throw new DecoderException("受信したエンコードされた文字列バッファの長さが最大許容値よりも長い (" + i + " > " + p_130137_ * 4 + ")");
+       } else if (i < 0) {
+-         throw new DecoderException("The received encoded string buffer length is less than zero! Weird string!");
++         throw new DecoderException("受信したエンコードされた文字列バッファの長さがゼロ未満です!");
+       } else {
+          String s = this.toString(this.readerIndex(), i, StandardCharsets.UTF_8);
+          this.readerIndex(this.readerIndex() + i);
+          if (s.length() > p_130137_) {
+-            throw new DecoderException("The received string length is longer than maximum allowed (" + i + " > " + p_130137_ + ")");
++            throw new DecoderException("受信した文字列の長さが最大許容値を超えています (" + i + " > " + p_130137_ + ")");
+          } else {
+             return s;
+          }
+@@ -315,7 +315,7 @@
+    public FriendlyByteBuf m_130072_(String p_130073_, int p_130074_) {
+       byte[] abyte = p_130073_.getBytes(StandardCharsets.UTF_8);
+       if (abyte.length > p_130074_) {
+-         throw new EncoderException("String too big (was " + abyte.length + " bytes encoded, max " + p_130074_ + ")");
++         throw new EncoderException("文字列が大きすぎます（ "+ abyte.length +"バイトがエンコードされ、最大 "+ p_130074_ +"） ");
+       } else {
+          this.m_130130_(abyte.length);
+          this.writeBytes(abyte);

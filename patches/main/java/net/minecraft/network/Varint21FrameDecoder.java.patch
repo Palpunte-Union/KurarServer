@@ -1,0 +1,10 @@
+--- a/main/java/net/minecraft/network/Varint21FrameDecoder.java
++++ b/main/java/net/minecraft/network/Varint21FrameDecoder.java
+@@ -38,6 +38,6 @@
+          }
+       }
+ 
+-      throw new CorruptedFrameException("length wider than 21-bit");
++      throw new CorruptedFrameException("21ビットより広い長さ");
+    }
+ }

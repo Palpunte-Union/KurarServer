@@ -1,0 +1,53 @@
+--- a/main/java/net/minecraft/network/syncher/SynchedEntityData.java
++++ b/main/java/net/minecraft/network/syncher/SynchedEntityData.java
+@@ -37,7 +37,7 @@
+          try {
+             Class<?> oclass = Class.forName(Thread.currentThread().getStackTrace()[2].getClassName());
+             if (!oclass.equals(p_135354_)) {
+-               f_135342_.debug("defineId called for: {} from {}", p_135354_, oclass, new RuntimeException());
++               f_135342_.debug("defineIdが要求しました：{} from {}", p_135354_, oclass, new RuntimeException());
+             }
+          } catch (ClassNotFoundException classnotfoundexception) {
+          }
+@@ -62,7 +62,7 @@
+       }
+ 
+       if (j > 254) {
+-         throw new IllegalArgumentException("Data value id is too big with " + j + "! (Max is " + 254 + ")");
++         throw new IllegalArgumentException("データ値IDが大きすぎます " + j + "! (Max is " + 254 + ")");
+       } else {
+          f_135343_.put(p_135354_, j);
+          return p_135355_.m_135021_(j);
+@@ -72,11 +72,11 @@
+    public <T> void m_135372_(EntityDataAccessor<T> p_135373_, T p_135374_) {
+       int i = p_135373_.m_135015_();
+       if (i > 254) {
+-         throw new IllegalArgumentException("Data value id is too big with " + i + "! (Max is " + 254 + ")");
++         throw new IllegalArgumentException("データ値IDが大きすぎます " + i + "! (Max is " + 254 + ")");
+       } else if (this.f_135345_.containsKey(i)) {
+-         throw new IllegalArgumentException("Duplicate id value for " + i + "!");
++         throw new IllegalArgumentException("ID値が重複しています " + i + "!");
+       } else if (EntityDataSerializers.m_135052_(p_135373_.m_135016_()) < 0) {
+-         throw new IllegalArgumentException("Unregistered serializer " + p_135373_.m_135016_() + " for " + i + "!");
++         throw new IllegalArgumentException("未登録のシリアライザー " + p_135373_.m_135016_() + i + "!");
+       } else {
+          this.m_135385_(p_135373_, p_135374_);
+       }
+@@ -184,7 +184,7 @@
+       EntityDataAccessor<T> entitydataaccessor = p_135369_.m_135396_();
+       int i = EntityDataSerializers.m_135052_(entitydataaccessor.m_135016_());
+       if (i < 0) {
+-         throw new EncoderException("Unknown serializer type " + entitydataaccessor.m_135016_());
++         throw new EncoderException("不明なシリアライザータイプ " + entitydataaccessor.m_135016_());
+       } else {
+          p_135368_.writeByte(entitydataaccessor.m_135015_());
+          p_135368_.m_130130_(i);
+@@ -205,7 +205,7 @@
+          int j = p_135362_.m_130242_();
+          EntityDataSerializer<?> entitydataserializer = EntityDataSerializers.m_135048_(j);
+          if (entitydataserializer == null) {
+-            throw new DecoderException("Unknown serializer type " + j);
++            throw new DecoderException("不明なシリアライザータイプ " + j);
+          }
+ 
+          list.add(m_135363_(p_135362_, i, entitydataserializer));
