@@ -1,0 +1,17 @@
+--- a/main/java/net/minecraft/stats/ServerRecipeBook.java
++++ b/main/java/net/minecraft/stats/ServerRecipeBook.java
+@@ -98,12 +98,12 @@
+             ResourceLocation resourcelocation = new ResourceLocation(s);
+             Optional<? extends Recipe<?>> optional = p_12800_.m_44043_(resourcelocation);
+             if (!optional.isPresent()) {
+-               f_12786_.error("Tried to load unrecognized recipe: {} removed now.", (Object)resourcelocation);
++               f_12786_.error("認識されないレシピを読み込もうとしました：{} が削除されました.", (Object)resourcelocation);
+             } else {
+                p_12799_.accept(optional.get());
+             }
+          } catch (ResourceLocationException resourcelocationexception) {
+-            f_12786_.error("Tried to load improperly formatted recipe: {} removed now.", (Object)s);
++            f_12786_.error("不適切にフォーマットされたレシピを読み込もうとしました：{} が削除されました.", (Object)s);
+          }
+       }
+ 

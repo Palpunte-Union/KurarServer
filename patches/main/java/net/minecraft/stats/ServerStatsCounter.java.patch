@@ -1,0 +1,58 @@
+--- a/main/java/net/minecraft/stats/ServerStatsCounter.java
++++ b/main/java/net/minecraft/stats/ServerStatsCounter.java
+@@ -47,9 +47,9 @@
+          try {
+             this.m_12832_(p_12816_.m_129933_(), FileUtils.readFileToString(p_12817_));
+          } catch (IOException ioexception) {
+-            f_12809_.error("Couldn't read statistics file {}", p_12817_, ioexception);
++            f_12809_.error("統計ファイル {} を読み取れませんでした", p_12817_, ioexception);
+          } catch (JsonParseException jsonparseexception) {
+-            f_12809_.error("Couldn't parse statistics file {}", p_12817_, jsonparseexception);
++            f_12809_.error("統計ファイル {} を解析できませんでした", p_12817_, jsonparseexception);
+          }
+       }
+ 
+@@ -59,7 +59,7 @@
+       try {
+          FileUtils.writeStringToFile(this.f_12811_, this.m_12845_());
+       } catch (IOException ioexception) {
+-         f_12809_.error("Couldn't save stats", (Throwable)ioexception);
++         f_12809_.error("統計を保存できませんでした", (Throwable)ioexception);
+       }
+ 
+    }
+@@ -80,7 +80,7 @@
+          jsonreader.setLenient(false);
+          JsonElement jsonelement = Streams.parse(jsonreader);
+          if (jsonelement.isJsonNull()) {
+-            f_12809_.error("Unable to parse Stat data from {}", (Object)this.f_12811_);
++            f_12809_.error("{} からの統計データを解析できません", (Object)this.f_12811_);
+             return;
+          }
+ 
+@@ -103,21 +103,21 @@
+                            Util.m_137521_(this.m_12823_(p_12844_, s1), (p_12840_) -> {
+                               this.f_13013_.put(p_12840_, compoundtag2.m_128451_(s1));
+                            }, () -> {
+-                              f_12809_.warn("Invalid statistic in {}: Don't know what {} is", this.f_12811_, s1);
++                              f_12809_.warn("{} の統計が無効です：{} が何であるかわかりません", this.f_12811_, s1);
+                            });
+                         } else {
+-                           f_12809_.warn("Invalid statistic value in {}: Don't know what {} is for key {}", this.f_12811_, compoundtag2.m_128423_(s1), s1);
++                           f_12809_.warn("{} の統計値が無効です：キー {} の {} が何であるかわかりません", this.f_12811_, s1, compoundtag2.m_128423_(s1));
+                         }
+                      }
+ 
+                   }, () -> {
+-                     f_12809_.warn("Invalid statistic type in {}: Don't know what {} is", this.f_12811_, s);
++                     f_12809_.warn("{} の統計の種類が無効です：{} が何であるかわかりません", this.f_12811_, s);
+                   });
+                }
+             }
+          }
+       } catch (IOException | JsonParseException jsonparseexception) {
+-         f_12809_.error("Unable to parse Stat data from {}", this.f_12811_, jsonparseexception);
++         f_12809_.error("{} からの統計データを解析できません", this.f_12811_, jsonparseexception);
+       }
+ 
+    }
