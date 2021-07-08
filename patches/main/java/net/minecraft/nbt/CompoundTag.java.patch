@@ -1,0 +1,20 @@
+--- a/main/java/net/minecraft/nbt/CompoundTag.java
++++ b/main/java/net/minecraft/nbt/CompoundTag.java
+@@ -31,7 +31,7 @@
+ public class CompoundTag implements Tag {
+    public static final Codec<CompoundTag> f_128325_ = Codec.PASSTHROUGH.comapFlatMap((p_128336_) -> {
+       Tag tag = p_128336_.convert(NbtOps.f_128958_).getValue();
+-      return tag instanceof CompoundTag ? DataResult.success((CompoundTag)tag) : DataResult.error("Not a compound tag: " + tag);
++      return tag instanceof CompoundTag ? DataResult.success((CompoundTag)tag) : DataResult.error("複合タグではありません: " + tag);
+    }, (p_128412_) -> {
+       return new Dynamic<>(NbtOps.f_128958_, p_128412_);
+    });
+@@ -41,7 +41,7 @@
+       public CompoundTag m_7300_(DataInput p_128485_, int p_128486_, NbtAccounter p_128487_) throws IOException {
+          p_128487_.m_6800_(384L);
+          if (p_128486_ > 512) {
+-            throw new RuntimeException("Tried to read NBT tag with too high complexity, depth > 512");
++            throw new RuntimeException("複雑すぎるNBTタグを読み取ろうとしました, depth > 512");
+          } else {
+             Map<String, Tag> map = Maps.newHashMap();
+ 

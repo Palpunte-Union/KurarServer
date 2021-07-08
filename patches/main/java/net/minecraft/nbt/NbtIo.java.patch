@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/nbt/NbtIo.java
++++ b/main/java/net/minecraft/nbt/NbtIo.java
+@@ -60,7 +60,7 @@
+       if (tag instanceof CompoundTag) {
+          return (CompoundTag)tag;
+       } else {
+-         throw new IOException("Root tag must be a named compound tag");
++         throw new IOException("ルートタグは、名前付きの複合タグである必要があります");
+       }
+    }
+ 

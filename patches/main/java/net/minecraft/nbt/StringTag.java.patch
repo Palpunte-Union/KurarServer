@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/nbt/StringTag.java
++++ b/main/java/net/minecraft/nbt/StringTag.java
+@@ -32,7 +32,7 @@
+    private final String f_129290_;
+ 
+    private StringTag(String p_129293_) {
+-      Objects.requireNonNull(p_129293_, "Null string not allowed");
++      Objects.requireNonNull(p_129293_, "null文字列は許可されていません");
+       this.f_129290_ = p_129293_;
+    }
+ 

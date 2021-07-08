@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/nbt/NbtOps.java
++++ b/main/java/net/minecraft/nbt/NbtOps.java
+@@ -62,7 +62,7 @@
+       case 12:
+          return p_128980_.createLongList(Arrays.stream(((LongArrayTag)p_128981_).m_128851_()));
+       default:
+-         throw new IllegalStateException("Unknown tag type: " + p_128981_);
++         throw new IllegalStateException("不明なタグの種類: " + p_128981_);
+       }
+    }
+ 

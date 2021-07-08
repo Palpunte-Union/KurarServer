@@ -1,0 +1,17 @@
+--- a/main/java/net/minecraft/nbt/ListTag.java
++++ b/main/java/net/minecraft/nbt/ListTag.java
+@@ -20,12 +20,12 @@
+       public ListTag m_7300_(DataInput p_128792_, int p_128793_, NbtAccounter p_128794_) throws IOException {
+          p_128794_.m_6800_(296L);
+          if (p_128793_ > 512) {
+-            throw new RuntimeException("Tried to read NBT tag with too high complexity, depth > 512");
++            throw new RuntimeException("複雑すぎるNBTタグを読み取ろうとしました, depth > 512");
+          } else {
+             byte b0 = p_128792_.readByte();
+             int i = p_128792_.readInt();
+             if (b0 == 0 && i > 0) {
+-               throw new RuntimeException("Missing type on ListTag");
++               throw new RuntimeException("ListTagの種類がありません");
+             } else {
+                p_128794_.m_6800_(32L * (long)i);
+                TagType<?> tagtype = TagTypes.m_129397_(b0);

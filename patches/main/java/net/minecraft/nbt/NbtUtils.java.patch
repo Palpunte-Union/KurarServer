@@ -1,0 +1,25 @@
+--- a/main/java/net/minecraft/nbt/NbtUtils.java
++++ b/main/java/net/minecraft/nbt/NbtUtils.java
+@@ -157,11 +157,11 @@
+ 
+    public static UUID m_129233_(Tag p_129234_) {
+       if (p_129234_.m_6458_() != IntArrayTag.f_128599_) {
+-         throw new IllegalArgumentException("Expected UUID-Tag to be of type " + IntArrayTag.f_128599_.m_5987_() + ", but found " + p_129234_.m_6458_().m_5987_() + ".");
++         throw new IllegalArgumentException("予想されるUUIDタグのタイプ " + IntArrayTag.f_128599_.m_5987_() + ", 見つかったもの: " + p_129234_.m_6458_().m_5987_() + ".");
+       } else {
+          int[] aint = ((IntArrayTag)p_129234_).m_128648_();
+          if (aint.length != 4) {
+-            throw new IllegalArgumentException("Expected UUID-Array to be of length 4, but found " + aint.length + ".");
++            throw new IllegalArgumentException("UUID配列の長さが4であると予想されましたが、見つかったのは " + aint.length + " です.");
+          } else {
+             return SerializableUUID.m_123281_(aint);
+          }
+@@ -207,7 +207,7 @@
+       if (optional.isPresent()) {
+          return p_129205_.m_61124_(p_129206_, optional.get());
+       } else {
+-         f_129200_.warn("Unable to read property: {} with value: {} for blockstate: {}", p_129207_, p_129208_.m_128461_(p_129207_), p_129209_.toString());
++         f_129200_.warn("プロパティを読み取ることができません: {} 値: {} ブロックの状態: {}", p_129207_, p_129208_.m_128461_(p_129207_), p_129209_.toString());
+          return p_129205_;
+       }
+    }
