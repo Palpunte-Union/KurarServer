@@ -1,0 +1,10 @@
+--- a/main/java/net/minecraft/data/info/BlockListReport.java
++++ b/main/java/net/minecraft/data/info/BlockListReport.java
+@@ -79,6 +79,6 @@
+    }
+ 
+    public String m_6055_() {
+-      return "Block List";
++      return "ブロックリスト";
+    }
+ }

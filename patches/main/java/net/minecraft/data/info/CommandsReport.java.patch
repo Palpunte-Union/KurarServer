@@ -1,0 +1,10 @@
+--- a/main/java/net/minecraft/data/info/CommandsReport.java
++++ b/main/java/net/minecraft/data/info/CommandsReport.java
+@@ -27,6 +27,6 @@
+    }
+ 
+    public String m_6055_() {
+-      return "Command Syntax";
++      return "コマンド構文";
+    }
+ }

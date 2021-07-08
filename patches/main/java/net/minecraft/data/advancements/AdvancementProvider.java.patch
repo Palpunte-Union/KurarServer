@@ -17,3 +17,11 @@
              }
  
           }
+@@ -56,6 +56,6 @@
+    }
+ 
+    public String m_6055_() {
+-      return "Advancements";
++      return "実績";
+    }
+ }

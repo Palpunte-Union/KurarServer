@@ -36,3 +36,11 @@
           }
  
        });
+@@ -105,6 +105,6 @@
+    }
+ 
+    public String m_6055_() {
+-      return "Block State Definitions";
++      return "ブロック状態の定義";
+    }
+ }
