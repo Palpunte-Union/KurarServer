@@ -9,3 +9,12 @@
        } else {
           this.f_16554_ = p_16567_;
           this.f_16555_ = p_16568_;
+@@ -213,7 +213,7 @@
+ 
+    public static void m_16587_(Advancement p_16588_) {
+       if (p_16588_.m_138320_() == null) {
+-         throw new IllegalArgumentException("Can't position children of an invisible root!");
++         throw new IllegalArgumentException("見えない子ルートを配置することはできません！");
+       } else {
+          TreeNodePosition treenodeposition = new TreeNodePosition(p_16588_, (TreeNodePosition)null, (TreeNodePosition)null, 1, 0);
+          treenodeposition.m_16572_();
