@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/server/MinecraftServer.java
++++ b/main/java/net/minecraft/server/MinecraftServer.java
+@@ -883,7 +883,7 @@
+    }
+ 
+    public String m_130001_() {
+-      return "vanilla";
++      return "Kurar";
+    }
+ 
+    public CrashReport m_5772_(CrashReport p_129955_) {

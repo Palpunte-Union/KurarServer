@@ -26,7 +26,7 @@
        ResourceLocation resourcelocation = Registry.f_122827_.m_7981_(this.f_126106_);
        if ((new ResourceLocation(p_126139_)).equals(resourcelocation)) {
 -         throw new IllegalStateException("Shaped Recipe " + p_126139_ + " should remove its 'save' argument");
-+         throw new IllegalStateException("Shaped Recipe "+ p_126139_ +"は 'save'引数を削除する必要があります");
++         throw new IllegalStateException("Shaped Recipe "+ p_126139_ +" は 'save'引数を削除する必要があります");
        } else {
           this.m_126140_(p_126138_, new ResourceLocation(p_126139_));
        }
