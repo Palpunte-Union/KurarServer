@@ -1,0 +1,20 @@
+--- a/main/java/net/minecraft/data/recipes/SimpleCookingRecipeBuilder.java
++++ b/main/java/net/minecraft/data/recipes/SimpleCookingRecipeBuilder.java
+@@ -59,7 +59,7 @@
+       ResourceLocation resourcelocation = Registry.f_122827_.m_7981_(this.f_126235_);
+       ResourceLocation resourcelocation1 = new ResourceLocation(p_126261_);
+       if (resourcelocation1.equals(resourcelocation)) {
+-         throw new IllegalStateException("Recipe " + resourcelocation1 + " should remove its 'save' argument");
++         throw new IllegalStateException("レシピ " + resourcelocation1 + " は 'save'引数を削除する必要があります");
+       } else {
+          this.m_126262_(p_126260_, resourcelocation1);
+       }
+@@ -73,7 +73,7 @@
+ 
+    private void m_126265_(ResourceLocation p_126266_) {
+       if (this.f_126239_.m_138405_().isEmpty()) {
+-         throw new IllegalStateException("No way of obtaining recipe " + p_126266_);
++         throw new IllegalStateException("レシピを入手する方法がない" + p_126266_);
+       }
+    }
+ 

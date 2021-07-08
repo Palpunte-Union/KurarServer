@@ -1,0 +1,32 @@
+--- a/main/java/net/minecraft/data/structures/SnbtToNbt.java
++++ b/main/java/net/minecraft/data/structures/SnbtToNbt.java
+@@ -98,9 +98,9 @@
+ 
+          return new SnbtToNbt.TaskResult(p_126467_, abyte, s2, s1);
+       } catch (CommandSyntaxException commandsyntaxexception) {
+-         f_126443_.error("Couldn't convert {} from SNBT to NBT at {} as it's invalid SNBT", p_126467_, p_126466_, commandsyntaxexception);
++         f_126443_.error("無効なSNBTであるため、{} で {} をSNBTからNBTに変換できませんでした", p_126467_, p_126466_, commandsyntaxexception);
+       } catch (IOException ioexception) {
+-         f_126443_.error("Couldn't convert {} from SNBT to NBT at {}", p_126467_, p_126466_, ioexception);
++         f_126443_.error("{} で {} をSNBTからNBTに変換できませんでした", p_126466_, p_126467_, ioexception);
+       }
+ 
+       return null;
+@@ -113,7 +113,7 @@
+          try {
+             FileUtils.write(path.toFile(), p_126458_.f_126484_, StandardCharsets.UTF_8);
+          } catch (IOException ioexception) {
+-            f_126443_.error("Couldn't write structure SNBT {} at {}", p_126458_.f_126482_, path, ioexception);
++            f_126443_.error("{} に構造体SNBT {} を書き込めませんでした", path, p_126458_.f_126482_, ioexception);
+          }
+       }
+ 
+@@ -130,7 +130,7 @@
+ 
+          p_126457_.m_123940_(path1, p_126458_.f_126485_);
+       } catch (IOException ioexception1) {
+-         f_126443_.error("Couldn't write structure {} at {}", p_126458_.f_126482_, path1, ioexception1);
++         f_126443_.error("{} に構造体 {} を書き込めませんでした", path1, p_126458_.f_126482_, ioexception1);
+       }
+ 
+    }

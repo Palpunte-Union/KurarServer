@@ -1,0 +1,20 @@
+--- a/main/java/net/minecraft/data/tags/TagsProvider.java
++++ b/main/java/net/minecraft/data/tags/TagsProvider.java
+@@ -52,7 +52,7 @@
+       this.f_126543_.forEach((p_126559_, p_126560_) -> {
+          List<Tag.BuilderEntry> list = p_126560_.m_13331_(function, function1).collect(Collectors.toList());
+          if (!list.isEmpty()) {
+-            throw new IllegalArgumentException(String.format("Couldn't define tag %s as it is missing following references: %s", p_126559_, list.stream().map(Objects::toString).collect(Collectors.joining(","))));
++            throw new IllegalArgumentException(String.format("次の参照がないため、タグ%sを定義できませんでした: %s", p_126559_, list.stream().map(Objects::toString).collect(Collectors.joining(","))));
+          } else {
+             JsonObject jsonobject = p_126560_.m_13334_();
+             Path path = this.m_6648_(p_126559_);
+@@ -70,7 +70,7 @@
+ 
+                p_126554_.m_123940_(path, s1);
+             } catch (IOException ioexception) {
+-               f_126541_.error("Couldn't save tags to {}", path, ioexception);
++               f_126541_.error("タグを {} に保存できませんでした", path, ioexception);
+             }
+ 
+          }

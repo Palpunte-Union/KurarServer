@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/data/recipes/UpgradeRecipeBuilder.java
++++ b/main/java/net/minecraft/data/recipes/UpgradeRecipeBuilder.java
+@@ -49,7 +49,7 @@
+ 
+    private void m_126398_(ResourceLocation p_126399_) {
+       if (this.f_126378_.m_138405_().isEmpty()) {
+-         throw new IllegalStateException("No way of obtaining recipe " + p_126399_);
++         throw new IllegalStateException("レシピを入手する方法がない " + p_126399_);
+       }
+    }
+ 

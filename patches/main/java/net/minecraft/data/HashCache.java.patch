@@ -1,0 +1,29 @@
+--- a/main/java/net/minecraft/data/HashCache.java
++++ b/main/java/net/minecraft/data/HashCache.java
+@@ -50,7 +50,7 @@
+       try {
+          writer = Files.newBufferedWriter(this.f_123928_);
+       } catch (IOException ioexception) {
+-         f_123926_.warn("Unable write cachefile {}: {}", this.f_123928_, ioexception.toString());
++         f_123926_.warn("キャッシュファイルを書き込めません {}: {}", this.f_123928_, ioexception.toString());
+          return;
+       }
+ 
+@@ -58,7 +58,7 @@
+          return (String)p_123944_.getValue() + ' ' + this.f_123927_.relativize(p_123944_.getKey());
+       }).collect(Collectors.toList()), System.lineSeparator(), writer);
+       writer.close();
+-      f_123926_.debug("Caching: cache hits: {}, created: {} removed: {}", this.f_123929_, this.f_123931_.size() - this.f_123929_, this.f_123930_.size());
++      f_123926_.debug("キャッシュ: キャッシュヒット: {}, 作成: {}, 削除: {}", this.f_123929_, this.f_123931_.size() - this.f_123929_, this.f_123930_.size());
+    }
+ 
+    @Nullable
+@@ -88,7 +88,7 @@
+             try {
+                Files.delete(p_123957_);
+             } catch (IOException ioexception) {
+-               f_123926_.debug("Unable to delete: {} ({})", p_123957_, ioexception.toString());
++               f_123926_.debug("削除できません: {} ({})", p_123957_, ioexception.toString());
+             }
+          }
+ 

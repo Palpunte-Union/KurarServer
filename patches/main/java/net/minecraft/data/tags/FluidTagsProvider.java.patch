@@ -1,0 +1,10 @@
+--- a/main/java/net/minecraft/data/tags/FluidTagsProvider.java
++++ b/main/java/net/minecraft/data/tags/FluidTagsProvider.java
+@@ -23,6 +23,6 @@
+    }
+ 
+    public String m_6055_() {
+-      return "Fluid Tags";
++      return "液体タグ";
+    }
+ }

@@ -1,0 +1,27 @@
+--- a/main/java/net/minecraft/data/Main.java
++++ b/main/java/net/minecraft/data/Main.java
+@@ -27,15 +27,15 @@
+ public class Main {
+    public static void main(String[] p_129669_) throws IOException {
+       OptionParser optionparser = new OptionParser();
+-      OptionSpec<Void> optionspec = optionparser.accepts("help", "Show the help menu").forHelp();
+-      OptionSpec<Void> optionspec1 = optionparser.accepts("server", "Include server generators");
+-      OptionSpec<Void> optionspec2 = optionparser.accepts("client", "Include client generators");
+-      OptionSpec<Void> optionspec3 = optionparser.accepts("dev", "Include development tools");
+-      OptionSpec<Void> optionspec4 = optionparser.accepts("reports", "Include data reports");
+-      OptionSpec<Void> optionspec5 = optionparser.accepts("validate", "Validate inputs");
+-      OptionSpec<Void> optionspec6 = optionparser.accepts("all", "Include all generators");
+-      OptionSpec<String> optionspec7 = optionparser.accepts("output", "Output folder").withRequiredArg().defaultsTo("generated");
+-      OptionSpec<String> optionspec8 = optionparser.accepts("input", "Input folder").withRequiredArg();
++      OptionSpec<Void> optionspec = optionparser.accepts("help", "ヘルプメニューを表示します").forHelp();
++      OptionSpec<Void> optionspec1 = optionparser.accepts("server", "サーバージェネレーターを含める");
++      OptionSpec<Void> optionspec2 = optionparser.accepts("client", "クライアントジェネレータを含める");
++      OptionSpec<Void> optionspec3 = optionparser.accepts("dev", "開発ツールを含める");
++      OptionSpec<Void> optionspec4 = optionparser.accepts("reports", "データレポートを含める");
++      OptionSpec<Void> optionspec5 = optionparser.accepts("validate", "入力を検証する");
++      OptionSpec<Void> optionspec6 = optionparser.accepts("all", "すべてのジェネレーターを含める");
++      OptionSpec<String> optionspec7 = optionparser.accepts("output", "出力フォルダ").withRequiredArg().defaultsTo("generated");
++      OptionSpec<String> optionspec8 = optionparser.accepts("input", "入力フォルダ").withRequiredArg();
+       OptionSet optionset = optionparser.parse(p_129669_);
+       if (!optionset.has(optionspec) && optionset.hasOptions()) {
+          Path path = Paths.get(optionspec7.value(optionset));

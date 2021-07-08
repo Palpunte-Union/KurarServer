@@ -1,0 +1,20 @@
+--- a/main/java/net/minecraft/data/recipes/ShapelessRecipeBuilder.java
++++ b/main/java/net/minecraft/data/recipes/ShapelessRecipeBuilder.java
+@@ -87,7 +87,7 @@
+    public void m_126201_(Consumer<FinishedRecipe> p_126202_, String p_126203_) {
+       ResourceLocation resourcelocation = Registry.f_122827_.m_7981_(this.f_126173_);
+       if ((new ResourceLocation(p_126203_)).equals(resourcelocation)) {
+-         throw new IllegalStateException("Shapeless Recipe " + p_126203_ + " should remove its 'save' argument");
++         throw new IllegalStateException("Shapeless Recipe " + p_126203_ + " は 'save'引数を削除する必要があります");
+       } else {
+          this.m_126204_(p_126202_, new ResourceLocation(p_126203_));
+       }
+@@ -101,7 +101,7 @@
+ 
+    private void m_126207_(ResourceLocation p_126208_) {
+       if (this.f_126176_.m_138405_().isEmpty()) {
+-         throw new IllegalStateException("No way of obtaining recipe " + p_126208_);
++         throw new IllegalStateException("レシピを入手する方法がない "+ p_126208_);
+       }
+    }
+ 

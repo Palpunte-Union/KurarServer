@@ -1,0 +1,20 @@
+--- a/main/java/net/minecraft/data/recipes/SingleItemRecipeBuilder.java
++++ b/main/java/net/minecraft/data/recipes/SingleItemRecipeBuilder.java
+@@ -46,7 +46,7 @@
+    public void m_126323_(Consumer<FinishedRecipe> p_126324_, String p_126325_) {
+       ResourceLocation resourcelocation = Registry.f_122827_.m_7981_(this.f_126302_);
+       if ((new ResourceLocation(p_126325_)).equals(resourcelocation)) {
+-         throw new IllegalStateException("Single Item Recipe " + p_126325_ + " should remove its 'save' argument");
++         throw new IllegalStateException("単一アイテムレシピ "+ p_126325_ +" 'save'引数を削除する必要があります");
+       } else {
+          this.m_126326_(p_126324_, new ResourceLocation(p_126325_));
+       }
+@@ -60,7 +60,7 @@
+ 
+    private void m_126329_(ResourceLocation p_126330_) {
+       if (this.f_126305_.m_138405_().isEmpty()) {
+-         throw new IllegalStateException("No way of obtaining recipe " + p_126330_);
++         throw new IllegalStateException("レシピを入手する方法がない " + p_126330_);
+       }
+    }
+ 

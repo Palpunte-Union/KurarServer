@@ -1,0 +1,21 @@
+--- a/main/java/net/minecraft/data/DataGenerator.java
++++ b/main/java/net/minecraft/data/DataGenerator.java
+@@ -37,15 +37,15 @@
+       Stopwatch stopwatch1 = Stopwatch.createUnstarted();
+ 
+       for(DataProvider dataprovider : this.f_123908_) {
+-         f_123905_.info("Starting provider: {}", (Object)dataprovider.m_6055_());
++         f_123905_.info("プロバイダーを開始: {}", (Object)dataprovider.m_6055_());
+          stopwatch1.start();
+          dataprovider.m_6865_(hashcache);
+          stopwatch1.stop();
+-         f_123905_.info("{} finished after {} ms", dataprovider.m_6055_(), stopwatch1.elapsed(TimeUnit.MILLISECONDS));
++         f_123905_.info("{} は {} ミリ秒後に終了しました", dataprovider.m_6055_(), stopwatch1.elapsed(TimeUnit.MILLISECONDS));
+          stopwatch1.reset();
+       }
+ 
+-      f_123905_.info("All providers took: {} ms", (long)stopwatch.elapsed(TimeUnit.MILLISECONDS));
++      f_123905_.info("すべてのプロバイダーがかかった時間: {} ミリ秒", (long)stopwatch.elapsed(TimeUnit.MILLISECONDS));
+       hashcache.m_123937_();
+    }
+ 

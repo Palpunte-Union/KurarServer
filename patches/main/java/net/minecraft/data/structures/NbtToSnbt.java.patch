@@ -1,0 +1,15 @@
+--- a/main/java/net/minecraft/data/structures/NbtToSnbt.java
++++ b/main/java/net/minecraft/data/structures/NbtToSnbt.java
+@@ -57,10 +57,10 @@
+             bufferedwriter.write(s);
+          }
+ 
+-         f_126421_.info("Converted {} from NBT to SNBT", (Object)p_126433_);
++         f_126421_.info("{} をNBTからSNBTに変換", (Object)p_126433_);
+          return path;
+       } catch (IOException ioexception) {
+-         f_126421_.error("Couldn't convert {} from NBT to SNBT at {}", p_126433_, p_126432_, ioexception);
++         f_126421_.error("{}で{}をNBTからSNBTに変換できませんでした", p_126432_, p_126433_, ioexception);
+          return null;
+       }
+    }

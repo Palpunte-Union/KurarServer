@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/data/BuiltinRegistries.java
++++ b/main/java/net/minecraft/data/BuiltinRegistries.java
+@@ -86,7 +86,7 @@
+    static {
+       f_123867_.forEach((p_123897_, p_123898_) -> {
+          if (p_123898_.get() == null) {
+-            f_123857_.error("Unable to bootstrap registry '{}'", (Object)p_123897_);
++            f_123857_.error("レジストリをブートストラップできません '{}'", (Object)p_123897_);
+          }
+ 
+       });

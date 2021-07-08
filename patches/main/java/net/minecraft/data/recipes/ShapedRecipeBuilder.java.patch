@@ -30,3 +30,36 @@
        } else {
           this.m_126140_(p_126138_, new ResourceLocation(p_126139_));
        }
+@@ -107,7 +107,7 @@
+ 
+    private void m_126143_(ResourceLocation p_126144_) {
+       if (this.f_126108_.isEmpty()) {
+-         throw new IllegalStateException("No pattern is defined for shaped recipe " + p_126144_ + "!");
++         throw new IllegalStateException("成形レシピのパターンは定義されていません! : " + p_126144_);
+       } else {
+          Set<Character> set = Sets.newHashSet(this.f_126109_.keySet());
+          set.remove(' ');
+@@ -116,7 +116,7 @@
+             for(int i = 0; i < s.length(); ++i) {
+                char c0 = s.charAt(i);
+                if (!this.f_126109_.containsKey(c0) && c0 != ' ') {
+-                  throw new IllegalStateException("Pattern in recipe " + p_126144_ + " uses undefined symbol '" + c0 + "'");
++                  throw new IllegalStateException("レシピのパターン" + p_126144_ + "は未定義の記号を使用します '" + c0 + "'");
+                }
+ 
+                set.remove(c0);
+@@ -124,11 +124,11 @@
+          }
+ 
+          if (!set.isEmpty()) {
+-            throw new IllegalStateException("Ingredients are defined but not used in pattern for recipe " + p_126144_);
++            throw new IllegalStateException("材料は定義されていますが、レシピのパターンでは使用されていません " + p_126144_);
+          } else if (this.f_126108_.size() == 1 && this.f_126108_.get(0).length() == 1) {
+-            throw new IllegalStateException("Shaped recipe " + p_126144_ + " only takes in a single item - should it be a shapeless recipe instead?");
++            throw new IllegalStateException("形のレシピ "+ p_126144_ +" は1つのアイテムしか取り込めません-代わりに形のないレシピにする必要がありますか?");
+          } else if (this.f_126110_.m_138405_().isEmpty()) {
+-            throw new IllegalStateException("No way of obtaining recipe " + p_126144_);
++            throw new IllegalStateException("レシピを入手する方法がない "+ p_126144_);
+          }
+       }
+    }

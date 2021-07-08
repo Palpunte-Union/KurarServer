@@ -1,0 +1,23 @@
+--- a/main/java/net/minecraft/data/worldgen/biome/BiomeReport.java
++++ b/main/java/net/minecraft/data/worldgen/biome/BiomeReport.java
+@@ -45,10 +45,10 @@
+             if (optional.isPresent()) {
+                DataProvider.m_123920_(f_127308_, p_127317_, optional.get(), path1);
+             } else {
+-               f_127307_.error("Couldn't serialize biome {}", (Object)path1);
++               f_127307_.error("バイオームをシリアル化できませんでした {}", (Object)path1);
+             }
+          } catch (IOException ioexception) {
+-            f_127307_.error("Couldn't save biome {}", path1, ioexception);
++            f_127307_.error("バイオームを保存できませんでした {}", path1, ioexception);
+          }
+       }
+ 
+@@ -59,6 +59,6 @@
+    }
+ 
+    public String m_6055_() {
+-      return "Biomes";
++      return "バイオーム";
+    }
+ }

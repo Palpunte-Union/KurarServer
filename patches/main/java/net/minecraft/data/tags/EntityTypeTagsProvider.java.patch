@@ -1,0 +1,10 @@
+--- a/main/java/net/minecraft/data/tags/EntityTypeTagsProvider.java
++++ b/main/java/net/minecraft/data/tags/EntityTypeTagsProvider.java
+@@ -25,6 +25,6 @@
+    }
+ 
+    public String m_6055_() {
+-      return "Entity Type Tags";
++      return "エンティティタグ";
+    }
+ }

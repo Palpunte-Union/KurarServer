@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/data/structures/StructureUpdater.java
++++ b/main/java/net/minecraft/data/structures/StructureUpdater.java
+@@ -28,7 +28,7 @@
+       int i = p_126509_.m_128451_("DataVersion");
+       int j = 2532;
+       if (i < 2532) {
+-         f_126499_.warn("SNBT Too old, do not forget to update: " + i + " < " + 2532 + ": " + p_126508_);
++         f_126499_.warn("SNBTが古すぎます、更新することを忘れないでください: " + i + " < " + 2532 + ": " + p_126508_);
+       }
+ 
+       CompoundTag compoundtag = NbtUtils.m_129213_(DataFixers.m_14512_(), DataFixTypes.STRUCTURE, p_126509_, i);
