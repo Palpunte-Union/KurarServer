@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/recipebook/ServerPlaceRecipe.java
++++ b/main/java/net/minecraft/recipebook/ServerPlaceRecipe.java
+@@ -71,7 +71,7 @@
+             ItemStack itemstack1 = itemstack.m_41777_();
+             itemstack1.m_41764_(1);
+             if (!this.f_135427_.m_36040_(i, itemstack1)) {
+-               f_135425_.error("Can't find any space for item in the inventory");
++               f_135425_.error("在庫にアイテムのスペースが見つかりません");
+             }
+          }
+ 
