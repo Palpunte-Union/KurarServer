@@ -1,0 +1,122 @@
+--- a/main/java/net/minecraft/Util.java
++++ b/main/java/net/minecraft/Util.java
+@@ -93,9 +93,9 @@
+             ForkJoinWorkerThread forkjoinworkerthread = new ForkJoinWorkerThread(p_137488_) {
+                protected void onTermination(Throwable p_137590_) {
+                   if (p_137590_ != null) {
+-                     Util.f_137446_.warn("{} died", this.getName(), p_137590_);
++                     Util.f_137446_.warn("{} は死んだ", this.getName(), p_137590_);
+                   } else {
+-                     Util.f_137446_.debug("{} shutdown", (Object)this.getName());
++                     Util.f_137446_.debug("{} をシャットダウン", (Object)this.getName());
+                   }
+ 
+                   super.onTermination(p_137590_);
+@@ -162,7 +162,7 @@
+          System.exit(-1);
+       }
+ 
+-      f_137446_.error(String.format("Caught exception in thread %s", p_137496_), p_137497_);
++      f_137446_.error(String.format("スレッド %s で例外をキャッチしました", p_137496_), p_137497_);
+    }
+ 
+    @Nullable
+@@ -177,7 +177,7 @@
+       try {
+          type = DataFixers.m_14512_().getSchema(DataFixUtils.makeKey(SharedConstants.m_136187_().getWorldVersion())).getChoiceType(p_137552_, p_137553_);
+       } catch (IllegalArgumentException illegalargumentexception) {
+-         f_137446_.error("No data fixer registered for {}", (Object)p_137553_);
++         f_137446_.error("{} にデータフィクサーが登録されていません", (Object)p_137553_);
+          if (SharedConstants.f_136183_) {
+             throw illegalargumentexception;
+          }
+@@ -306,7 +306,7 @@
+ 
+    public static <T extends Throwable> T m_137570_(T p_137571_) {
+       if (SharedConstants.f_136183_) {
+-         f_137446_.error("Trying to throw a fatal exception, pausing in IDE", p_137571_);
++         f_137446_.error("IDEで一時停止して、致命的な例外をスローしようとしています", p_137571_);
+ 
+          while(true) {
+             try {
+@@ -344,13 +344,13 @@
+                Files.move(p_137503_, p_137504_);
+                return true;
+             } catch (IOException ioexception) {
+-               Util.f_137446_.error("Failed to rename", (Throwable)ioexception);
++               Util.f_137446_.error("名前の変更に失敗しました", (Throwable)ioexception);
+                return false;
+             }
+          }
+ 
+          public String toString() {
+-            return "rename " + p_137503_ + " to " + p_137504_;
++            return "名前の変更 " + p_137503_ + " を " + p_137504_;
+          }
+       };
+    }
+@@ -362,13 +362,13 @@
+                Files.deleteIfExists(p_137501_);
+                return true;
+             } catch (IOException ioexception) {
+-               Util.f_137446_.warn("Failed to delete", (Throwable)ioexception);
++               Util.f_137446_.warn("削除に失敗しました", (Throwable)ioexception);
+                return false;
+             }
+          }
+ 
+          public String toString() {
+-            return "delete old " + p_137501_;
++            return "古いファイルを削除 " + p_137501_;
+          }
+       };
+    }
+@@ -380,7 +380,7 @@
+          }
+ 
+          public String toString() {
+-            return "verify that " + p_137562_ + " is deleted";
++            return "確認: " + p_137562_ + " は削除された";
+          }
+       };
+    }
+@@ -392,7 +392,7 @@
+          }
+ 
+          public String toString() {
+-            return "verify that " + p_137573_ + " is present";
++            return "確認: " + p_137573_ + " は存在します";
+          }
+       };
+    }
+@@ -400,7 +400,7 @@
+    private static boolean m_137548_(BooleanSupplier... p_137549_) {
+       for(BooleanSupplier booleansupplier : p_137549_) {
+          if (!booleansupplier.getAsBoolean()) {
+-            f_137446_.warn("Failed to execute {}", (Object)booleansupplier);
++            f_137446_.warn("{} の実行に失敗しました", (Object)booleansupplier);
+             return false;
+          }
+       }
+@@ -414,10 +414,10 @@
+             return true;
+          }
+ 
+-         f_137446_.error("Failed to {}, retrying {}/{}", p_137451_, i, p_137450_);
++         f_137446_.error("{} に失敗し、{}/{} を再試行しました", p_137451_, i, p_137450_);
+       }
+ 
+-      f_137446_.error("Failed to {}, aborting, progress might be lost", (Object)p_137451_);
++      f_137446_.error("{} に失敗し、中止しました。進行状況が失われる可能性があります", (Object)p_137451_);
+       return false;
+    }
+ 
+@@ -460,7 +460,7 @@
+                try {
+                   Thread.sleep(2147483647L);
+                } catch (InterruptedException interruptedexception) {
+-                  Util.f_137446_.warn("Timer hack thread interrupted, that really should not happen");
++                  Util.f_137446_.warn("タイマーハックスレッドが中断されました、それは実際には起こらないはずです");
+                   return;
+                }
+             }

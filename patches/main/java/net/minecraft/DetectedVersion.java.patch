@@ -1,0 +1,20 @@
+--- a/main/java/net/minecraft/DetectedVersion.java
++++ b/main/java/net/minecraft/DetectedVersion.java
+@@ -50,7 +50,7 @@
+    public static GameVersion m_132490_() {
+       try (InputStream inputstream = DetectedVersion.class.getResourceAsStream("/version.json")) {
+          if (inputstream == null) {
+-            f_132477_.warn("Missing version information!");
++            f_132477_.warn("バージョン情報がありません!");
+             return f_132476_;
+          } else {
+             DetectedVersion detectedversion;
+@@ -61,7 +61,7 @@
+             return detectedversion;
+          }
+       } catch (JsonParseException | IOException ioexception) {
+-         throw new IllegalStateException("Game version information is corrupt", ioexception);
++         throw new IllegalStateException("ゲームのバージョン情報が壊れています", ioexception);
+       }
+    }
+ 

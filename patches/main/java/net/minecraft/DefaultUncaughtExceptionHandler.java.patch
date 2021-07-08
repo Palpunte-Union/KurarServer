@@ -1,0 +1,10 @@
+--- a/main/java/net/minecraft/DefaultUncaughtExceptionHandler.java
++++ b/main/java/net/minecraft/DefaultUncaughtExceptionHandler.java
+@@ -11,6 +11,6 @@
+    }
+ 
+    public void uncaughtException(Thread p_131079_, Throwable p_131080_) {
+-      this.f_131075_.error("Caught previously unhandled exception :", p_131080_);
++      this.f_131075_.error("以前に処理されなかった例外をキャッチしました :", p_131080_);
+    }
+ }

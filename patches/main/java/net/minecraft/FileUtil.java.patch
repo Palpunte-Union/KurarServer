@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/FileUtil.java
++++ b/main/java/net/minecraft/FileUtil.java
+@@ -28,7 +28,7 @@
+       String s = p_133738_ + p_133739_;
+       Path path = Paths.get(s);
+       if (path.endsWith(p_133739_)) {
+-         throw new InvalidPathException(s, "empty resource name");
++         throw new InvalidPathException(s, "空のリソース名");
+       } else {
+          return p_133737_.resolve(path);
+       }
