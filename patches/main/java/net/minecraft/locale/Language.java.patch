@@ -9,7 +9,7 @@
           m_128108_(inputstream, biconsumer);
        } catch (JsonParseException | IOException ioexception) {
 -         f_128101_.error("Couldn't read strings from /assets/minecraft/lang/en_us.json", (Throwable)ioexception);
-+         f_128101_.error("Couldn't read strings from /assets/minecraft/lang/ja_jp.json", (Throwable)ioexception);
++         f_128101_.error("/assets/minecraft/lang/ja_jp.json を読み込めませんでした", (Throwable)ioexception);
        }
  
        final Map<String, String> map = builder.build();
