@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/gametest/framework/GameTestBatchRunner.java
++++ b/main/java/net/minecraft/gametest/framework/GameTestBatchRunner.java
+@@ -64,7 +64,7 @@
+          this.m_127576_(collection);
+          gametestbatch.m_127547_(this.f_127552_);
+          String s = gametestbatch.m_127546_();
+-         f_127550_.info("Running test batch '" + s + "' (" + collection.size() + " tests)...");
++         f_127550_.info("テストバッチの実行 '"+ s +"' ( "+ collection.size() +"テスト)...");
+          collection.forEach((p_127585_) -> {
+             this.f_127558_.m_127809_(p_127585_);
+             this.f_127558_.m_127811_(new GameTestListener() {

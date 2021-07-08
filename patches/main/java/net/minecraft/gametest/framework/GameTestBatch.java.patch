@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/gametest/framework/GameTestBatch.java
++++ b/main/java/net/minecraft/gametest/framework/GameTestBatch.java
+@@ -13,7 +13,7 @@
+ 
+    public GameTestBatch(String p_127543_, Collection<TestFunction> p_127544_, @Nullable Consumer<ServerLevel> p_127545_) {
+       if (p_127544_.isEmpty()) {
+-         throw new IllegalArgumentException("A GameTestBatch must include at least one TestFunction!");
++         throw new IllegalArgumentException("GameTestBatchには、少なくとも1つのTestFunctionが含まれている必要があります。");
+       } else {
+          this.f_127539_ = p_127543_;
+          this.f_127540_ = p_127544_;

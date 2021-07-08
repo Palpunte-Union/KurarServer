@@ -1,0 +1,47 @@
+--- a/main/java/net/minecraft/gametest/framework/StructureUtils.java
++++ b/main/java/net/minecraft/gametest/framework/StructureUtils.java
+@@ -53,7 +53,7 @@
+       case 3:
+          return Rotation.COUNTERCLOCKWISE_90;
+       default:
+-         throw new IllegalArgumentException("rotationSteps must be a value from 0-3. Got value " + p_127836_);
++         throw new IllegalArgumentException("ローテーションステップは0〜3の値である必要があります。 値 " + p_127836_);
+       }
+    }
+ 
+@@ -104,7 +104,7 @@
+          blockpos1 = p_127885_.m_7918_(blockpos.m_123341_() - 1, 0, blockpos.m_123343_() - 1);
+       } else {
+          if (p_127886_ != Rotation.COUNTERCLOCKWISE_90) {
+-            throw new IllegalArgumentException("Invalid rotation: " + p_127886_);
++            throw new IllegalArgumentException("無効な回転: " + p_127886_);
+          }
+ 
+          blockpos1 = p_127885_.m_7918_(0, 0, blockpos.m_123341_() - 1);
+@@ -202,7 +202,7 @@
+          Path path = Paths.get(f_127833_, s);
+          CompoundTag compoundtag = m_127902_(path);
+          if (compoundtag == null) {
+-            throw new RuntimeException("Could not find structure file " + path + ", and the structure is not available in the world structures either.");
++            throw new RuntimeException("構造ファイル "+ path +" が見つかりませんでした。また、構造はワールド構造でも使用できません。");
+          } else {
+             return structuremanager.m_74339_(compoundtag);
+          }
+@@ -223,7 +223,7 @@
+          StructureTemplate structuretemplate = m_127880_(p_127891_, p_127894_);
+          structureblockentity.m_59847_(p_127894_, p_127895_, structuretemplate);
+          if (structureblockentity.m_59904_() == BlockPos.f_121853_) {
+-            throw new RuntimeException("Failed to load structure " + p_127891_);
++            throw new RuntimeException("構造のロードに失敗しました " + p_127891_);
+          } else {
+             return structureblockentity;
+          }
+@@ -239,7 +239,7 @@
+       } catch (IOException ioexception) {
+          return null;
+       } catch (CommandSyntaxException commandsyntaxexception) {
+-         throw new RuntimeException("Error while trying to load structure " + p_127903_, commandsyntaxexception);
++         throw new RuntimeException("構造をロードしようとしたときにエラーが発生しました " + p_127903_, commandsyntaxexception);
+       }
+    }
+ 

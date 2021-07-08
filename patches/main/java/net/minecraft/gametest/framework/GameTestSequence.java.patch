@@ -1,0 +1,19 @@
+--- a/main/java/net/minecraft/gametest/framework/GameTestSequence.java
++++ b/main/java/net/minecraft/gametest/framework/GameTestSequence.java
+@@ -36,7 +36,7 @@
+          long j = this.f_127776_;
+          this.f_127776_ = p_127782_;
+          if (gametestevent.f_127593_ != null && gametestevent.f_127593_ != i) {
+-            this.f_127774_.m_127622_(new GameTestAssertException("Succeeded in invalid tick: expected " + (j + gametestevent.f_127593_) + ", but current tick is " + p_127782_));
++            this.f_127774_.m_127622_(new GameTestAssertException("無効なティックで成功しました：予想される内容 " + (j + gametestevent.f_127593_) + ", しかし、現在のティックは " + p_127782_));
+             break;
+          }
+       }
+@@ -44,6 +44,6 @@
+    }
+ 
+    private GameTestSequence() {
+-      throw new RuntimeException("Synthetic constructor do not call");
++      throw new RuntimeException("合成コンストラクターは呼び出さない");
+    }
+ }

@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/gametest/framework/TestFunctionArgument.java
++++ b/main/java/net/minecraft/gametest/framework/TestFunctionArgument.java
+@@ -26,7 +26,7 @@
+       if (optional.isPresent()) {
+          return optional.get();
+       } else {
+-         Message message = new TextComponent("No such test: " + s);
++         Message message = new TextComponent("そのようなテストはありません: " + s);
+          throw new CommandSyntaxException(new SimpleCommandExceptionType(message), message);
+       }
+    }

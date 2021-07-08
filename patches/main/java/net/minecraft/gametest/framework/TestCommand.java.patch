@@ -1,0 +1,64 @@
+--- a/main/java/net/minecraft/gametest/framework/TestCommand.java
++++ b/main/java/net/minecraft/gametest/framework/TestCommand.java
+@@ -118,7 +118,7 @@
+          StructureUtils.m_127875_(blockpos1, new BlockPos(1, 0, -1), Rotation.NONE, serverlevel);
+          return 0;
+       } else {
+-         throw new IllegalArgumentException("The structure must be less than 48 blocks big in each axis");
++         throw new IllegalArgumentException("構造は、各軸で48ブロック未満の大きさである必要があります");
+       }
+    }
+ 
+@@ -132,7 +132,7 @@
+       }
+ 
+       if (!optional.isPresent()) {
+-         p_127960_.m_81352_(new TextComponent("Can't find a structure block that contains the targeted pos " + blockpos));
++         p_127960_.m_81352_(new TextComponent("ターゲットの位置を含む構造ブロックが見つかりません " + blockpos));
+          return 0;
+       } else {
+          StructureBlockEntity structureblockentity = (StructureBlockEntity)serverlevel.m_7702_(optional.get());
+@@ -298,7 +298,7 @@
+       ServerLevel serverlevel = p_128009_.m_81372_();
+       BlockPos blockpos1 = StructureUtils.m_127906_(blockpos, 15, serverlevel);
+       if (blockpos1 == null) {
+-         m_127933_(serverlevel, "Couldn't find any structure block within 15 radius", ChatFormatting.RED);
++         m_127933_(serverlevel, "半径15以内に構造ブロックが見つかりませんでした", ChatFormatting.RED);
+          return 0;
+       } else {
+          StructureBlockEntity structureblockentity = (StructureBlockEntity)serverlevel.m_7702_(blockpos1);
+@@ -313,18 +313,18 @@
+       Path path1 = p_128011_.m_81372_().m_8875_().m_74343_(resourcelocation, ".nbt");
+       Path path2 = NbtToSnbt.m_126431_(path1, p_128012_, path);
+       if (path2 == null) {
+-         m_128003_(p_128011_, "Failed to export " + path1);
++         m_128003_(p_128011_, "エクスポートに失敗しました " + path1);
+          return 1;
+       } else {
+          try {
+             Files.createDirectories(path2.getParent());
+          } catch (IOException ioexception) {
+-            m_128003_(p_128011_, "Could not create folder " + path2.getParent());
++            m_128003_(p_128011_, "フォルダを作成できませんでした " + path2.getParent());
+             ioexception.printStackTrace();
+             return 1;
+          }
+ 
+-         m_128003_(p_128011_, "Exported " + p_128012_ + " to " + path2.toAbsolutePath());
++         m_128003_(p_128011_, "エクスポートしました: " + p_128012_ + " to " + path2.toAbsolutePath());
+          return 0;
+       }
+    }
+@@ -343,10 +343,10 @@
+             NbtIo.m_128947_(TagParser.m_129359_(s), outputstream);
+          }
+ 
+-         m_128003_(p_128016_, "Imported to " + path1.toAbsolutePath());
++         m_128003_(p_128016_, "インポート: " + path1.toAbsolutePath());
+          return 0;
+       } catch (CommandSyntaxException | IOException ioexception) {
+-         System.err.println("Failed to load structure " + p_128017_);
++         System.err.println("構造のロードに失敗しました " + p_128017_);
+          ioexception.printStackTrace();
+          return 1;
+       }

@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/gametest/framework/TestClassNameArgument.java
++++ b/main/java/net/minecraft/gametest/framework/TestClassNameArgument.java
+@@ -23,7 +23,7 @@
+       if (GameTestRegistry.m_127670_(s)) {
+          return s;
+       } else {
+-         Message message = new TextComponent("No such test class: " + s);
++         Message message = new TextComponent("そのようなテストクラスはありません: " + s);
+          throw new CommandSyntaxException(new SimpleCommandExceptionType(message), message);
+       }
+    }

@@ -1,0 +1,10 @@
+--- a/main/java/net/minecraft/gametest/framework/TestFunction.java
++++ b/main/java/net/minecraft/gametest/framework/TestFunction.java
+@@ -50,6 +50,6 @@
+    }
+ 
+    private TestFunction() {
+-      throw new RuntimeException("Synthetic constructor do not call");
++      throw new RuntimeException("合成コンストラクターは呼び出さない");
+    }
+ }

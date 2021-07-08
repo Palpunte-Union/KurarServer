@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/gametest/framework/GameTestRegistry.java
++++ b/main/java/net/minecraft/gametest/framework/GameTestRegistry.java
+@@ -50,7 +50,7 @@
+    public static TestFunction m_127681_(String p_127682_) {
+       Optional<TestFunction> optional = m_127679_(p_127682_);
+       if (!optional.isPresent()) {
+-         throw new IllegalArgumentException("Can't find the test function for " + p_127682_);
++         throw new IllegalArgumentException(p_127682_ + "のテスト関数が見つかりません");
+       } else {
+          return optional.get();
+       }

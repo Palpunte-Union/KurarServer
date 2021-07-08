@@ -1,0 +1,10 @@
+--- a/main/java/net/minecraft/gametest/framework/GameTestAssertPosException.java
++++ b/main/java/net/minecraft/gametest/framework/GameTestAssertPosException.java
+@@ -25,6 +25,6 @@
+ 
+    private GameTestAssertPosException() {
+       super((String)null);
+-      throw new RuntimeException("Synthetic constructor do not call");
++      throw new RuntimeException("合成コンストラクターは呼び出さない");
+    }
+ }

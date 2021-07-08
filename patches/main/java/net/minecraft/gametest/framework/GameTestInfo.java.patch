@@ -1,0 +1,27 @@
+--- a/main/java/net/minecraft/gametest/framework/GameTestInfo.java
++++ b/main/java/net/minecraft/gametest/framework/GameTestInfo.java
+@@ -72,13 +72,13 @@
+ 
+             if (this.f_127606_ > (long)this.f_127602_) {
+                if (this.f_127603_.isEmpty()) {
+-                  this.m_127622_(new GameTestTimeoutException("Didn't succeed or fail within " + this.f_127598_.m_128079_() + " ticks"));
++                  this.m_127622_(new GameTestTimeoutException(this.f_127598_.m_128079_() +" ティック内で成功または失敗しなかった"));
+                } else {
+                   this.f_127603_.forEach((p_127632_) -> {
+                      p_127632_.m_127779_(this.f_127606_);
+                   });
+                   if (this.f_127611_ == null) {
+-                     this.m_127622_(new GameTestTimeoutException("No sequences finished"));
++                     this.m_127622_(new GameTestTimeoutException("シーケンスが終了していません"));
+                   }
+                }
+             } else {
+@@ -93,7 +93,7 @@
+ 
+    private void m_127649_() {
+       if (this.f_127607_) {
+-         throw new IllegalStateException("Test already started");
++         throw new IllegalStateException("テストはすでに開始されています");
+       } else {
+          this.f_127607_ = true;
+ 
