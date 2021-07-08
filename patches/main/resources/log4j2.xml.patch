@@ -1,0 +1,13 @@
+--- a/main/resources/log4j2.xml
++++ b/main/resources/log4j2.xml
+@@ -2,7 +2,7 @@
+ <Configuration status="WARN" packages="com.mojang.util">
+     <Appenders>
+         <Console name="SysOut" target="SYSTEM_OUT">
+-            <PatternLayout pattern="[%d{HH:mm:ss}] [%t/%level]: %msg%n" />
+\ No newline at end of file
++            <PatternLayout disableAnsi="false" pattern="%style{[%d{HH:mm:ss}]}{green} %highlight{[%t/%level]}{FATAL=red blink, ERROR=red, WARN=yellow bold, INFO=green, DEBUG=green bold, TRACE=blue}: %msg%n" />
+\ No newline at end of file
+         </Console>
+         <Queue name="ServerGuiConsole">
+             <PatternLayout pattern="[%d{HH:mm:ss} %level]: %msg%n" />
