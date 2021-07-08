@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/tags/TagManager.java
++++ b/main/java/net/minecraft/tags/TagManager.java
+@@ -39,7 +39,7 @@
+          TagContainer tagcontainer = TagContainer.m_13422_(tagcollection, tagcollection1, tagcollection2, tagcollection3);
+          Multimap<ResourceLocation, ResourceLocation> multimap = StaticTags.m_13283_(tagcontainer);
+          if (!multimap.isEmpty()) {
+-            throw new IllegalStateException("Missing required tags: " + (String)multimap.entries().stream().map((p_13489_) -> {
++            throw new IllegalStateException("必要なタグがありません: " + (String)multimap.entries().stream().map((p_13489_) -> {
+                return p_13489_.getKey() + ":" + p_13489_.getValue();
+             }).sorted().collect(Collectors.joining(",")));
+          } else {

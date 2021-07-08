@@ -1,0 +1,20 @@
+--- a/main/java/net/minecraft/tags/StaticTags.java
++++ b/main/java/net/minecraft/tags/StaticTags.java
+@@ -15,7 +15,7 @@
+       StaticTagHelper<T> statictaghelper = new StaticTagHelper<>(p_13281_);
+       StaticTagHelper<?> statictaghelper1 = f_13264_.putIfAbsent(p_13280_, statictaghelper);
+       if (statictaghelper1 != null) {
+-         throw new IllegalStateException("Duplicate entry for static tag collection: " + p_13280_);
++         throw new IllegalStateException("静的タグコレクションのエントリが重複しています: " + p_13280_);
+       } else {
+          return statictaghelper;
+       }
+@@ -41,7 +41,7 @@
+          return !f_13264_.containsValue(p_13268_);
+       });
+       if (flag) {
+-         throw new IllegalStateException("Missing helper registrations");
++         throw new IllegalStateException("ヘルパーの登録がありません");
+       }
+    }
+ }

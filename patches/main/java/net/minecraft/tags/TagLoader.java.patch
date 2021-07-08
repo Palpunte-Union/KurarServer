@@ -1,0 +1,35 @@
+--- a/main/java/net/minecraft/tags/TagLoader.java
++++ b/main/java/net/minecraft/tags/TagLoader.java
+@@ -59,20 +59,20 @@
+                   ) {
+                      JsonObject jsonobject = GsonHelper.m_13776_(f_13446_, reader, JsonObject.class);
+                      if (jsonobject == null) {
+-                        f_13445_.error("Couldn't load {} tag list {} from {} in data pack {} as it is empty or null", this.f_13450_, resourcelocation1, resourcelocation, resource.m_7816_());
++                        f_13445_.error("空またはnullであるため、データパック {} の {} から {} タグリスト {} を読み込めませんでした", resource.m_7816_(), resourcelocation, this.f_13450_, resourcelocation1);
+                      } else {
+                         map.computeIfAbsent(resourcelocation1, (p_13473_) -> {
+                            return Tag.Builder.m_13304_();
+                         }).m_13312_(jsonobject, resource.m_7816_());
+                      }
+                   } catch (RuntimeException | IOException ioexception) {
+-                     f_13445_.error("Couldn't read {} tag list {} from {} in data pack {}", this.f_13450_, resourcelocation1, resourcelocation, resource.m_7816_(), ioexception);
++                     f_13445_.error("データパック{}の{}から{}タグリスト{}を読み取れませんでした", resourcelocation, resource.m_7816_(), this.f_13450_, resourcelocation1, ioexception);
+                   } finally {
+                      IOUtils.closeQuietly((Closeable)resource);
+                   }
+                }
+             } catch (IOException ioexception1) {
+-               f_13445_.error("Couldn't read {} tag list {} from {}", this.f_13450_, resourcelocation1, resourcelocation, ioexception1);
++               f_13445_.error("{}から{}タグリスト{}を読み取れませんでした", resourcelocation, this.f_13450_, resourcelocation1, ioexception1);
+             }
+          }
+ 
+@@ -107,7 +107,7 @@
+       }
+ 
+       p_13464_.forEach((p_13468_, p_13469_) -> {
+-         f_13445_.error("Couldn't load {} tag {} as it is missing following references: {}", this.f_13450_, p_13468_, p_13469_.m_13331_(function, function1).map(Objects::toString).collect(Collectors.joining(",")));
++         f_13445_.error("次の参照がないため、{} タグ {} を読み込めませんでした：{}", this.f_13450_, p_13468_, p_13469_.m_13331_(function, function1).map(Objects::toString).collect(Collectors.joining(",")));
+       });
+       return TagCollection.m_13396_(map);
+    }

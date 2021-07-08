@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/tags/StaticTagHelper.java
++++ b/main/java/net/minecraft/tags/StaticTagHelper.java
+@@ -63,7 +63,7 @@
+ 
+       private Tag<T> m_13263_() {
+          if (this.f_13251_ == null) {
+-            throw new IllegalStateException("Tag " + this.f_13250_ + " used before it was bound");
++            throw new IllegalStateException("タグ "+ this.f_13250_ +" がバインドされる前に使用された");
+          } else {
+             return this.f_13251_;
+          }

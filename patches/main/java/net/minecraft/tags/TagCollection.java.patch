@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/tags/TagCollection.java
++++ b/main/java/net/minecraft/tags/TagCollection.java
+@@ -30,7 +30,7 @@
+    default ResourceLocation m_13407_(Tag<T> p_13408_) {
+       ResourceLocation resourcelocation = this.m_7473_(p_13408_);
+       if (resourcelocation == null) {
+-         throw new IllegalStateException("Unrecognized tag");
++         throw new IllegalStateException("認識されないタグ");
+       } else {
+          return resourcelocation;
+       }
