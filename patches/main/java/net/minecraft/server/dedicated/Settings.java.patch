@@ -1,0 +1,20 @@
+--- a/main/java/net/minecraft/server/dedicated/Settings.java
++++ b/main/java/net/minecraft/server/dedicated/Settings.java
+@@ -31,7 +31,7 @@
+       try (InputStream inputstream = Files.newInputStream(p_139840_)) {
+          properties.load(inputstream);
+       } catch (IOException ioexception) {
+-         f_139797_.error("Failed to load properties from file: " + p_139840_);
++         f_139797_.error("ファイルからプロパティを読み込めませんでした: " + p_139840_);
+       }
+ 
+       return properties;
+@@ -41,7 +41,7 @@
+       try (OutputStream outputstream = Files.newOutputStream(p_139877_)) {
+          this.f_139798_.store(outputstream, "Minecraft server properties");
+       } catch (IOException ioexception) {
+-         f_139797_.error("Failed to store properties to file: " + p_139877_);
++         f_139797_.error("プロパティをファイルに保存できませんでした: " + p_139877_);
+       }
+ 
+    }

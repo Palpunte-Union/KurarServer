@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/server/dedicated/DedicatedServerProperties.java
++++ b/main/java/net/minecraft/server/dedicated/DedicatedServerProperties.java
+@@ -69,7 +69,7 @@
+ 
+       this.f_139706_ = false;
+       this.f_139707_ = this.m_139836_("use-native-transport", true);
+-      this.f_139708_ = this.m_139836_("enable-command-block", false);
++      this.f_139708_ = this.m_139836_("enable-command-block", true);
+       this.f_139709_ = this.m_139805_("spawn-protection", 16);
+       this.f_139710_ = this.m_139805_("op-permission-level", 4);
+       this.f_139711_ = this.m_139805_("function-permission-level", 2);

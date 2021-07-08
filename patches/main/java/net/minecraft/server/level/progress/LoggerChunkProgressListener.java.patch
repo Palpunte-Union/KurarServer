@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/server/level/progress/LoggerChunkProgressListener.java
++++ b/main/java/net/minecraft/server/level/progress/LoggerChunkProgressListener.java
+@@ -40,7 +40,7 @@
+    }
+ 
+    public void m_7646_() {
+-      f_9622_.info("Time elapsed: {} ms", (long)(Util.m_137550_() - this.f_9625_));
++      f_9622_.info("経過時間：{}ミリ秒", (long)(Util.m_137550_() - this.f_9625_));
+       this.f_9626_ = Long.MAX_VALUE;
+    }
+ 

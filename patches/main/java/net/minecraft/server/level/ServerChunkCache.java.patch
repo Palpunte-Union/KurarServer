@@ -1,0 +1,20 @@
+--- a/main/java/net/minecraft/server/level/ServerChunkCache.java
++++ b/main/java/net/minecraft/server/level/ServerChunkCache.java
+@@ -129,7 +129,7 @@
+             return p_8406_;
+          }, (p_8423_) -> {
+             if (p_8363_) {
+-               throw (IllegalStateException)Util.m_137570_(new IllegalStateException("Chunk not there when requested: " + p_8423_));
++               throw (IllegalStateException)Util.m_137570_(new IllegalStateException("要求されたときにチャンクがありません: " + p_8423_));
+             } else {
+                return null;
+             }
+@@ -196,7 +196,7 @@
+             chunkholder = this.m_8364_(i);
+             profilerfiller.m_7238_();
+             if (this.m_8416_(chunkholder, j)) {
+-               throw (IllegalStateException)Util.m_137570_(new IllegalStateException("No chunk holder after ticket has been added"));
++               throw (IllegalStateException)Util.m_137570_(new IllegalStateException("チケットが追加された後、チャンクホルダーはありません"));
+             }
+          }
+       }

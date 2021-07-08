@@ -1,0 +1,25 @@
+--- a/main/java/net/minecraft/server/dedicated/ServerWatchdog.java
++++ b/main/java/net/minecraft/server/dedicated/ServerWatchdog.java
+@@ -35,8 +35,8 @@
+          long j = Util.m_137550_();
+          long k = j - i;
+          if (k > this.f_139783_) {
+-            f_139781_.fatal("A single server tick took {} seconds (should be max {})", String.format(Locale.ROOT, "%.2f", (float)k / 1000.0F), String.format(Locale.ROOT, "%.2f", 0.05F));
+-            f_139781_.fatal("Considering it to be crashed, server will forcibly shutdown.");
++            f_139781_.fatal("1回のサーバーティックには{}秒かかりました(最大{}である必要があります)", String.format(Locale.ROOT, "%.2f", (float)k / 1000.0F), String.format(Locale.ROOT, "%.2f", 0.05F));
++            f_139781_.fatal("クラッシュしたと判定されると、サーバーは強制的にシャットダウンします。");
+             ThreadMXBean threadmxbean = ManagementFactory.getThreadMXBean();
+             ThreadInfo[] athreadinfo = threadmxbean.dumpAllThreads(true, true);
+             StringBuilder stringbuilder = new StringBuilder();
+@@ -67,9 +67,9 @@
+             Bootstrap.m_135875_("Crash report:\n" + crashreport.m_127526_());
+             File file1 = new File(new File(this.f_139782_.m_6237_(), "crash-reports"), "crash-" + (new SimpleDateFormat("yyyy-MM-dd_HH.mm.ss")).format(new Date()) + "-server.txt");
+             if (crashreport.m_127512_(file1)) {
+-               f_139781_.error("This crash report has been saved to: {}", (Object)file1.getAbsolutePath());
++               f_139781_.error("このクラッシュレポートは以下の場所に保存されました: {}", (Object)file1.getAbsolutePath());
+             } else {
+-               f_139781_.error("We were unable to save this crash report to disk.");
++               f_139781_.error("このクラッシュレポートをディスクに保存できませんでした。");
+             }
+ 
+             this.m_139787_();

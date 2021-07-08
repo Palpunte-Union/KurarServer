@@ -1,0 +1,174 @@
+--- a/main/java/net/minecraft/server/dedicated/DedicatedServer.java
++++ b/main/java/net/minecraft/server/dedicated/DedicatedServer.java
+@@ -90,7 +90,7 @@
+                   DedicatedServer.this.m_139645_(s1, DedicatedServer.this.m_129893_());
+                }
+             } catch (IOException ioexception1) {
+-               DedicatedServer.f_139598_.error("Exception handling console input", (Throwable)ioexception1);
++               DedicatedServer.f_139598_.error("コンソール入力の例外処理", (Throwable)ioexception1);
+             }
+ 
+          }
+@@ -98,12 +98,13 @@
+       thread.setDaemon(true);
+       thread.setUncaughtExceptionHandler(new DefaultUncaughtExceptionHandler(f_139598_));
+       thread.start();
+-      f_139598_.info("Starting minecraft server version " + SharedConstants.m_136187_().getName());
++      f_139598_.info("minecraftサーバーバージョン " + SharedConstants.m_136187_().getName() + "を開始しています");
++      f_139598_.info("Launching Kurar 1.16.5...");
+       if (Runtime.getRuntime().maxMemory() / 1024L / 1024L < 512L) {
+-         f_139598_.warn("To start the server with more ram, launch it as \"java -Xmx1024M -Xms1024M -jar minecraft_server.jar\"");
++         f_139598_.warn("より多くのRAMでサーバーを起動するには、\"java -Xmx1024M -Xms1024M -jar minecraft_server.jar\"としてサーバーを起動します。");
+       }
+ 
+-      f_139598_.info("Loading properties");
++      f_139598_.info("プロパティの読み込み");
+       DedicatedServerProperties dedicatedserverproperties = this.f_139604_.m_139777_();
+       if (this.m_129792_()) {
+          this.m_129913_("127.0.0.1");
+@@ -121,7 +122,7 @@
+       super.m_7196_(dedicatedserverproperties.f_139725_.get());
+       this.m_130004_(dedicatedserverproperties.f_139738_);
+       this.f_129749_.m_5458_(dedicatedserverproperties.f_139740_);
+-      f_139598_.info("Default game type: {}", (Object)dedicatedserverproperties.f_139740_);
++      f_139598_.info("デフォルトのゲームモード: {}", (Object)dedicatedserverproperties.f_139740_);
+       InetAddress inetaddress = null;
+       if (!this.m_130009_().isEmpty()) {
+          inetaddress = InetAddress.getByName(this.m_130009_());
+@@ -132,22 +133,22 @@
+       }
+ 
+       this.m_129793_();
+-      f_139598_.info("Starting Minecraft server on {}:{}", this.m_130009_().isEmpty() ? "*" : this.m_130009_(), this.m_7010_());
++      f_139598_.info("{} でMinecraftサーバーを起動しています: {}", this.m_130009_().isEmpty() ? "*" : this.m_130009_(), this.m_7010_());
+ 
+       try {
+          this.m_129919_().m_9711_(inetaddress, this.m_7010_());
+       } catch (IOException ioexception) {
+          f_139598_.warn("**** FAILED TO BIND TO PORT!");
+-         f_139598_.warn("The exception was: {}", (Object)ioexception.toString());
+-         f_139598_.warn("Perhaps a server is already running on that port?");
++         f_139598_.warn("例外: {}", (Object)ioexception.toString());
++         f_139598_.warn("おそらく、サーバーはすでにそのポートで実行されています");
+          return false;
+       }
+ 
+       if (!this.m_129797_()) {
+          f_139598_.warn("**** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!");
+-         f_139598_.warn("The server will make no attempt to authenticate usernames. Beware.");
+-         f_139598_.warn("While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.");
+-         f_139598_.warn("To change this, set \"online-mode\" to \"true\" in the server.properties file.");
++         f_139598_.warn("サーバーはユーザー名の認証を試みません。 注意してください。");
++         f_139598_.warn("これにより、インターネットにアクセスしなくてもゲームをプレイできるようになりますが、ハッカーが選択した任意のユーザー名で接続できるようになります。");
++         f_139598_.warn("これを変更するには、server.propertiesファイルで\"online-mode\"を\"true\"に設定します。");
+       }
+ 
+       if (this.m_139668_()) {
+@@ -163,22 +164,22 @@
+          SkullBlockEntity.m_59764_(this.m_129927_());
+          SkullBlockEntity.m_59771_(this.m_129925_());
+          GameProfileCache.m_11004_(this.m_129797_());
+-         f_139598_.info("Preparing level \"{}\"", (Object)this.m_7123_());
++         f_139598_.info("レベルの準備 \"{}\"", (Object)this.m_7123_());
+          this.m_130006_();
+          long j = Util.m_137569_() - i;
+          String s = String.format(Locale.ROOT, "%.3fs", (double)j / 1.0E9D);
+-         f_139598_.info("Done ({})! For help, type \"help\"", (Object)s);
++         f_139598_.info("完了({})! ヘルプが必要な場合は、\"help\"と入力してください", (Object)s);
+          if (dedicatedserverproperties.f_139744_ != null) {
+             this.m_129900_().m_46170_(GameRules.f_46153_).m_46246_(dedicatedserverproperties.f_139744_, this);
+          }
+ 
+          if (dedicatedserverproperties.f_139745_) {
+-            f_139598_.info("Starting GS4 status listener");
++            f_139598_.info("GS4ステータスリスナーの開始");
+             this.f_139601_ = QueryThreadGs4.m_11553_(this);
+          }
+ 
+          if (dedicatedserverproperties.f_139747_) {
+-            f_139598_.info("Starting remote control listener");
++            f_139598_.info("リモコンリスナーの起動");
+             this.f_139603_ = RconThread.m_11615_(this);
+          }
+ 
+@@ -217,21 +218,21 @@
+       if (!dedicatedserverproperties.f_139751_.isEmpty()) {
+          s = dedicatedserverproperties.f_139751_;
+          if (!Strings.isNullOrEmpty(dedicatedserverproperties.f_139750_)) {
+-            f_139598_.warn("resource-pack-hash is deprecated and found along side resource-pack-sha1. resource-pack-hash will be ignored.");
++            f_139598_.warn("resource-pack-hashは非推奨になり、resource-pack-sha1になりました。 resource-pack-hashは無視されます。");
+          }
+       } else if (!Strings.isNullOrEmpty(dedicatedserverproperties.f_139750_)) {
+-         f_139598_.warn("resource-pack-hash is deprecated. Please use resource-pack-sha1 instead.");
++         f_139598_.warn("resource-pack-hashは非推奨になりました。 代わりにresource-pack-sha1を使用してください。");
+          s = dedicatedserverproperties.f_139750_;
+       } else {
+          s = "";
+       }
+ 
+       if (!s.isEmpty() && !f_139599_.matcher(s).matches()) {
+-         f_139598_.warn("Invalid sha1 for ressource-pack-sha1");
++         f_139598_.warn("resource-pack-sha1のsha1が無効です");
+       }
+ 
+       if (!dedicatedserverproperties.f_139735_.isEmpty() && s.isEmpty()) {
+-         f_139598_.warn("You specified a resource pack without providing a sha1 hash. Pack will be updated on the client only if you change the name of the pack.");
++         f_139598_.warn("sha1ハッシュを提供せずにリソースパックを指定しました。 パックの名前を変更した場合にのみ、クライアントでパックが更新されます。");
+       }
+ 
+       return s;
+@@ -261,8 +262,7 @@
+    }
+ 
+    public Optional<String> m_6730_() {
+-      String s = this.m_130001_();
+-      return !"vanilla".equals(s) ? Optional.of("Definitely; Server brand changed to '" + s + "'") : Optional.empty();
++      return Optional.empty();
+    }
+ 
+    public void m_6988_() {
+@@ -424,7 +424,7 @@
+ 
+       for(int i = 0; !flag && i <= 2; ++i) {
+          if (i > 0) {
+-            f_139598_.warn("Encountered a problem while converting the user banlist, retrying in a few seconds");
++            f_139598_.warn("ユーザーの禁止リストの変換中に問題が発生し、数秒で再試行しました");
+             this.m_139671_();
+          }
+ 
+@@ -435,7 +435,7 @@
+ 
+       for(int j = 0; !flag1 && j <= 2; ++j) {
+          if (j > 0) {
+-            f_139598_.warn("Encountered a problem while converting the ip banlist, retrying in a few seconds");
++            f_139598_.warn("ip banlistの変換中に問題が発生し、数秒で再試行しました");
+             this.m_139671_();
+          }
+ 
+@@ -446,7 +446,7 @@
+ 
+       for(int k = 0; !flag2 && k <= 2; ++k) {
+          if (k > 0) {
+-            f_139598_.warn("Encountered a problem while converting the op list, retrying in a few seconds");
++            f_139598_.warn("opリストの変換中に問題が発生し、数秒で再試行しました");
+             this.m_139671_();
+          }
+ 
+@@ -457,7 +457,7 @@
+ 
+       for(int l = 0; !flag3 && l <= 2; ++l) {
+          if (l > 0) {
+-            f_139598_.warn("Encountered a problem while converting the whitelist, retrying in a few seconds");
++            f_139598_.warn("ホワイトリストの変換中に問題が発生し、数秒で再試行しました");
+             this.m_139671_();
+          }
+ 
+@@ -468,7 +468,7 @@
+ 
+       for(int i1 = 0; !flag4 && i1 <= 2; ++i1) {
+          if (i1 > 0) {
+-            f_139598_.warn("Encountered a problem while converting the player save files, retrying in a few seconds");
++            f_139598_.warn("プレーヤーの保存ファイルの変換中に問題が発生し、数秒で再試行しました");
+             this.m_139671_();
+          }
+ 

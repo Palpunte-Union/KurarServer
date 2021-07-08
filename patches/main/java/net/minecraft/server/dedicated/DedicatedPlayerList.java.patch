@@ -1,0 +1,65 @@
+--- a/main/java/net/minecraft/server/dedicated/DedicatedPlayerList.java
++++ b/main/java/net/minecraft/server/dedicated/DedicatedPlayerList.java
+@@ -52,7 +52,7 @@
+       try {
+          this.m_11299_().m_11398_();
+       } catch (IOException ioexception) {
+-         f_139571_.warn("Failed to save ip banlist: ", (Throwable)ioexception);
++         f_139571_.warn("IP禁止リストの保存に失敗しました: ", (Throwable)ioexception);
+       }
+ 
+    }
+@@ -61,7 +61,7 @@
+       try {
+          this.m_11295_().m_11398_();
+       } catch (IOException ioexception) {
+-         f_139571_.warn("Failed to save user banlist: ", (Throwable)ioexception);
++         f_139571_.warn("ユーザー禁止リストの保存に失敗しました: ", (Throwable)ioexception);
+       }
+ 
+    }
+@@ -70,7 +70,7 @@
+       try {
+          this.m_11299_().m_11399_();
+       } catch (IOException ioexception) {
+-         f_139571_.warn("Failed to load ip banlist: ", (Throwable)ioexception);
++         f_139571_.warn("IP禁止リストのロードに失敗しました: ", (Throwable)ioexception);
+       }
+ 
+    }
+@@ -79,7 +79,7 @@
+       try {
+          this.m_11295_().m_11399_();
+       } catch (IOException ioexception) {
+-         f_139571_.warn("Failed to load user banlist: ", (Throwable)ioexception);
++         f_139571_.warn("ユーザー禁止リストの読み込みに失敗しました: ", (Throwable)ioexception);
+       }
+ 
+    }
+@@ -88,7 +88,7 @@
+       try {
+          this.m_11307_().m_11399_();
+       } catch (Exception exception) {
+-         f_139571_.warn("Failed to load operators list: ", (Throwable)exception);
++         f_139571_.warn("演算子リストのロードに失敗しました: ", (Throwable)exception);
+       }
+ 
+    }
+@@ -97,7 +97,7 @@
+       try {
+          this.m_11307_().m_11398_();
+       } catch (Exception exception) {
+-         f_139571_.warn("Failed to save operators list: ", (Throwable)exception);
++         f_139571_.warn("演算子リストの保存に失敗しました: ", (Throwable)exception);
+       }
+ 
+    }
+@@ -106,7 +106,7 @@
+       try {
+          this.m_11305_().m_11399_();
+       } catch (Exception exception) {
+-         f_139571_.warn("Failed to load white-list: ", (Throwable)exception);
++         f_139571_.warn("ホワイトリストの読み込みに失敗しました: ", (Throwable)exception);
+       }
+ 
+    }

@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/server/level/ChunkTaskPriorityQueueSorter.java
++++ b/main/java/net/minecraft/server/level/ChunkTaskPriorityQueueSorter.java
+@@ -135,7 +135,7 @@
+    private <T> ChunkTaskPriorityQueue<Function<ProcessorHandle<Unit>, T>> m_140652_(ProcessorHandle<T> p_140653_) {
+       ChunkTaskPriorityQueue<? extends Function<ProcessorHandle<Unit>, ?>> chunktaskpriorityqueue = this.f_140550_.get(p_140653_);
+       if (chunktaskpriorityqueue == null) {
+-         throw (IllegalArgumentException)Util.m_137570_(new IllegalArgumentException("No queue for: " + p_140653_));
++         throw (IllegalArgumentException)Util.m_137570_(new IllegalArgumentException("キューはありません: " + p_140653_));
+       } else {
+          return (ChunkTaskPriorityQueue<Function<ProcessorHandle<Unit>, T>>)chunktaskpriorityqueue;
+       }

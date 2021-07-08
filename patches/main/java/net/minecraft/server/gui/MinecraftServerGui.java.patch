@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/server/gui/MinecraftServerGui.java
++++ b/main/java/net/minecraft/server/gui/MinecraftServerGui.java
+@@ -77,7 +77,7 @@
+          this.add(this.m_139934_(), "Center");
+          this.add(this.m_139932_(), "West");
+       } catch (Exception exception) {
+-         f_139900_.error("Couldn't build server GUI", (Throwable)exception);
++         f_139900_.error("サーバーGUIを構築できませんでした", (Throwable)exception);
+       }
+ 
+    }
