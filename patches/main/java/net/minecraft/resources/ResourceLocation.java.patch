@@ -1,0 +1,23 @@
+--- a/main/java/net/minecraft/resources/ResourceLocation.java
++++ b/main/java/net/minecraft/resources/ResourceLocation.java
+@@ -29,9 +29,9 @@
+       this.f_135804_ = StringUtils.isEmpty(p_135814_[0]) ? "minecraft" : p_135814_[0];
+       this.f_135805_ = p_135814_[1];
+       if (!m_135843_(this.f_135804_)) {
+-         throw new ResourceLocationException("Non [a-z0-9_.-] character in namespace of location: " + this.f_135804_ + ':' + this.f_135805_);
++         throw new ResourceLocationException("場所の名前空間に[a-z0-9 _.-]以外の文字: " + this.f_135804_ + ':' + this.f_135805_);
+       } else if (!m_135841_(this.f_135805_)) {
+-         throw new ResourceLocationException("Non [a-z0-9/._-] character in path of location: " + this.f_135804_ + ':' + this.f_135805_);
++         throw new ResourceLocationException("場所のパスに[a-z0-9 /._-]以外の文字: " + this.f_135804_ + ':' + this.f_135805_);
+       }
+    }
+ 
+@@ -73,7 +73,7 @@
+       try {
+          return DataResult.success(new ResourceLocation(p_135838_));
+       } catch (ResourceLocationException resourcelocationexception) {
+-         return DataResult.error("Not a valid resource location: " + p_135838_ + " " + resourcelocationexception.getMessage());
++         return DataResult.error("有効なリソースの場所ではありません: " + p_135838_ + " " + resourcelocationexception.getMessage());
+       }
+    }
+ 
