@@ -1,0 +1,12 @@
+--- a/main/java/com/mojang/math/Vector3f.java
++++ b/main/java/com/mojang/math/Vector3f.java
+@@ -13,9 +13,6 @@
+    private float f_122229_;
+    private float f_122230_;
+ 
+-   public Vector3f() {
+-   }
+-
+    public Vector3f(float p_122234_, float p_122235_, float p_122236_) {
+       this.f_122228_ = p_122234_;
+       this.f_122229_ = p_122235_;
