@@ -1,0 +1,22 @@
+--- a/main/java/net/minecraft/advancements/AdvancementProgress.java
++++ b/main/java/net/minecraft/advancements/AdvancementProgress.java
+@@ -26,9 +26,7 @@
+ 
+    public void m_8198_(Map<String, Criterion> p_8199_, String[][] p_8200_) {
+       Set<String> set = p_8199_.keySet();
+-      this.f_8190_.entrySet().removeIf((p_8203_) -> {
+-         return !set.contains(p_8203_.getKey());
+-      });
++      this.f_8190_.entrySet().removeIf((p_8203_) -> !set.contains(p_8203_.getKey()));
+ 
+       for(String s : set) {
+          if (!this.f_8190_.containsKey(s)) {
+@@ -168,7 +166,7 @@
+       } else if (date != null && date1 == null) {
+          return -1;
+       } else {
+-         return date == null && date1 == null ? 0 : date.compareTo(date1);
++         return date == null ? 0 : date.compareTo(date1);
+       }
+    }
+ 
