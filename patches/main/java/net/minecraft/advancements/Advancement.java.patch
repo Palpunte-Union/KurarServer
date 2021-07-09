@@ -1,6 +1,25 @@
 --- a/main/java/net/minecraft/advancements/Advancement.java
 +++ b/main/java/net/minecraft/advancements/Advancement.java
-@@ -185,7 +185,7 @@
+@@ -8,6 +8,7 @@
+ import com.google.gson.JsonSyntaxException;
+ import java.util.Arrays;
+ import java.util.Map;
++import java.util.Objects;
+ import java.util.Set;
+ import java.util.Map.Entry;
+ import java.util.function.Consumer;
+@@ -54,9 +55,7 @@
+          Component component = p_138309_.m_14977_();
+          ChatFormatting chatformatting = p_138309_.m_14992_().m_15552_();
+          Component component1 = ComponentUtils.m_130750_(component.m_6881_(), Style.f_131099_.m_131140_(chatformatting)).m_130946_("\n").m_7220_(p_138309_.m_14985_());
+-         Component component2 = component.m_6881_().m_130938_((p_138316_) -> {
+-            return p_138316_.m_131144_(new HoverEvent(HoverEvent.Action.f_130831_, component1));
+-         });
++         Component component2 = component.m_6881_().m_130938_((p_138316_) -> p_138316_.m_131144_(new HoverEvent(HoverEvent.Action.f_130831_, component1)));
+          this.f_138305_ = ComponentUtils.m_130748_(component2).m_130940_(chatformatting);
+       }
+ 
+@@ -185,7 +184,7 @@
  
        public Advancement.Builder m_138383_(String p_138384_, Criterion p_138385_) {
           if (this.f_138336_.containsKey(p_138384_)) {
@@ -9,16 +28,20 @@
           } else {
              this.f_138336_.put(p_138384_, p_138385_);
              return this;
-@@ -213,7 +213,7 @@
-          if (!this.m_138392_((p_138407_) -> {
-             return null;
-          })) {
+@@ -210,10 +209,8 @@
+       }
+ 
+       public Advancement m_138403_(ResourceLocation p_138404_) {
+-         if (!this.m_138392_((p_138407_) -> {
+-            return null;
+-         })) {
 -            throw new IllegalStateException("Tried to build incomplete advancement!");
++         if (!this.m_138392_((p_138407_) -> null)) {
 +            throw new IllegalStateException("不完全な進歩を構築しようとしました！");
           } else {
              if (this.f_138337_ == null) {
                 this.f_138337_ = this.f_138338_.m_15985_(this.f_138336_.keySet());
-@@ -307,7 +307,7 @@
+@@ -307,10 +304,10 @@
           AdvancementRewards advancementrewards = p_138381_.has("rewards") ? AdvancementRewards.m_9991_(GsonHelper.m_13930_(p_138381_, "rewards")) : AdvancementRewards.f_9978_;
           Map<String, Criterion> map = Criterion.m_11426_(GsonHelper.m_13930_(p_138381_, "criteria"), p_138382_);
           if (map.isEmpty()) {
@@ -26,8 +49,12 @@
 +            throw new JsonSyntaxException("昇進基準を空にすることはできません");
           } else {
              JsonArray jsonarray = GsonHelper.m_13832_(p_138381_, "requirements", new JsonArray());
-             String[][] astring = new String[jsonarray.size()][];
-@@ -332,12 +332,12 @@
+-            String[][] astring = new String[jsonarray.size()][];
++            String[][] astring = new String[Objects.requireNonNull(jsonarray).size()][];
+ 
+             for(int i = 0; i < jsonarray.size(); ++i) {
+                JsonArray jsonarray1 = GsonHelper.m_13924_(jsonarray.get(i), "requirements[" + i + "]");
+@@ -332,12 +329,12 @@
  
              for(String[] astring1 : astring) {
                 if (astring1.length == 0 && map.isEmpty()) {
@@ -42,7 +69,7 @@
                    }
                 }
              }
-@@ -353,7 +353,7 @@
+@@ -353,7 +350,7 @@
                 }
  
                 if (!flag) {
