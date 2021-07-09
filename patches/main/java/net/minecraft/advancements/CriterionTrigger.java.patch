@@ -1,0 +1,20 @@
+--- a/main/java/net/minecraft/advancements/CriterionTrigger.java
++++ b/main/java/net/minecraft/advancements/CriterionTrigger.java
+@@ -16,7 +16,7 @@
+ 
+    T m_5868_(JsonObject p_13671_, DeserializationContext p_13672_);
+ 
+-   public static class Listener<T extends CriterionTriggerInstance> {
++   class Listener<T extends CriterionTriggerInstance> {
+       private final T f_13678_;
+       private final Advancement f_13679_;
+       private final String f_13680_;
+@@ -43,7 +43,7 @@
+             if (!this.f_13678_.equals(listener.f_13678_)) {
+                return false;
+             } else {
+-               return !this.f_13679_.equals(listener.f_13679_) ? false : this.f_13680_.equals(listener.f_13680_);
++               return this.f_13679_.equals(listener.f_13679_) && this.f_13680_.equals(listener.f_13680_);
+             }
+          } else {
+             return false;
