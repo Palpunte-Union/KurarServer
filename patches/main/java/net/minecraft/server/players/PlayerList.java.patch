@@ -1,0 +1,47 @@
+--- a/main/java/net/minecraft/server/players/PlayerList.java
++++ b/main/java/net/minecraft/server/players/PlayerList.java
+@@ -129,7 +129,7 @@
+       ServerLevel serverlevel = this.f_11195_.m_129880_(resourcekey);
+       ServerLevel serverlevel1;
+       if (serverlevel == null) {
+-         f_11188_.warn("Unknown respawn dimension {}, defaulting to overworld", (Object)resourcekey);
++         f_11188_.warn("不明なリスポーン次元{}、デフォルトはオーバーワールド", (Object)resourcekey);
+          serverlevel1 = this.f_11195_.m_129783_();
+       } else {
+          serverlevel1 = serverlevel;
+@@ -142,7 +142,7 @@
+          s1 = p_11262_.m_129523_().toString();
+       }
+ 
+-      f_11188_.info("{}[{}] logged in with entity id {} at ({}, {}, {})", p_11263_.m_7755_().getString(), s1, p_11263_.m_19879_(), p_11263_.m_20185_(), p_11263_.m_20186_(), p_11263_.m_20189_());
++      f_11188_.info("{} [{}]はエンティティID {} で ({},{},{}) にログインしました", p_11263_.m_7755_().getString(), s1, p_11263_.m_19879_(), p_11263_.m_20185_(), p_11263_.m_20186_(), p_11263_.m_20189_());
+       LevelData leveldata = serverlevel1.m_6106_();
+       this.m_11232_(p_11263_, (ServerPlayer)null, serverlevel1);
+       ServerGamePacketListenerImpl servergamepacketlistenerimpl = new ServerGamePacketListenerImpl(this.f_11195_, p_11262_, p_11263_);
+@@ -214,7 +214,7 @@
+             }
+ 
+             if (!p_11263_.m_20159_()) {
+-               f_11188_.warn("Couldn't reattach entity to player");
++               f_11188_.warn("エンティティをプレーヤーに再アタッチできませんでした");
+                serverlevel1.m_8867_(entity1);
+ 
+                for(Entity entity2 : entity1.m_20198_()) {
+@@ -284,7 +284,7 @@
+       if (p_11225_.m_7755_().getString().equals(this.f_11195_.m_129791_()) && compoundtag != null) {
+          compoundtag1 = compoundtag;
+          p_11225_.m_20258_(compoundtag);
+-         f_11188_.debug("loading single player");
++         f_11188_.debug("シングルプレイヤーの読み込み");
+       } else {
+          compoundtag1 = this.f_11204_.m_78435_(p_11225_);
+       }
+@@ -313,7 +313,7 @@
+       if (p_11287_.m_20159_()) {
+          Entity entity = p_11287_.m_20201_();
+          if (entity.m_20200_()) {
+-            f_11188_.debug("Removing player mount");
++            f_11188_.debug("プレーヤーマウントの取り外し");
+             p_11287_.m_8127_();
+             serverlevel.m_8867_(entity);
+             entity.f_19866_ = true;

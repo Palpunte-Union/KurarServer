@@ -1,0 +1,31 @@
+--- a/main/java/net/minecraft/server/Bootstrap.java
++++ b/main/java/net/minecraft/server/Bootstrap.java
+@@ -35,12 +35,12 @@
+       if (!f_135867_) {
+          f_135867_ = true;
+          if (Registry.f_122897_.m_6566_().isEmpty()) {
+-            throw new IllegalStateException("Unable to load registries");
++            throw new IllegalStateException("レジストリを読み込めません");
+          } else {
+             FireBlock.m_53484_();
+             ComposterBlock.m_51988_();
+             if (EntityType.m_20613_(EntityType.f_20532_) == null) {
+-               throw new IllegalStateException("Failed loading EntityTypes");
++               throw new IllegalStateException("EntityTypesの読み込みに失敗しました");
+             } else {
+                PotionBrewing.m_43499_();
+                EntitySelectorOptions.m_121426_();
+@@ -93,11 +93,11 @@
+ 
+    public static void m_135889_() {
+       if (!f_135867_) {
+-         throw new IllegalArgumentException("Not bootstrapped");
++         throw new IllegalArgumentException("ブートストラップされていません");
+       } else {
+          if (SharedConstants.f_136183_) {
+             m_135886_().forEach((p_135888_) -> {
+-               f_135868_.error("Missing translations: " + p_135888_);
++               f_135868_.error("翻訳がありません: " + p_135888_);
+             });
+             Commands.m_82138_();
+          }

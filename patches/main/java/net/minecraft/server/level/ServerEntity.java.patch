@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/server/level/ServerEntity.java
++++ b/main/java/net/minecraft/server/level/ServerEntity.java
+@@ -195,7 +195,7 @@
+ 
+    public void m_8536_(Consumer<Packet<?>> p_8537_) {
+       if (this.f_8510_.f_19866_) {
+-         f_8508_.warn("Fetching packet for removed entity " + this.f_8510_);
++         f_8508_.warn("削除されたエンティティのパケットをフェッチしています " + this.f_8510_);
+       }
+ 
+       Packet<?> packet = this.f_8510_.m_5654_();

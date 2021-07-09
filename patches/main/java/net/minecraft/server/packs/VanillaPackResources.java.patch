@@ -1,0 +1,43 @@
+--- a/main/java/net/minecraft/server/packs/VanillaPackResources.java
++++ b/main/java/net/minecraft/server/packs/VanillaPackResources.java
+@@ -53,7 +53,7 @@
+                   p_10350_.put(packtype, filesystem);
+                }
+             } catch (IOException | URISyntaxException urisyntaxexception) {
+-               f_10315_.error("Couldn't get a list of all vanilla resources", (Throwable)urisyntaxexception);
++               f_10315_.error("すべてのバニラリソースのリストを取得できませんでした", (Throwable)urisyntaxexception);
+             }
+          }
+ 
+@@ -76,7 +76,7 @@
+ 
+          return this.m_5539_(p_10358_);
+       } else {
+-         throw new IllegalArgumentException("Root resources can only be filenames, not paths (no / allowed!)");
++         throw new IllegalArgumentException("ルートリソースはファイル名のみであり、パスではありません（いいえ/許可されています！）");
+       }
+    }
+ 
+@@ -120,7 +120,7 @@
+       try {
+          URL url1 = VanillaPackResources.class.getResource("/" + p_10324_.m_10305_() + "/.mcassetsroot");
+          if (url1 == null) {
+-            f_10315_.error("Couldn't find .mcassetsroot, cannot load vanilla resources");
++            f_10315_.error(".mcassetsrootが見つかりませんでした、バニラリソースを読み込めません");
+             return set;
+          }
+ 
+@@ -133,11 +133,11 @@
+             Path path1 = f_10316_.get(p_10324_).getPath("/" + p_10324_.m_10305_());
+             m_10342_(set, p_10327_, "minecraft", path1, p_10326_, p_10328_);
+          } else {
+-            f_10315_.error("Unsupported scheme {} trying to list vanilla resources (NYI?)", (Object)uri1);
++            f_10315_.error("サポートされていないスキーム {} バニラリソースを一覧表示しようとしています (NYI?)", (Object)uri1);
+          }
+       } catch (NoSuchFileException | FileNotFoundException filenotfoundexception) {
+       } catch (IOException | URISyntaxException urisyntaxexception) {
+-         f_10315_.error("Couldn't get a list of all vanilla resources", (Throwable)urisyntaxexception);
++         f_10315_.error("すべてのバニラリソースのリストを取得できませんでした", (Throwable)urisyntaxexception);
+       }
+ 
+       return set;

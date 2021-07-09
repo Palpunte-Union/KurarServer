@@ -1,0 +1,19 @@
+--- a/main/java/net/minecraft/server/packs/resources/SimpleJsonResourceReloadListener.java
++++ b/main/java/net/minecraft/server/packs/resources/SimpleJsonResourceReloadListener.java
+@@ -47,13 +47,13 @@
+             if (jsonelement != null) {
+                JsonElement jsonelement1 = map.put(resourcelocation1, jsonelement);
+                if (jsonelement1 != null) {
+-                  throw new IllegalStateException("Duplicate data file ignored with ID " + resourcelocation1);
++                  throw new IllegalStateException("無視された重複データファイル ID: " + resourcelocation1);
+                }
+             } else {
+-               f_10762_.error("Couldn't load data file {} from {} as it's null or empty", resourcelocation1, resourcelocation);
++               f_10762_.error("nullまたは空であるため、{} からデータファイル {} を読み込めませんでした", resourcelocation1, resourcelocation);
+             }
+          } catch (IllegalArgumentException | IOException | JsonParseException jsonparseexception) {
+-            f_10762_.error("Couldn't parse data file {} from {}", resourcelocation1, resourcelocation, jsonparseexception);
++            f_10762_.error("{} からデータファイル {} を解析できませんでした", resourcelocation, resourcelocation1, jsonparseexception);
+          }
+       }
+ 

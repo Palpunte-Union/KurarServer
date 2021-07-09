@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/server/packs/resources/FallbackResourceManager.java
++++ b/main/java/net/minecraft/server/packs/resources/FallbackResourceManager.java
+@@ -63,7 +63,7 @@
+ 
+    private void m_10626_(ResourceLocation p_10627_) throws IOException {
+       if (!this.m_10628_(p_10627_)) {
+-         throw new IOException("Invalid relative path to resource: " + p_10627_);
++         throw new IOException("リソースへの無効な相対パス: " + p_10627_);
+       }
+    }
+ 

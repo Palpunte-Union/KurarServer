@@ -1,0 +1,127 @@
+--- a/main/java/net/minecraft/server/network/ServerGamePacketListenerImpl.java
++++ b/main/java/net/minecraft/server/network/ServerGamePacketListenerImpl.java
+@@ -211,7 +211,7 @@
+       this.f_9741_ = this.f_9740_;
+       if (this.f_9736_ && !this.f_9743_.m_5803_()) {
+          if (++this.f_9737_ > 80) {
+-            f_9744_.warn("{} was kicked for floating too long!", (Object)this.f_9743_.m_7755_().getString());
++            f_9744_.warn("{} がフライキックされました!", (Object)this.f_9743_.m_7755_().getString());
+             this.m_9942_(new TranslatableComponent("multiplayer.disconnect.flying"));
+             return;
+          }
+@@ -230,7 +230,7 @@
+          this.f_9765_ = this.f_9759_.m_20189_();
+          if (this.f_9738_ && this.f_9743_.m_20201_().m_6688_() == this.f_9743_) {
+             if (++this.f_9739_ > 80) {
+-               f_9744_.warn("{} was kicked for floating a vehicle too long!", (Object)this.f_9743_.m_7755_().getString());
++               f_9744_.warn("{} は乗り物を長い間浮かせたためキックされました。", (Object)this.f_9743_.m_7755_().getString());
+                this.m_9942_(new TranslatableComponent("multiplayer.disconnect.flying"));
+                return;
+             }
+@@ -303,7 +303,7 @@
+          if (this.m_6198_().m_129536_()) {
+             p_9803_.accept(p_9941_);
+          } else {
+-            f_9744_.debug("Ignoring packet due to disconnection");
++            f_9744_.debug("切断によるパケットの無視");
+          }
+ 
+       };
+@@ -367,7 +367,7 @@
+             double d9 = entity.m_20184_().m_82556_();
+             double d10 = d6 * d6 + d7 * d7 + d8 * d8;
+             if (d10 - d9 > 100.0D && !this.m_9956_()) {
+-               f_9744_.warn("{} (vehicle of {}) moved too quickly! {},{},{}", entity.m_7755_().getString(), this.f_9743_.m_7755_().getString(), d6, d7, d8);
++               f_9744_.warn("{} ({}の乗り物)の動きが速すぎます! {},{},{}", entity.m_7755_().getString(), this.f_9743_.m_7755_().getString(), d6, d7, d8);
+                this.f_9742_.m_129512_(new ClientboundMoveVehiclePacket(entity));
+                return;
+             }
+@@ -388,7 +388,7 @@
+             boolean flag1 = false;
+             if (d10 > 0.0625D) {
+                flag1 = true;
+-               f_9744_.warn("{} (vehicle of {}) moved wrongly! {}", entity.m_7755_().getString(), this.f_9743_.m_7755_().getString(), Math.sqrt(d10));
++               f_9744_.warn("{} ({}の乗り物)が間違って移動しました! {}", entity.m_7755_().getString(), this.f_9743_.m_7755_().getString(), Math.sqrt(d10));
+             }
+ 
+             entity.m_19890_(d3, d4, d5, f, f1);
+@@ -801,14 +801,14 @@
+                      ++this.f_9740_;
+                      int i = this.f_9740_ - this.f_9741_;
+                      if (i > 5) {
+-                        f_9744_.debug("{} is sending move packets too frequently ({} packets since last tick)", this.f_9743_.m_7755_().getString(), i);
++                        f_9744_.debug("{} が移動パケットを頻繁に送信しています (最後のティック以降の{}パケット)", this.f_9743_.m_7755_().getString(), i);
+                         i = 1;
+                      }
+ 
+                      if (!this.f_9743_.m_8958_() && (!this.f_9743_.m_9236_().m_46469_().m_46207_(GameRules.f_46148_) || !this.f_9743_.m_21255_())) {
+                         float f2 = this.f_9743_.m_21255_() ? 300.0F : 100.0F;
+                         if (d11 - d10 > (double)(f2 * (float)i) && !this.m_9956_()) {
+-                           f_9744_.warn("{} moved too quickly! {},{},{}", this.f_9743_.m_7755_().getString(), d7, d8, d9);
++                           f_9744_.warn("{} の動きが速すぎます! {},{},{}", this.f_9743_.m_7755_().getString(), d7, d8, d9);
+                            this.m_9774_(this.f_9743_.m_20185_(), this.f_9743_.m_20186_(), this.f_9743_.m_20189_(), this.f_9743_.f_19857_, this.f_9743_.f_19858_);
+                            return;
+                         }
+@@ -835,7 +835,7 @@
+                      boolean flag1 = false;
+                      if (!this.f_9743_.m_8958_() && d11 > 0.0625D && !this.f_9743_.m_5803_() && !this.f_9743_.f_8941_.m_9295_() && this.f_9743_.f_8941_.m_9290_() != GameType.SPECTATOR) {
+                         flag1 = true;
+-                        f_9744_.warn("{} moved wrongly!", (Object)this.f_9743_.m_7755_().getString());
++                        f_9744_.warn("{} が間違って移動しました!", (Object)this.f_9743_.m_7755_().getString());
+                      }
+ 
+                      this.f_9743_.m_19890_(d4, d5, d6, f, f1);
+@@ -928,7 +928,7 @@
+          this.f_9743_.f_8941_.m_7391_(blockpos, serverboundplayeractionpacket$action, p_9889_.m_134284_(), this.f_9745_.m_129917_());
+          return;
+       default:
+-         throw new IllegalArgumentException("Invalid player action");
++         throw new IllegalArgumentException("無効なプレーヤーアクション");
+       }
+    }
+ 
+@@ -1022,7 +1022,7 @@
+       }
+ 
+       if (this.m_9956_()) {
+-         f_9744_.info("Stopping singleplayer server as player logged out");
++         f_9744_.info("プレーヤーがログアウトしたときにシングルプレーヤーサーバーを停止する");
+          this.f_9745_.m_7570_(false);
+       }
+ 
+@@ -1067,7 +1067,7 @@
+          this.f_9743_.f_36093_.f_35977_ = p_9909_.m_134498_();
+          this.f_9743_.m_9243_();
+       } else {
+-         f_9744_.warn("{} tried to set an invalid carried item", (Object)this.f_9743_.m_7755_().getString());
++         f_9744_.warn("{} は無効な携帯アイテムを設定しようとしました", (Object)this.f_9743_.m_7755_().getString());
+       }
+    }
+ 
+@@ -1168,7 +1168,7 @@
+          }
+          break;
+       default:
+-         throw new IllegalArgumentException("Invalid client command!");
++         throw new IllegalArgumentException("無効なクライアントコマンドです!");
+       }
+ 
+    }
+@@ -1192,7 +1192,7 @@
+             } else if (p_9866_.m_134056_() == ServerboundInteractPacket.Action.ATTACK) {
+                if (entity instanceof ItemEntity || entity instanceof ExperienceOrb || entity instanceof AbstractArrow || entity == this.f_9743_) {
+                   this.m_9942_(new TranslatableComponent("multiplayer.disconnect.invalid_entity_attacked"));
+-                  f_9744_.warn("Player {} tried to attack an invalid entity", (Object)this.f_9743_.m_7755_().getString());
++                  f_9744_.warn("プレーヤー {} が無効なエンティティを攻撃しようとしました", (Object)this.f_9743_.m_7755_().getString());
+                   return;
+                }
+ 
+@@ -1367,7 +1367,7 @@
+ 
+          SignBlockEntity signblockentity = (SignBlockEntity)blockentity;
+          if (!signblockentity.m_59751_() || signblockentity.m_59752_() != this.f_9743_) {
+-            f_9744_.warn("Player {} just tried to change non-editable sign", (Object)this.f_9743_.m_7755_().getString());
++            f_9744_.warn("プレーヤー {} が編集不可能な記号を変更しようとしました", (Object)this.f_9743_.m_7755_().getString());
+             return;
+          }
+ 

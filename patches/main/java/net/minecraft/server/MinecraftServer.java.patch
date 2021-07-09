@@ -1,5 +1,174 @@
 --- a/main/java/net/minecraft/server/MinecraftServer.java
 +++ b/main/java/net/minecraft/server/MinecraftServer.java
+@@ -263,7 +263,7 @@
+ 
+    public static void m_129845_(LevelStorageSource.LevelStorageAccess p_129846_) {
+       if (p_129846_.m_78306_()) {
+-         f_129750_.info("Converting map!");
++         f_129750_.info("マップを変換します!");
+          p_129846_.m_78278_(new ProgressListener() {
+             private long f_130015_ = Util.m_137550_();
+ 
+@@ -273,7 +273,7 @@
+             public void m_6952_(int p_130019_) {
+                if (Util.m_137550_() - this.f_130015_ >= 1000L) {
+                   this.f_130015_ = Util.m_137550_();
+-                  MinecraftServer.f_129750_.info("Converting... {}%", (int)p_130019_);
++                  MinecraftServer.f_129750_.info("変換中... {}%", (int)p_130019_);
+                }
+ 
+             }
+@@ -378,7 +378,7 @@
+          }, random);
+          ChunkPos chunkpos = blockpos == null ? new ChunkPos(0, 0) : new ChunkPos(blockpos);
+          if (blockpos == null) {
+-            f_129750_.warn("Unable to find spawn biome");
++            f_129750_.warn("スポーンバイオームが見つかりません");
+          }
+ 
+          boolean flag = false;
+@@ -437,7 +437,7 @@
+ 
+    private void m_129940_(ChunkProgressListener p_129941_) {
+       ServerLevel serverlevel = this.m_129783_();
+-      f_129750_.info("Preparing start region for dimension {}", (Object)serverlevel.m_46472_().m_135782_());
++      f_129750_.info("ディメンションの開始領域を準備しています {}", (Object)serverlevel.m_46472_().m_135782_());
+       BlockPos blockpos = serverlevel.m_8900_();
+       p_129941_.m_7647_(new ChunkPos(blockpos));
+       ServerChunkCache serverchunkcache = serverlevel.m_7726_();
+@@ -481,7 +481,7 @@
+          try {
+             this.m_129853_("level://" + URLEncoder.encode(s, StandardCharsets.UTF_8.toString()) + "/" + "resources.zip", "");
+          } catch (UnsupportedEncodingException unsupportedencodingexception) {
+-            f_129750_.warn("Something went wrong url encoding {}", (Object)s);
++            f_129750_.warn("URLエンコードで問題が発生しました {}", (Object)s);
+          }
+       }
+ 
+@@ -506,7 +506,7 @@
+ 
+       for(ServerLevel serverlevel : this.m_129785_()) {
+          if (!p_129886_) {
+-            f_129750_.info("Saving chunks for level '{}'/{}", serverlevel, serverlevel.m_46472_().m_135782_());
++            f_129750_.info("レベルのチャンクを保存する '{}'/{}", serverlevel, serverlevel.m_46472_().m_135782_());
+          }
+ 
+          serverlevel.m_8643_((ProgressListener)null, p_129887_, serverlevel.f_8564_ && !p_129888_);
+@@ -526,18 +526,18 @@
+    }
+ 
+    protected void m_7041_() {
+-      f_129750_.info("Stopping server");
++      f_129750_.info("サーバーを停止しています");
+       if (this.m_129919_() != null) {
+          this.m_129919_().m_9718_();
+       }
+ 
+       if (this.f_129763_ != null) {
+-         f_129750_.info("Saving players");
++         f_129750_.info("プレイヤーを保存中");
+          this.f_129763_.m_11302_();
+          this.f_129763_.m_11313_();
+       }
+ 
+-      f_129750_.info("Saving worlds");
++      f_129750_.info("ワールドを保存中");
+ 
+       for(ServerLevel serverlevel : this.m_129785_()) {
+          if (serverlevel != null) {
+@@ -552,7 +552,7 @@
+             try {
+                serverlevel1.close();
+             } catch (IOException ioexception1) {
+-               f_129750_.error("Exception closing the level", (Throwable)ioexception1);
++               f_129750_.error("Levelを閉じるときに例外", (Throwable)ioexception1);
+             }
+          }
+       }
+@@ -566,7 +566,7 @@
+       try {
+          this.f_129744_.close();
+       } catch (IOException ioexception) {
+-         f_129750_.error("Failed to unlock level {}", this.f_129744_.m_78277_(), ioexception);
++         f_129750_.error("レベルのロック解除に失敗しました {}", this.f_129744_.m_78277_(), ioexception);
+       }
+ 
+    }
+@@ -589,7 +589,7 @@
+          try {
+             this.f_129725_.join();
+          } catch (InterruptedException interruptedexception) {
+-            f_129750_.error("Error while shutting down", (Throwable)interruptedexception);
++            f_129750_.error("シャットダウン中にエラーが発生しました", (Throwable)interruptedexception);
+          }
+       }
+ 
+@@ -607,7 +607,7 @@
+                long i = Util.m_137550_() - this.f_129726_;
+                if (i > 2000L && this.f_129726_ - this.f_129718_ >= 15000L) {
+                   long j = i / 50L;
+-                  f_129750_.warn("Can't keep up! Is the server overloaded? Running {}ms or {} ticks behind", i, j);
++                  f_129750_.warn("Can't keep upです(翻訳面倒)。 サーバーが過負荷になっていますか(?) {}ミリ秒または{}ティック遅れて実行", i, j);
+                   this.f_129726_ += j * 50L;
+                   this.f_129718_ = this.f_129726_;
+                }
+@@ -631,19 +631,19 @@
+             this.m_7268_((CrashReport)null);
+          }
+       } catch (Throwable throwable1) {
+-         f_129750_.error("Encountered an unexpected exception", throwable1);
++         f_129750_.error("予期しない例外が発生しました", throwable1);
+          CrashReport crashreport;
+          if (throwable1 instanceof ReportedException) {
+             crashreport = this.m_5772_(((ReportedException)throwable1).m_134761_());
+          } else {
+-            crashreport = this.m_5772_(new CrashReport("Exception in server tick loop", throwable1));
++            crashreport = this.m_5772_(new CrashReport("サーバーティックループの例外", throwable1));
+          }
+ 
+          File file1 = new File(new File(this.m_6237_(), "crash-reports"), "crash-" + (new SimpleDateFormat("yyyy-MM-dd_HH.mm.ss")).format(new Date()) + "-server.txt");
+          if (crashreport.m_127512_(file1)) {
+-            f_129750_.error("This crash report has been saved to: {}", (Object)file1.getAbsolutePath());
++            f_129750_.error("このクラッシュレポート以下に保存されました: {}", (Object)file1.getAbsolutePath());
+          } else {
+-            f_129750_.error("We were unable to save this crash report to disk.");
++            f_129750_.error("このクラッシュレポートをディスクに保存できませんでした。");
+          }
+ 
+          this.m_7268_(crashreport);
+@@ -652,7 +652,7 @@
+             this.f_129765_ = true;
+             this.m_7041_();
+          } catch (Throwable throwable) {
+-            f_129750_.error("Exception stopping the server", throwable);
++            f_129750_.error("サーバーの停止の例外", throwable);
+          } finally {
+             this.m_6988_();
+          }
+@@ -724,7 +724,7 @@
+             ByteBuffer bytebuffer = Base64.getEncoder().encode(bytebuf.nioBuffer());
+             p_129879_.m_134906_("data:image/png;base64," + StandardCharsets.UTF_8.decode(bytebuffer));
+          } catch (Exception exception) {
+-            f_129750_.error("Couldn't load server icon", (Throwable)exception);
++            f_129750_.error("サーバーアイコンを読み込めませんでした", (Throwable)exception);
+          } finally {
+             bytebuf.release();
+          }
+@@ -761,12 +761,12 @@
+       }
+ 
+       if (this.f_129766_ % 6000 == 0) {
+-         f_129750_.debug("Autosave started");
++         f_129750_.debug("自動保存を開始しました");
+          this.f_129754_.m_6180_("save");
+          this.f_129763_.m_11302_();
+          this.m_129885_(true, false, false);
+          this.f_129754_.m_7238_();
+-         f_129750_.debug("Autosave finished");
++         f_129750_.debug("自動保存が終了しました");
+       }
+ 
+       this.f_129754_.m_6180_("snooper");
 @@ -883,7 +883,7 @@
     }
  
@@ -9,3 +178,51 @@
     }
  
     public CrashReport m_5772_(CrashReport p_129955_) {
+@@ -949,12 +949,12 @@
+    }
+ 
+    protected void m_129793_() {
+-      f_129750_.info("Generating keypair");
++      f_129750_.info("キーペアの生成");
+ 
+       try {
+          this.f_129712_ = Crypt.m_13604_();
+       } catch (CryptException cryptexception) {
+-         throw new IllegalStateException("Failed to generate key pair", cryptexception);
++         throw new IllegalStateException("キーペアの生成に失敗しました", cryptexception);
+       }
+    }
+ 
+@@ -1258,20 +1258,20 @@
+             if (p_129820_.m_10515_(s)) {
+                set.add(s);
+             } else {
+-               f_129750_.warn("Missing data pack {}", (Object)s);
++               f_129750_.warn("データパックがありません {}", (Object)s);
+             }
+          }
+ 
+          for(Pack pack : p_129820_.m_10519_()) {
+             String s1 = pack.m_10446_();
+             if (!p_129821_.m_45855_().contains(s1) && !set.contains(s1)) {
+-               f_129750_.info("Found new data pack {}, loading it automatically", (Object)s1);
++               f_129750_.info("新しいデータパック{}が見つかり、自動的に読み込まれます", (Object)s1);
+                set.add(s1);
+             }
+          }
+ 
+          if (set.isEmpty()) {
+-            f_129750_.info("No datapacks selected, forcing vanilla");
++            f_129750_.info("データパックが選択されていないため、バニラが強制されます");
+             set.add("vanilla");
+          }
+ 
+@@ -1338,7 +1338,7 @@
+ 
+    public CommandStorage m_129897_() {
+       if (this.f_129732_ == null) {
+-         throw new NullPointerException("Called before server init");
++         throw new NullPointerException("サーバーの初期化の前に呼び出されます");
+       } else {
+          return this.f_129732_;
+       }

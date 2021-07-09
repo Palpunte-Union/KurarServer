@@ -1,0 +1,31 @@
+--- a/main/java/net/minecraft/server/rcon/thread/GenericThread.java
++++ b/main/java/net/minecraft/server/rcon/thread/GenericThread.java
+@@ -26,7 +26,7 @@
+          this.f_11517_ = new Thread(this, this.f_11516_ + " #" + f_11519_.incrementAndGet());
+          this.f_11517_.setUncaughtExceptionHandler(new DefaultUncaughtExceptionHandlerWithName(f_11518_));
+          this.f_11517_.start();
+-         f_11518_.info("Thread {} started", (Object)this.f_11516_);
++         f_11518_.info("スレッド {} が開始されました", (Object)this.f_11516_);
+          return true;
+       }
+    }
+@@ -41,16 +41,16 @@
+                this.f_11517_.join(1000L);
+                ++i;
+                if (i >= 5) {
+-                  f_11518_.warn("Waited {} seconds attempting force stop!", (int)i);
++                  f_11518_.warn("強制停止を試みます。{} 秒待機しました!", (int)i);
+                } else if (this.f_11517_.isAlive()) {
+-                  f_11518_.warn("Thread {} ({}) failed to exit after {} second(s)", this, this.f_11517_.getState(), i, new Exception("Stack:"));
++                  f_11518_.warn("スレッド{} ({})が{}秒後に終了できませんでした", this, this.f_11517_.getState(), i, new Exception("Stack:"));
+                   this.f_11517_.interrupt();
+                }
+             } catch (InterruptedException interruptedexception) {
+             }
+          }
+ 
+-         f_11518_.info("Thread {} stopped", (Object)this.f_11516_);
++         f_11518_.info("スレッド {} が停止しました", (Object)this.f_11516_);
+          this.f_11517_ = null;
+       }
+    }

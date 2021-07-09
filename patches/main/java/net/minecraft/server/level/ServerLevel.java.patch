@@ -1,0 +1,56 @@
+--- a/main/java/net/minecraft/server/level/ServerLevel.java
++++ b/main/java/net/minecraft/server/level/ServerLevel.java
+@@ -655,7 +655,7 @@
+ 
+             if (!p_8820_.m_20195_() && !this.m_7232_(i, k)) {
+                if (p_8820_.f_19807_) {
+-                  f_8566_.warn("Entity {} left loaded chunk area", (Object)p_8820_);
++                  f_8566_.warn("エンティティ {} はロードされたチャンク領域を残しました", (Object)p_8820_);
+                }
+ 
+                p_8820_.f_19807_ = false;
+@@ -776,7 +776,7 @@
+    private void m_8853_(ServerPlayer p_8854_) {
+       Entity entity = this.f_8568_.get(p_8854_.m_20148_());
+       if (entity != null) {
+-         f_8566_.warn("Force-added player with duplicate UUID {}", (Object)p_8854_.m_20148_().toString());
++         f_8566_.warn("UUIDが重複しているプレーヤーを強制的に追加 {}", (Object)p_8854_.m_20148_().toString());
+          entity.m_19877_();
+          this.m_8849_((ServerPlayer)entity);
+       }
+@@ -793,7 +793,7 @@
+ 
+    private boolean m_8872_(Entity p_8873_) {
+       if (p_8873_.f_19866_) {
+-         f_8566_.warn("Tried to add entity {} but it was marked as removed already", (Object)EntityType.m_20613_(p_8873_.m_6095_()));
++         f_8566_.warn("エンティティ {} を追加しようとしましたが、すでに削除済みとしてマークされています", (Object)EntityType.m_20613_(p_8873_.m_6095_()));
+          return false;
+       } else if (this.m_8876_(p_8873_)) {
+          return false;
+@@ -824,7 +824,7 @@
+       if (entity == null) {
+          return false;
+       } else {
+-         f_8566_.warn("Trying to add entity with duplicated UUID {}. Existing {}#{}, new: {}#{}", uuid, EntityType.m_20613_(entity.m_6095_()), entity.m_19879_(), EntityType.m_20613_(p_8877_.m_6095_()), p_8877_.m_19879_());
++         f_8566_.warn("重複したUUID {} を持つエンティティを追加しようとしています。 既存 {}#{}、新規: {}#{}", uuid, EntityType.m_20613_(entity.m_6095_()), entity.m_19879_(), EntityType.m_20613_(p_8877_.m_6095_()), p_8877_.m_19879_());
+          return true;
+       }
+    }
+@@ -865,7 +865,7 @@
+          for(Entity entity : aclassinstancemultimap[j]) {
+             if (!(entity instanceof ServerPlayer)) {
+                if (this.f_8563_) {
+-                  throw (IllegalStateException)Util.m_137570_(new IllegalStateException("Removing entity while ticking!"));
++                  throw (IllegalStateException)Util.m_137570_(new IllegalStateException("ティック中にエンティティを削除します!"));
+                }
+ 
+                this.f_8567_.remove(entity.m_19879_());
+@@ -919,7 +919,7 @@
+ 
+    public void m_8867_(Entity p_8868_) {
+       if (this.f_8563_) {
+-         throw (IllegalStateException)Util.m_137570_(new IllegalStateException("Removing entity while ticking!"));
++         throw (IllegalStateException)Util.m_137570_(new IllegalStateException("ティック中にエンティティを削除します!"));
+       } else {
+          this.m_8884_(p_8868_);
+          this.f_8567_.remove(p_8868_.m_19879_());

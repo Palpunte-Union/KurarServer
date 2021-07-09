@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/server/ServerFunctionLibrary.java
++++ b/main/java/net/minecraft/server/ServerFunctionLibrary.java
+@@ -94,7 +94,7 @@
+          map.forEach((p_136079_, p_136080_) -> {
+             p_136080_.handle((p_136094_, p_136095_) -> {
+                if (p_136095_ != null) {
+-                  f_136043_.error("Failed to load function {}", p_136079_, p_136095_);
++                  f_136043_.error("関数のロードに失敗しました {}", p_136079_, p_136095_);
+                } else {
+                   builder.put(p_136079_, p_136094_);
+                }

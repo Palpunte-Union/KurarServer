@@ -1,0 +1,23 @@
+--- a/main/java/net/minecraft/server/packs/repository/Pack.java
++++ b/main/java/net/minecraft/server/packs/repository/Pack.java
+@@ -36,7 +36,7 @@
+       try (PackResources packresources = p_10433_.get()) {
+          PackMetadataSection packmetadatasection = packresources.m_5550_(PackMetadataSection.f_10366_);
+          if (p_10432_ && packmetadatasection == null) {
+-            f_10399_.error("Broken/missing pack.mcmeta detected, fudging it into existance. Please check that your launcher has downloaded all assets for the game correctly!");
++            f_10399_.error("pack.mcmetaの破損/欠落が検出され、存在するようになりました。 ランチャーがゲームのすべてのアセットを正しくダウンロードしたことを確認してください。");
+             packmetadatasection = f_10400_;
+          }
+ 
+@@ -44,9 +44,9 @@
+             return p_10434_.m_10454_(p_10431_, p_10432_, p_10433_, packresources, packmetadatasection, p_10435_, p_10436_);
+          }
+ 
+-         f_10399_.warn("Couldn't find pack meta for pack {}", (Object)p_10431_);
++         f_10399_.warn("Pack {}のpack.mcmetaが見つかりませんでした", (Object)p_10431_);
+       } catch (IOException ioexception) {
+-         f_10399_.warn("Couldn't get pack info for: {}", (Object)ioexception.toString());
++         f_10399_.warn("パック情報を取得できませんでした: {}", (Object)ioexception.toString());
+       }
+ 
+       return null;

@@ -1,0 +1,16 @@
+--- a/main/java/net/minecraft/server/level/ThreadedLevelLightEngine.java
++++ b/main/java/net/minecraft/server/level/ThreadedLevelLightEngine.java
+@@ -43,11 +43,11 @@
+    }
+ 
+    public int m_5738_(int p_9324_, boolean p_9325_, boolean p_9326_) {
+-      throw (UnsupportedOperationException)Util.m_137570_(new UnsupportedOperationException("Ran authomatically on a different thread!"));
++      throw (UnsupportedOperationException)Util.m_137570_(new UnsupportedOperationException("別のスレッドで自動的に実行されました!"));
+    }
+ 
+    public void m_8116_(BlockPos p_9359_, int p_9360_) {
+-      throw (UnsupportedOperationException)Util.m_137570_(new UnsupportedOperationException("Ran authomatically on a different thread!"));
++      throw (UnsupportedOperationException)Util.m_137570_(new UnsupportedOperationException("別のスレッドで自動的に実行されました!"));
+    }
+ 
+    public void m_7174_(BlockPos p_9357_) {

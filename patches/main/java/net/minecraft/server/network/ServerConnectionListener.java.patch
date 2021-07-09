@@ -1,0 +1,34 @@
+--- a/main/java/net/minecraft/server/network/ServerConnectionListener.java
++++ b/main/java/net/minecraft/server/network/ServerConnectionListener.java
+@@ -64,11 +64,11 @@
+          if (Epoll.isAvailable() && this.f_9702_.m_6994_()) {
+             oclass = EpollServerSocketChannel.class;
+             lazyloadedvalue = f_9699_;
+-            f_9701_.info("Using epoll channel type");
++            f_9701_.info("epollチャンネルタイプの使用");
+          } else {
+             oclass = NioServerSocketChannel.class;
+             lazyloadedvalue = f_9698_;
+-            f_9701_.info("Using default channel type");
++            f_9701_.info("デフォルトのチャンネルタイプを使用する");
+          }
+ 
+          this.f_9703_.add((new ServerBootstrap()).channel(oclass).childHandler(new ChannelInitializer<Channel>() {
+@@ -96,7 +96,7 @@
+          try {
+             channelfuture.channel().close().sync();
+          } catch (InterruptedException interruptedexception) {
+-            f_9701_.error("Interrupted whilst closing channel");
++            f_9701_.error("チャンネルを閉じているときに中断されました");
+          }
+       }
+ 
+@@ -117,7 +117,7 @@
+                         throw new ReportedException(CrashReport.m_127521_(exception, "Ticking memory connection"));
+                      }
+ 
+-                     f_9701_.warn("Failed to handle packet for {}", connection.m_129523_(), exception);
++                     f_9701_.warn("{} のパケットの処理に失敗しました", connection.m_129523_(), exception);
+                      Component component = new TextComponent("Internal server error");
+                      connection.m_129514_(new ClientboundDisconnectPacket(component), (p_9717_) -> {
+                         connection.m_129507_(component);

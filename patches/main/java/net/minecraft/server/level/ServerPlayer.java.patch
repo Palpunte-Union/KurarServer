@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/server/level/ServerPlayer.java
++++ b/main/java/net/minecraft/server/level/ServerPlayer.java
+@@ -698,7 +698,7 @@
+          Direction.Axis direction$axis = this.f_19853_.m_8055_(this.f_19819_).m_61145_(NetherPortalBlock.f_54904_).orElse(Direction.Axis.X);
+          Optional<BlockUtil.FoundRectangle> optional1 = p_9010_.m_8871_().m_77666_(p_9011_, direction$axis);
+          if (!optional1.isPresent()) {
+-            f_8907_.error("Unable to create a portal, likely target out of worldborder");
++            f_8907_.error("ポータルを作成できません。世界の境界外をターゲットにしている可能性があります");
+          }
+ 
+          return optional1;

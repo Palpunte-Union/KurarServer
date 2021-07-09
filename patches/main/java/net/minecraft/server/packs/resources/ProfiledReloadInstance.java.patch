@@ -1,0 +1,25 @@
+--- a/main/java/net/minecraft/server/packs/resources/ProfiledReloadInstance.java
++++ b/main/java/net/minecraft/server/packs/resources/ProfiledReloadInstance.java
+@@ -51,7 +51,7 @@
+    private void m_10664_(List<ProfiledReloadInstance.State> p_10665_) {
+       this.f_10646_.stop();
+       int i = 0;
+-      f_10645_.info("Resource reload finished after " + this.f_10646_.elapsed(TimeUnit.MILLISECONDS) + " ms");
++      f_10645_.info("リソースのリロードは終了しました " + this.f_10646_.elapsed(TimeUnit.MILLISECONDS) + " ms");
+ 
+       for(ProfiledReloadInstance.State profiledreloadinstance$state : p_10665_) {
+          ProfileResults profileresults = profiledreloadinstance$state.f_10687_;
+@@ -60,11 +60,11 @@
+          int k = (int)((double)profiledreloadinstance$state.f_10690_.get() / 1000000.0D);
+          int l = j + k;
+          String s = profiledreloadinstance$state.f_10686_;
+-         f_10645_.info(s + " took approximately " + l + " ms (" + j + " ms preparing, " + k + " ms applying)");
++         f_10645_.info(s + " かかりました " + l + " ms (" + j + " ms (準備), " + k + " ms (申請))");
+          i += k;
+       }
+ 
+-      f_10645_.info("Total blocking time: " + i + " ms");
++      f_10645_.info("合計ブロッキング時間: " + i + " ms");
+    }
+ 
+    public static class State {

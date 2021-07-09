@@ -1,0 +1,55 @@
+--- a/main/java/net/minecraft/server/network/ServerLoginPacketListenerImpl.java
++++ b/main/java/net/minecraft/server/network/ServerLoginPacketListenerImpl.java
+@@ -79,11 +79,11 @@
+ 
+    public void m_10053_(Component p_10054_) {
+       try {
+-         f_10015_.info("Disconnecting {}: {}", this.m_10056_(), p_10054_.getString());
++         f_10015_.info("切断中 {}: {}", this.m_10056_(), p_10054_.getString());
+          this.f_10013_.m_129512_(new ClientboundLoginDisconnectPacket(p_10054_));
+          this.f_10013_.m_129507_(p_10054_);
+       } catch (Exception exception) {
+-         f_10015_.error("Error whilst disconnecting player", (Throwable)exception);
++         f_10015_.error("プレーヤーの切断中にエラーが発生しました", (Throwable)exception);
+       }
+ 
+    }
+@@ -117,7 +117,7 @@
+    }
+ 
+    public void m_7026_(Component p_10043_) {
+-      f_10015_.info("{} lost connection: {}", this.m_10056_(), p_10043_.getString());
++      f_10015_.info("{} の接続が切れました: {}", this.m_10056_(), p_10043_.getString());
+    }
+ 
+    public String m_10056_() {
+@@ -163,24 +163,24 @@
+             try {
+                ServerLoginPacketListenerImpl.this.f_10021_ = ServerLoginPacketListenerImpl.this.f_10018_.m_129925_().hasJoinedServer(new GameProfile((UUID)null, gameprofile.getName()), s, this.m_10064_());
+                if (ServerLoginPacketListenerImpl.this.f_10021_ != null) {
+-                  ServerLoginPacketListenerImpl.f_10015_.info("UUID of player {} is {}", ServerLoginPacketListenerImpl.this.f_10021_.getName(), ServerLoginPacketListenerImpl.this.f_10021_.getId());
++                  ServerLoginPacketListenerImpl.f_10015_.info("プレーヤー {} のUUIDは {} です", ServerLoginPacketListenerImpl.this.f_10021_.getName(), ServerLoginPacketListenerImpl.this.f_10021_.getId());
+                   ServerLoginPacketListenerImpl.this.f_10019_ = ServerLoginPacketListenerImpl.State.READY_TO_ACCEPT;
+                } else if (ServerLoginPacketListenerImpl.this.f_10018_.m_129792_()) {
+-                  ServerLoginPacketListenerImpl.f_10015_.warn("Failed to verify username but will let them in anyway!");
++                  ServerLoginPacketListenerImpl.f_10015_.warn("ユーザー名の確認に失敗しましたが、とにかく許可します!");
+                   ServerLoginPacketListenerImpl.this.f_10021_ = ServerLoginPacketListenerImpl.this.m_10038_(gameprofile);
+                   ServerLoginPacketListenerImpl.this.f_10019_ = ServerLoginPacketListenerImpl.State.READY_TO_ACCEPT;
+                } else {
+                   ServerLoginPacketListenerImpl.this.m_10053_(new TranslatableComponent("multiplayer.disconnect.unverified_username"));
+-                  ServerLoginPacketListenerImpl.f_10015_.error("Username '{}' tried to join with an invalid session", (Object)gameprofile.getName());
++                  ServerLoginPacketListenerImpl.f_10015_.error("ユーザー名 '{}'が無効なセッションに参加しようとしました", (Object)gameprofile.getName());
+                }
+             } catch (AuthenticationUnavailableException authenticationunavailableexception) {
+                if (ServerLoginPacketListenerImpl.this.f_10018_.m_129792_()) {
+-                  ServerLoginPacketListenerImpl.f_10015_.warn("Authentication servers are down but will let them in anyway!");
++                  ServerLoginPacketListenerImpl.f_10015_.warn("認証サーバーはダウンしていますが、とにかくそれらを許可します！");
+                   ServerLoginPacketListenerImpl.this.f_10021_ = ServerLoginPacketListenerImpl.this.m_10038_(gameprofile);
+                   ServerLoginPacketListenerImpl.this.f_10019_ = ServerLoginPacketListenerImpl.State.READY_TO_ACCEPT;
+                } else {
+                   ServerLoginPacketListenerImpl.this.m_10053_(new TranslatableComponent("multiplayer.disconnect.authservers_down"));
+-                  ServerLoginPacketListenerImpl.f_10015_.error("Couldn't verify username because servers are unavailable");
++                  ServerLoginPacketListenerImpl.f_10015_.error("サーバーが利用できないため、ユーザー名を確認できませんでした");
+                }
+             }
+ 

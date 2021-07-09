@@ -1,0 +1,93 @@
+--- a/main/java/net/minecraft/server/rcon/thread/QueryThreadGs4.java
++++ b/main/java/net/minecraft/server/rcon/thread/QueryThreadGs4.java
+@@ -58,7 +58,7 @@
+             InetAddress inetaddress = InetAddress.getLocalHost();
+             this.f_11533_ = inetaddress.getHostAddress();
+          } catch (UnknownHostException unknownhostexception) {
+-            f_11524_.warn("Unable to determine local host IP, please set server-ip in server.properties", (Throwable)unknownhostexception);
++            f_11524_.warn("ローカルホストのIPを特定できません。server.propertiesでserver-ipを設定してください", (Throwable)unknownhostexception);
+          }
+       }
+ 
+@@ -73,7 +73,7 @@
+          QueryThreadGs4 querythreadgs4 = new QueryThreadGs4(p_11554_, i);
+          return !querythreadgs4.m_7528_() ? null : querythreadgs4;
+       } else {
+-         f_11524_.warn("Invalid query port {} found in server.properties (queries disabled)", (int)i);
++         f_11524_.warn("server.propertiesで無効なクエリポート{}が見つかりました (クエリは無効になっています)", (int)i);
+          return null;
+       }
+    }
+@@ -86,17 +86,17 @@
+       byte[] abyte = p_11550_.getData();
+       int i = p_11550_.getLength();
+       SocketAddress socketaddress = p_11550_.getSocketAddress();
+-      f_11524_.debug("Packet len {} [{}]", i, socketaddress);
++      f_11524_.debug("パケット長 {} [{}]", i, socketaddress);
+       if (3 <= i && -2 == abyte[0] && -3 == abyte[1]) {
+-         f_11524_.debug("Packet '{}' [{}]", PktUtils.m_11483_(abyte[2]), socketaddress);
++         f_11524_.debug("パケット '{}' [{}]", PktUtils.m_11483_(abyte[2]), socketaddress);
+          switch(abyte[2]) {
+          case 0:
+             if (!this.m_11560_(p_11550_)) {
+-               f_11524_.debug("Invalid challenge [{}]", (Object)socketaddress);
++               f_11524_.debug("無効なチャレンジ [{}]", (Object)socketaddress);
+                return false;
+             } else if (15 == i) {
+                this.m_11555_(this.m_11558_(p_11550_), p_11550_);
+-               f_11524_.debug("Rules [{}]", (Object)socketaddress);
++               f_11524_.debug("ルール [{}]", (Object)socketaddress);
+             } else {
+                NetworkDataOutputStream networkdataoutputstream = new NetworkDataOutputStream(1460);
+                networkdataoutputstream.m_11472_(0);
+@@ -109,17 +109,17 @@
+                networkdataoutputstream.m_11476_((short)this.f_11527_);
+                networkdataoutputstream.m_11474_(this.f_11533_);
+                this.m_11555_(networkdataoutputstream.m_11471_(), p_11550_);
+-               f_11524_.debug("Status [{}]", (Object)socketaddress);
++               f_11524_.debug("状態 [{}]", (Object)socketaddress);
+             }
+          default:
+             return true;
+          case 9:
+             this.m_11563_(p_11550_);
+-            f_11524_.debug("Challenge [{}]", (Object)socketaddress);
++            f_11524_.debug("チャレンジ [{}]", (Object)socketaddress);
+             return true;
+          }
+       } else {
+-         f_11524_.debug("Invalid packet [{}]", (Object)socketaddress);
++         f_11524_.debug("無効なパケット [{}]", (Object)socketaddress);
+          return false;
+       }
+    }
+@@ -210,7 +210,7 @@
+    }
+ 
+    public void run() {
+-      f_11524_.info("Query running on {}:{}", this.f_11534_, this.f_11526_);
++      f_11524_.info("{} で実行されているクエリ:{}", this.f_11534_, this.f_11526_);
+       this.f_11525_ = Util.m_137550_();
+       DatagramPacket datagrampacket = new DatagramPacket(this.f_11532_, this.f_11532_.length);
+ 
+@@ -244,9 +244,9 @@
+ 
+    private void m_11547_(Exception p_11548_) {
+       if (this.f_11515_) {
+-         f_11524_.warn("Unexpected exception", (Throwable)p_11548_);
++         f_11524_.warn("予期しない例外", (Throwable)p_11548_);
+          if (!this.m_11565_()) {
+-            f_11524_.error("Failed to recover from exception, shutting down!");
++            f_11524_.error("例外からの回復に失敗し、シャットダウンしました!");
+             this.f_11515_ = false;
+          }
+ 
+@@ -259,7 +259,7 @@
+          this.f_11531_.setSoTimeout(500);
+          return true;
+       } catch (Exception exception) {
+-         f_11524_.warn("Unable to initialise query system on {}:{}", this.f_11534_, this.f_11526_, exception);
++         f_11524_.warn("{} でクエリシステムを初期化できません :{}", this.f_11534_, this.f_11526_, exception);
+          return false;
+       }
+    }

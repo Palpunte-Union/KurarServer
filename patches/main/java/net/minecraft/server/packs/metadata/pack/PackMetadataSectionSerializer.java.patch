@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/server/packs/metadata/pack/PackMetadataSectionSerializer.java
++++ b/main/java/net/minecraft/server/packs/metadata/pack/PackMetadataSectionSerializer.java
+@@ -10,7 +10,7 @@
+    public PackMetadataSection m_6322_(JsonObject p_10380_) {
+       Component component = Component.Serializer.m_130691_(p_10380_.get("description"));
+       if (component == null) {
+-         throw new JsonParseException("Invalid/missing description!");
++         throw new JsonParseException("説明が無効/欠落しています!");
+       } else {
+          int i = GsonHelper.m_13927_(p_10380_, "pack_format");
+          return new PackMetadataSection(component, i);

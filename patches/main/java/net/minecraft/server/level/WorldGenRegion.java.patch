@@ -1,0 +1,46 @@
+--- a/main/java/net/minecraft/server/level/WorldGenRegion.java
++++ b/main/java/net/minecraft/server/level/WorldGenRegion.java
+@@ -71,7 +71,7 @@
+    public WorldGenRegion(ServerLevel p_9492_, List<ChunkAccess> p_9493_) {
+       int i = Mth.m_14107_(Math.sqrt((double)p_9493_.size()));
+       if (i * i != p_9493_.size()) {
+-         throw (IllegalStateException)Util.m_137570_(new IllegalStateException("Cache size is not a square."));
++         throw (IllegalStateException)Util.m_137570_(new IllegalStateException("キャッシュサイズは正方形ではありません."));
+       } else {
+          ChunkPos chunkpos = p_9493_.get(p_9493_.size() / 2).m_7697_();
+          this.f_9475_ = p_9493_;
+@@ -119,12 +119,12 @@
+       if (!p_9517_) {
+          return null;
+       } else {
+-         f_9474_.error("Requested chunk : {} {}", p_9514_, p_9515_);
+-         f_9474_.error("Region bounds : {} {} | {} {}", this.f_9487_.f_45578_, this.f_9487_.f_45579_, this.f_9488_.f_45578_, this.f_9488_.f_45579_);
++         f_9474_.error("要求されたチャンク : {} {}", p_9514_, p_9515_);
++         f_9474_.error("地域の境界 : {} {} | {} {}", this.f_9487_.f_45578_, this.f_9487_.f_45579_, this.f_9488_.f_45578_, this.f_9488_.f_45579_);
+          if (chunkaccess != null) {
+-            throw (RuntimeException)Util.m_137570_(new RuntimeException(String.format("Chunk is not of correct status. Expecting %s, got %s | %s %s", p_9516_, chunkaccess.m_6415_(), p_9514_, p_9515_)));
++            throw (RuntimeException)Util.m_137570_(new RuntimeException(String.format("チャンクのステータスが正しくありません. Expecting %s, got %s | %s %s", p_9516_, chunkaccess.m_6415_(), p_9514_, p_9515_)));
+          } else {
+-            throw (RuntimeException)Util.m_137570_(new RuntimeException(String.format("We are asking a region for a chunk out of bound | %s %s", p_9514_, p_9515_)));
++            throw (RuntimeException)Util.m_137570_(new RuntimeException(String.format("範囲外のチャンクをリージョンに要求しています | %s %s", p_9514_, p_9515_)));
+          }
+       }
+    }
+@@ -204,7 +204,7 @@
+          }
+ 
+          if (blockstate.m_60734_() instanceof EntityBlock) {
+-            f_9474_.warn("Tried to access a block entity before it was created. {}", (Object)p_9582_);
++            f_9474_.warn("作成される前にブロックエンティティにアクセスしようとしました. {}", (Object)p_9582_);
+          }
+ 
+          return null;
+@@ -279,7 +279,7 @@
+ 
+    public DifficultyInstance m_6436_(BlockPos p_9585_) {
+       if (!this.m_7232_(p_9585_.m_123341_() >> 4, p_9585_.m_123343_() >> 4)) {
+-         throw new RuntimeException("We are asking a region for a chunk out of bound");
++         throw new RuntimeException("範囲外のチャンクをリージョンに要求しています");
+       } else {
+          return new DifficultyInstance(this.f_9479_.m_46791_(), this.f_9479_.m_46468_(), 0L, this.f_9479_.m_46940_());
+       }

@@ -1,0 +1,25 @@
+--- a/main/java/net/minecraft/server/rcon/thread/RconClient.java
++++ b/main/java/net/minecraft/server/rcon/thread/RconClient.java
+@@ -92,11 +92,11 @@
+          } catch (IOException ioexception) {
+             return;
+          } catch (Exception exception1) {
+-            f_11579_.error("Exception whilst parsing RCON input", (Throwable)exception1);
++            f_11579_.error("RCON入力の解析中の例外", (Throwable)exception1);
+             return;
+          } finally {
+             this.m_11599_();
+-            f_11579_.info("Thread {} shutting down", (Object)this.f_11516_);
++            f_11579_.info("スレッド {} のシャットダウン", (Object)this.f_11516_);
+             this.f_11515_ = false;
+          }
+       }
+@@ -141,7 +141,7 @@
+       try {
+          this.f_11581_.close();
+       } catch (IOException ioexception) {
+-         f_11579_.warn("Failed to close socket", (Throwable)ioexception);
++         f_11579_.warn("ソケットを閉じることができませんでした", (Throwable)ioexception);
+       }
+ 
+    }

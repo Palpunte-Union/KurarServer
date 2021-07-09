@@ -1,0 +1,20 @@
+--- a/main/java/net/minecraft/server/Eula.java
++++ b/main/java/net/minecraft/server/Eula.java
+@@ -25,7 +25,7 @@
+          properties.load(inputstream);
+          return Boolean.parseBoolean(properties.getProperty("eula", "false"));
+       } catch (Exception exception) {
+-         f_135938_.warn("Failed to load {}", (Object)this.f_135939_);
++         f_135938_.warn("読み込みに失敗しました {}", (Object)this.f_135939_);
+          this.m_135946_();
+          return false;
+       }
+@@ -42,7 +42,7 @@
+             properties.setProperty("eula", "false");
+             properties.store(outputstream, "By changing the setting below to TRUE you are indicating your agreement to our EULA (https://account.mojang.com/documents/minecraft_eula).");
+          } catch (Exception exception) {
+-            f_135938_.warn("Failed to save {}", this.f_135939_, exception);
++            f_135938_.warn("保存に失敗しました {}", this.f_135939_, exception);
+          }
+ 
+       }

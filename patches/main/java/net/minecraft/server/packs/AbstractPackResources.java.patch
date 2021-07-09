@@ -1,0 +1,29 @@
+--- a/main/java/net/minecraft/server/packs/AbstractPackResources.java
++++ b/main/java/net/minecraft/server/packs/AbstractPackResources.java
+@@ -44,7 +44,7 @@
+    protected abstract boolean m_6105_(String p_10229_);
+ 
+    protected void m_10230_(String p_10231_) {
+-      f_10204_.warn("ResourcePack: ignored non-lowercase namespace: {} in {}", p_10231_, this.f_10203_);
++      f_10204_.warn("リソースパック: 小文字以外の名前空間は無視されます: {} の中 {}", p_10231_, this.f_10203_);
+    }
+ 
+    @Nullable
+@@ -63,7 +63,7 @@
+       try (BufferedReader bufferedreader = new BufferedReader(new InputStreamReader(p_10216_, StandardCharsets.UTF_8))) {
+          jsonobject = GsonHelper.m_13859_(bufferedreader);
+       } catch (JsonParseException | IOException ioexception) {
+-         f_10204_.error("Couldn't load {} metadata", p_10215_.m_7991_(), ioexception);
++         f_10204_.error("{} のメタデータを読み込めませんでした", p_10215_.m_7991_(), ioexception);
+          return (T)null;
+       }
+ 
+@@ -73,7 +73,7 @@
+          try {
+             return p_10215_.m_6322_(GsonHelper.m_13930_(jsonobject, p_10215_.m_7991_()));
+          } catch (JsonParseException jsonparseexception) {
+-            f_10204_.error("Couldn't load {} metadata", p_10215_.m_7991_(), jsonparseexception);
++            f_10204_.error("{} のメタデータを読み込めませんでした", p_10215_.m_7991_(), jsonparseexception);
+             return (T)null;
+          }
+       }

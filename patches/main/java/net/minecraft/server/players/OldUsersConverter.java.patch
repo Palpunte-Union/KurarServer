@@ -1,0 +1,167 @@
+--- a/main/java/net/minecraft/server/players/OldUsersConverter.java
++++ b/main/java/net/minecraft/server/players/OldUsersConverter.java
+@@ -72,7 +72,7 @@
+             try {
+                userbanlist.m_11399_();
+             } catch (IOException ioexception1) {
+-               f_11066_.warn("Could not load existing file {}", userbanlist.m_11385_().getName(), ioexception1);
++               f_11066_.warn("既存のファイルを読み込めませんでした {}", userbanlist.m_11385_().getName(), ioexception1);
+             }
+          }
+ 
+@@ -84,7 +84,7 @@
+                   p_11082_.m_129927_().m_10991_(p_11123_);
+                   String[] astring = map.get(p_11123_.getName().toLowerCase(Locale.ROOT));
+                   if (astring == null) {
+-                     OldUsersConverter.f_11066_.warn("Could not convert user banlist entry for {}", (Object)p_11123_.getName());
++                     OldUsersConverter.f_11066_.warn("{} のユーザー禁止リストエントリを変換できませんでした", (Object)p_11123_.getName());
+                      throw new OldUsersConverter.ConversionError("Profile not in the conversionlist");
+                   } else {
+                      Date date = astring.length > 1 ? OldUsersConverter.m_11095_(astring[1], (Date)null) : null;
+@@ -96,7 +96,7 @@
+                }
+ 
+                public void onProfileLookupFailed(GameProfile p_11120_, Exception p_11121_) {
+-                  OldUsersConverter.f_11066_.warn("Could not lookup user banlist entry for {}", p_11120_.getName(), p_11121_);
++                  OldUsersConverter.f_11066_.warn("{} のユーザー禁止リストエントリを検索できませんでした", p_11120_.getName(), p_11121_);
+                   if (!(p_11121_ instanceof ProfileNotFoundException)) {
+                      throw new OldUsersConverter.ConversionError("Could not request user " + p_11120_.getName() + " from backend systems", p_11121_);
+                   }
+@@ -107,10 +107,10 @@
+             m_11100_(f_11063_);
+             return true;
+          } catch (IOException ioexception) {
+-            f_11066_.warn("Could not read old user banlist to convert it!", (Throwable)ioexception);
++            f_11066_.warn("古いユーザーの禁止リストを読み取って変換できませんでした!", (Throwable)ioexception);
+             return false;
+          } catch (OldUsersConverter.ConversionError oldusersconverter$conversionerror) {
+-            f_11066_.error("Conversion failed, please try again later", (Throwable)oldusersconverter$conversionerror);
++            f_11066_.error("変換に失敗しました。しばらくしてからもう一度お試しください", (Throwable)oldusersconverter$conversionerror);
+             return false;
+          }
+       } else {
+@@ -125,7 +125,7 @@
+             try {
+                ipbanlist.m_11399_();
+             } catch (IOException ioexception1) {
+-               f_11066_.warn("Could not load existing file {}", ipbanlist.m_11385_().getName(), ioexception1);
++               f_11066_.warn("既存のファイルを読み込めませんでした {}", ipbanlist.m_11385_().getName(), ioexception1);
+             }
+          }
+ 
+@@ -146,7 +146,7 @@
+             m_11100_(f_11062_);
+             return true;
+          } catch (IOException ioexception) {
+-            f_11066_.warn("Could not parse old ip banlist to convert it!", (Throwable)ioexception);
++            f_11066_.warn("古いIPバンリストを解析して変換できませんでした!", (Throwable)ioexception);
+             return false;
+          }
+       } else {
+@@ -161,7 +161,7 @@
+             try {
+                serveroplist.m_11399_();
+             } catch (IOException ioexception1) {
+-               f_11066_.warn("Could not load existing file {}", serveroplist.m_11385_().getName(), ioexception1);
++               f_11066_.warn("既存のファイルを読み込めませんでした {}", serveroplist.m_11385_().getName(), ioexception1);
+             }
+          }
+ 
+@@ -174,7 +174,7 @@
+                }
+ 
+                public void onProfileLookupFailed(GameProfile p_11130_, Exception p_11131_) {
+-                  OldUsersConverter.f_11066_.warn("Could not lookup oplist entry for {}", p_11130_.getName(), p_11131_);
++                  OldUsersConverter.f_11066_.warn("{} のoplistエントリを検索できませんでした", p_11130_.getName(), p_11131_);
+                   if (!(p_11131_ instanceof ProfileNotFoundException)) {
+                      throw new OldUsersConverter.ConversionError("Could not request user " + p_11130_.getName() + " from backend systems", p_11131_);
+                   }
+@@ -185,10 +185,10 @@
+             m_11100_(f_11064_);
+             return true;
+          } catch (IOException ioexception) {
+-            f_11066_.warn("Could not read old oplist to convert it!", (Throwable)ioexception);
++            f_11066_.warn("古いoplistを読み取って変換できませんでした!", (Throwable)ioexception);
+             return false;
+          } catch (OldUsersConverter.ConversionError oldusersconverter$conversionerror) {
+-            f_11066_.error("Conversion failed, please try again later", (Throwable)oldusersconverter$conversionerror);
++            f_11066_.error("変換に失敗しました。しばらくしてからもう一度お試しください", (Throwable)oldusersconverter$conversionerror);
+             return false;
+          }
+       } else {
+@@ -203,7 +203,7 @@
+             try {
+                userwhitelist.m_11399_();
+             } catch (IOException ioexception1) {
+-               f_11066_.warn("Could not load existing file {}", userwhitelist.m_11385_().getName(), ioexception1);
++               f_11066_.warn("既存のファイルを読み込めませんでした {}", userwhitelist.m_11385_().getName(), ioexception1);
+             }
+          }
+ 
+@@ -216,7 +216,7 @@
+                }
+ 
+                public void onProfileLookupFailed(GameProfile p_11140_, Exception p_11141_) {
+-                  OldUsersConverter.f_11066_.warn("Could not lookup user whitelist entry for {}", p_11140_.getName(), p_11141_);
++                  OldUsersConverter.f_11066_.warn("{} のユーザーホワイトリストエントリを検索できませんでした", p_11140_.getName(), p_11141_);
+                   if (!(p_11141_ instanceof ProfileNotFoundException)) {
+                      throw new OldUsersConverter.ConversionError("Could not request user " + p_11140_.getName() + " from backend systems", p_11141_);
+                   }
+@@ -227,10 +227,10 @@
+             m_11100_(f_11065_);
+             return true;
+          } catch (IOException ioexception) {
+-            f_11066_.warn("Could not read old whitelist to convert it!", (Throwable)ioexception);
++            f_11066_.warn("古いホワイトリストを読み取って変換できませんでした!", (Throwable)ioexception);
+             return false;
+          } catch (OldUsersConverter.ConversionError oldusersconverter$conversionerror) {
+-            f_11066_.error("Conversion failed, please try again later", (Throwable)oldusersconverter$conversionerror);
++            f_11066_.error("変換に失敗しました。しばらくしてからもう一度お試しください", (Throwable)oldusersconverter$conversionerror);
+             return false;
+          }
+       } else {
+@@ -253,7 +253,7 @@
+                }
+ 
+                public void onProfileLookupFailed(GameProfile p_11150_, Exception p_11151_) {
+-                  OldUsersConverter.f_11066_.warn("Could not lookup user whitelist entry for {}", p_11150_.getName(), p_11151_);
++                  OldUsersConverter.f_11066_.warn("{} のユーザーホワイトリストエントリを検索できませんでした", p_11150_.getName(), p_11151_);
+                }
+             };
+             m_11086_(p_11084_, Lists.newArrayList(p_11085_), profilelookupcallback);
+@@ -302,7 +302,7 @@
+                }
+ 
+                public void onProfileLookupFailed(GameProfile p_11172_, Exception p_11173_) {
+-                  OldUsersConverter.f_11066_.warn("Could not lookup user uuid for {}", p_11172_.getName(), p_11173_);
++                  OldUsersConverter.f_11066_.warn("{} のユーザーuuidを検索できませんでした", p_11172_.getName(), p_11173_);
+                   if (p_11173_ instanceof ProfileNotFoundException) {
+                      String s2 = this.m_11165_(p_11172_);
+                      this.m_11167_(file3, s2, s2);
+@@ -340,7 +340,7 @@
+             m_11086_(p_11091_, Lists.newArrayList(astring), profilelookupcallback);
+             return true;
+          } catch (OldUsersConverter.ConversionError oldusersconverter$conversionerror) {
+-            f_11066_.error("Conversion failed, please try again later", (Throwable)oldusersconverter$conversionerror);
++            f_11066_.error("変換に失敗しました。しばらくしてからもう一度お試しください", (Throwable)oldusersconverter$conversionerror);
+             return false;
+          }
+       } else {
+@@ -388,7 +388,7 @@
+          return true;
+       } else {
+          f_11066_.warn("**** FAILED TO START THE SERVER AFTER ACCOUNT CONVERSION!");
+-         f_11066_.warn("** please remove the following files and restart the server:");
++         f_11066_.warn("** 以下のファイルを削除してサーバーを再起動してください:");
+          if (flag) {
+             f_11066_.warn("* {}", (Object)f_11063_.getName());
+          }
+@@ -416,7 +416,7 @@
+       } else {
+          f_11066_.warn("**** DETECTED OLD PLAYER DIRECTORY IN THE WORLD SAVE");
+          f_11066_.warn("**** THIS USUALLY HAPPENS WHEN THE AUTOMATIC CONVERSION FAILED IN SOME WAY");
+-         f_11066_.warn("** please restart the server and if the problem persists, remove the directory '{}'", (Object)file1.getPath());
++         f_11066_.warn("** サーバーを再起動してください。問題が解決しない場合は、ディレクトリを削除してください '{}'", (Object)file1.getPath());
+          return false;
+       }
+    }

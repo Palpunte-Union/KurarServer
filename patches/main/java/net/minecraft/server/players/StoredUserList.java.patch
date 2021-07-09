@@ -1,0 +1,20 @@
+--- a/main/java/net/minecraft/server/players/StoredUserList.java
++++ b/main/java/net/minecraft/server/players/StoredUserList.java
+@@ -42,7 +42,7 @@
+       try {
+          this.m_11398_();
+       } catch (IOException ioexception) {
+-         f_11374_.warn("Could not save the list after adding a user.", (Throwable)ioexception);
++         f_11374_.warn("ユーザーを追加した後、リストを保存できませんでした。", (Throwable)ioexception);
+       }
+ 
+    }
+@@ -59,7 +59,7 @@
+       try {
+          this.m_11398_();
+       } catch (IOException ioexception) {
+-         f_11374_.warn("Could not save the list after removing a user.", (Throwable)ioexception);
++         f_11374_.warn("ユーザーを削除した後、リストを保存できませんでした。", (Throwable)ioexception);
+       }
+ 
+    }

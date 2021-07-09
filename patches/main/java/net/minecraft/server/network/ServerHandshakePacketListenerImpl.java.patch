@@ -1,0 +1,11 @@
+--- a/main/java/net/minecraft/server/network/ServerHandshakePacketListenerImpl.java
++++ b/main/java/net/minecraft/server/network/ServerHandshakePacketListenerImpl.java
+@@ -48,7 +48,7 @@
+          }
+          break;
+       default:
+-         throw new UnsupportedOperationException("Invalid intention " + p_9975_.m_134735_());
++         throw new UnsupportedOperationException("無効な意図 " + p_9975_.m_134735_());
+       }
+ 
+    }

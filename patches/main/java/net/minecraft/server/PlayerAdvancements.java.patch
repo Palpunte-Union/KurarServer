@@ -1,0 +1,39 @@
+--- a/main/java/net/minecraft/server/PlayerAdvancements.java
++++ b/main/java/net/minecraft/server/PlayerAdvancements.java
+@@ -145,7 +145,7 @@
+             dynamic = dynamic.remove("DataVersion");
+             Map<ResourceLocation, AdvancementProgress> map = f_135959_.getAdapter(f_135960_).fromJsonTree(dynamic.getValue());
+             if (map == null) {
+-               throw new JsonParseException("Found null for advancements");
++               throw new JsonParseException("進歩の中にnullが見つかりました");
+             }
+ 
+             Stream<Entry<ResourceLocation, AdvancementProgress>> stream = map.entrySet().stream().sorted(Comparator.comparing(Entry::getValue));
+@@ -153,15 +153,15 @@
+             for(Entry<ResourceLocation, AdvancementProgress> entry : stream.collect(Collectors.toList())) {
+                Advancement advancement = p_136007_.m_136041_(entry.getKey());
+                if (advancement == null) {
+-                  f_135958_.warn("Ignored advancement '{}' in progress file {} - it doesn't exist anymore?", entry.getKey(), this.f_135963_);
++                  f_135958_.warn("進捗 {} ({}内) を無視しました。 - それは存在しますか?", entry.getKey(), this.f_135963_);
+                } else {
+                   this.m_135985_(advancement, entry.getValue());
+                }
+             }
+          } catch (JsonParseException jsonparseexception) {
+-            f_135958_.error("Couldn't parse player advancements in {}", this.f_135963_, jsonparseexception);
++            f_135958_.error("{} でプレーヤーの進歩を解析できませんでした", this.f_135963_, jsonparseexception);
+          } catch (IOException ioexception) {
+-            f_135958_.error("Couldn't access player advancements in {}", this.f_135963_, ioexception);
++            f_135958_.error("{} でプレイヤーの進歩にアクセスできませんでした", this.f_135963_, ioexception);
+          }
+       }
+ 
+@@ -193,7 +193,7 @@
+       ) {
+          f_135959_.toJson(jsonelement, writer);
+       } catch (IOException ioexception) {
+-         f_135958_.error("Couldn't save player advancements to {}", this.f_135963_, ioexception);
++         f_135958_.error("プレイヤーの進歩を {} に保存できませんでした", this.f_135963_, ioexception);
+       }
+ 
+    }

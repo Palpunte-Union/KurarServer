@@ -1,0 +1,29 @@
+--- a/main/java/net/minecraft/server/network/TextFilterClient.java
++++ b/main/java/net/minecraft/server/network/TextFilterClient.java
+@@ -54,7 +54,7 @@
+          try {
+             this.m_10151_(jsonobject, p_10143_);
+          } catch (Exception exception) {
+-            f_10098_.warn("Failed to send join/leave packet to {} for player {}", p_10143_, p_10142_, exception);
++            f_10098_.warn("プレーヤー{}の{}への参加/退出パケットの送信に失敗しました", p_10142_, p_10143_, exception);
+          }
+ 
+       });
+@@ -87,7 +87,7 @@
+                   }
+                }
+             } catch (Exception exception) {
+-               f_10098_.warn("Failed to validate message '{}'", p_10138_, exception);
++               f_10098_.warn("メッセージ'{}'の検証に失敗しました", p_10138_, exception);
+                return Optional.empty();
+             }
+          }, p_10140_);
+@@ -167,7 +167,7 @@
+    }
+ 
+    private TextFilterClient() {
+-      throw new RuntimeException("Synthetic constructor do not call");
++      throw new RuntimeException("合成コンストラクターは呼び出さない");
+    }
+ 
+    @FunctionalInterface

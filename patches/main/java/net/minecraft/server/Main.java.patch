@@ -1,0 +1,61 @@
+--- a/main/java/net/minecraft/server/Main.java
++++ b/main/java/net/minecraft/server/Main.java
+@@ -89,12 +89,13 @@
+          Path path1 = Paths.get("eula.txt");
+          Eula eula = new Eula(path1);
+          if (optionset.has(optionspec1)) {
+-            f_129670_.info("Initialized '{}' and '{}'", path.toAbsolutePath(), path1.toAbsolutePath());
++            f_129670_.info("初期化された'{}'および'{}'", path.toAbsolutePath(), path1.toAbsolutePath());
+             return;
+          }
++         f_129670_.info("[KUSOCreeper] launching KurarServer 1.16.5 ");
+ 
+          if (!eula.m_135944_()) {
+-            f_129670_.info("You need to agree to the EULA in order to run the server. Go to eula.txt for more info.");
++            f_129670_.info("サーバーを実行するには、EULAに同意する必要があります。 詳細については、eula.txtにアクセスしてください.");
+             return;
+          }
+ 
+@@ -110,7 +111,7 @@
+          DataPackConfig datapackconfig = levelstoragesource$levelstorageaccess.m_78309_();
+          boolean flag = optionset.has(optionspec6);
+          if (flag) {
+-            f_129670_.warn("Safe mode active, only vanilla datapack will be loaded");
++            f_129670_.warn("セーフモードがアクティブで、バニラデータパックのみが読み込まれます");
+          }
+ 
+          PackRepository packrepository = new PackRepository(new ServerPacksSource(), new FolderRepositorySource(levelstoragesource$levelstorageaccess.m_78283_(LevelResource.f_78180_).toFile(), PackSource.f_10529_));
+@@ -121,7 +122,7 @@
+          try {
+             serverresources = completablefuture.get();
+          } catch (Exception exception) {
+-            f_129670_.warn("Failed to load datapacks, can't proceed with server load. You can either fix your datapacks or reset to vanilla with --safeMode", (Throwable)exception);
++            f_129670_.warn("データパックのロードに失敗しました。サーバーのロードを続行できません。 データパックを修正するか、-safeModeを使用してバニラにリセットすることができます", (Throwable)exception);
+             packrepository.close();
+             return;
+          }
+@@ -173,13 +174,13 @@
+          thread.setUncaughtExceptionHandler(new DefaultUncaughtExceptionHandler(f_129670_));
+          Runtime.getRuntime().addShutdownHook(thread);
+       } catch (Exception exception1) {
+-         f_129670_.fatal("Failed to start the minecraft server", (Throwable)exception1);
++         f_129670_.fatal("minecraftサーバーの起動に失敗しました", (Throwable)exception1);
+       }
+ 
+    }
+ 
+    private static void m_129674_(LevelStorageSource.LevelStorageAccess p_129675_, DataFixer p_129676_, boolean p_129677_, BooleanSupplier p_129678_, ImmutableSet<ResourceKey<Level>> p_129679_) {
+-      f_129670_.info("Forcing world upgrade!");
++      f_129670_.info("worldのアップグレードを強制する!");
+       WorldUpgrader worldupgrader = new WorldUpgrader(p_129675_, p_129676_, p_129679_, p_129677_);
+       Component component = null;
+ 
+@@ -193,7 +194,7 @@
+          int i = worldupgrader.m_18834_();
+          if (i > 0) {
+             int j = worldupgrader.m_18835_() + worldupgrader.m_18836_();
+-            f_129670_.info("{}% completed ({} / {} chunks)...", Mth.m_14143_((float)j / (float)i * 100.0F), j, i);
++            f_129670_.info("{}%完了 ({} / {}チャンク)...", Mth.m_14143_((float)j / (float)i * 100.0F), j, i);
+          }
+ 
+          if (!p_129678_.getAsBoolean()) {
