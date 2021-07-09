@@ -1,0 +1,61 @@
+--- a/main/java/net/minecraft/advancements/AdvancementRewards.java
++++ b/main/java/net/minecraft/advancements/AdvancementRewards.java
+@@ -8,6 +8,7 @@
+ import com.google.gson.JsonParseException;
+ import java.util.Arrays;
+ import java.util.List;
++import java.util.Objects;
+ import javax.annotation.Nullable;
+ import net.minecraft.commands.CommandFunction;
+ import net.minecraft.resources.ResourceLocation;
+@@ -45,7 +46,7 @@
+       for(ResourceLocation resourcelocation : this.f_9980_) {
+          for(ItemStack itemstack : p_9990_.f_8924_.m_129898_().m_79217_(resourcelocation).m_79129_(lootcontext)) {
+             if (p_9990_.m_36356_(itemstack)) {
+-               p_9990_.f_19853_.m_6263_((Player)null, p_9990_.m_20185_(), p_9990_.m_20186_(), p_9990_.m_20189_(), SoundEvents.f_12019_, SoundSource.PLAYERS, 0.2F, ((p_9990_.m_21187_().nextFloat() - p_9990_.m_21187_().nextFloat()) * 0.7F + 1.0F) * 2.0F);
++               p_9990_.f_19853_.m_6263_(null, p_9990_.m_20185_(), p_9990_.m_20186_(), p_9990_.m_20189_(), SoundEvents.f_12019_, SoundSource.PLAYERS, 0.2F, ((p_9990_.m_21187_().nextFloat() - p_9990_.m_21187_().nextFloat()) * 0.7F + 1.0F) * 2.0F);
+                flag = true;
+             } else {
+                ItemEntity itementity = p_9990_.m_36176_(itemstack, false);
+@@ -66,13 +67,11 @@
+       }
+ 
+       MinecraftServer minecraftserver = p_9990_.f_8924_;
+-      this.f_9982_.m_78002_(minecraftserver.m_129890_()).ifPresent((p_9996_) -> {
+-         minecraftserver.m_129890_().m_136112_(p_9996_, p_9990_.m_20203_().m_81324_().m_81325_(2));
+-      });
++      this.f_9982_.m_78002_(minecraftserver.m_129890_()).ifPresent((p_9996_) -> minecraftserver.m_129890_().m_136112_(p_9996_, p_9990_.m_20203_().m_81324_().m_81325_(2)));
+    }
+ 
+    public String toString() {
+-      return "AdvancementRewards{experience=" + this.f_9979_ + ", loot=" + Arrays.toString((Object[])this.f_9980_) + ", recipes=" + Arrays.toString((Object[])this.f_9981_) + ", function=" + this.f_9982_ + '}';
++      return "AdvancementRewards{experience=" + this.f_9979_ + ", loot=" + Arrays.toString(this.f_9980_) + ", recipes=" + Arrays.toString(this.f_9981_) + ", function=" + this.f_9982_ + '}';
+    }
+ 
+    public JsonElement m_9997_() {
+@@ -105,7 +104,7 @@
+          }
+ 
+          if (this.f_9982_.m_77999_() != null) {
+-            jsonobject.addProperty("function", this.f_9982_.m_77999_().toString());
++            jsonobject.addProperty("function", Objects.requireNonNull(this.f_9982_.m_77999_()).toString());
+          }
+ 
+          return jsonobject;
+@@ -115,14 +114,14 @@
+    public static AdvancementRewards m_9991_(JsonObject p_9992_) throws JsonParseException {
+       int i = GsonHelper.m_13824_(p_9992_, "experience", 0);
+       JsonArray jsonarray = GsonHelper.m_13832_(p_9992_, "loot", new JsonArray());
+-      ResourceLocation[] aresourcelocation = new ResourceLocation[jsonarray.size()];
++      ResourceLocation[] aresourcelocation = new ResourceLocation[Objects.requireNonNull(jsonarray).size()];
+ 
+       for(int j = 0; j < aresourcelocation.length; ++j) {
+          aresourcelocation[j] = new ResourceLocation(GsonHelper.m_13805_(jsonarray.get(j), "loot[" + j + "]"));
+       }
+ 
+       JsonArray jsonarray1 = GsonHelper.m_13832_(p_9992_, "recipes", new JsonArray());
+-      ResourceLocation[] aresourcelocation1 = new ResourceLocation[jsonarray1.size()];
++      ResourceLocation[] aresourcelocation1 = new ResourceLocation[Objects.requireNonNull(jsonarray1).size()];
+ 
+       for(int k = 0; k < aresourcelocation1.length; ++k) {
+          aresourcelocation1[k] = new ResourceLocation(GsonHelper.m_13805_(jsonarray1.get(k), "recipes[" + k + "]"));
