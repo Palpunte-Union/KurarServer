@@ -1,5 +1,14 @@
 --- a/main/java/net/minecraft/advancements/CriterionProgress.java
 +++ b/main/java/net/minecraft/advancements/CriterionProgress.java
+@@ -42,7 +42,7 @@
+    }
+ 
+    public JsonElement m_12921_() {
+-      return (JsonElement)(this.f_12908_ != null ? new JsonPrimitive(f_12907_.format(this.f_12908_)) : JsonNull.INSTANCE);
++      return this.f_12908_ != null ? new JsonPrimitive(f_12907_.format(this.f_12908_)) : JsonNull.INSTANCE;
+    }
+ 
+    public static CriterionProgress m_12917_(FriendlyByteBuf p_12918_) {
 @@ -61,7 +61,7 @@
           criterionprogress.f_12908_ = f_12907_.parse(p_12913_);
           return criterionprogress;
