@@ -1,0 +1,65 @@
+--- a/main/java/com/mojang/math/OctahedralGroup.java
++++ b/main/java/com/mojang/math/OctahedralGroup.java
+@@ -63,7 +63,6 @@
+    ROT_90_REF_Z_NEG("rot_90_ref_z_neg", SymmetricGroup3.P213, false, true, true),
+    ROT_90_REF_Z_POS("rot_90_ref_z_pos", SymmetricGroup3.P213, true, false, true);
+ 
+-   private final Matrix3f f_56473_;
+    private final String f_56474_;
+    @Nullable
+    private Map<Direction, Direction> f_56475_;
+@@ -72,11 +71,7 @@
+    private final boolean f_56479_;
+    private final SymmetricGroup3 f_56480_;
+    private static final OctahedralGroup[][] f_56481_ = Util.m_137469_(new OctahedralGroup[values().length][values().length], (p_56533_) -> {
+-      Map<Pair<SymmetricGroup3, BooleanList>, OctahedralGroup> map = Arrays.stream(values()).collect(Collectors.toMap((p_56540_) -> {
+-         return Pair.of(p_56540_.f_56480_, p_56540_.m_56534_());
+-      }, (p_56538_) -> {
+-         return p_56538_;
+-      }));
++      Map<Pair<SymmetricGroup3, BooleanList>, OctahedralGroup> map = Arrays.stream(values()).collect(Collectors.toMap((p_56540_) -> Pair.of(p_56540_.f_56480_, p_56540_.m_56534_()), (p_56538_) -> p_56538_));
+ 
+       for(OctahedralGroup octahedralgroup : values()) {
+          for(OctahedralGroup octahedralgroup1 : values()) {
+@@ -94,35 +89,24 @@
+       }
+ 
+    });
+-   private static final OctahedralGroup[] f_56482_ = Arrays.stream(values()).map((p_56536_) -> {
+-      return Arrays.stream(values()).filter((p_56525_) -> {
+-         return p_56536_.m_56521_(p_56525_) == IDENTITY;
+-      }).findAny().get();
+-   }).toArray((p_56520_) -> {
+-      return new OctahedralGroup[p_56520_];
+-   });
+ 
+-   private OctahedralGroup(String p_56513_, SymmetricGroup3 p_56514_, boolean p_56515_, boolean p_56516_, boolean p_56517_) {
++   OctahedralGroup(String p_56513_, SymmetricGroup3 p_56514_, boolean p_56515_, boolean p_56516_, boolean p_56517_) {
+       this.f_56474_ = p_56513_;
+       this.f_56476_ = p_56515_;
+       this.f_56478_ = p_56516_;
+       this.f_56479_ = p_56517_;
+       this.f_56480_ = p_56514_;
+-      this.f_56473_ = new Matrix3f();
+-      this.f_56473_.f_8134_ = p_56515_ ? -1.0F : 1.0F;
+-      this.f_56473_.f_8138_ = p_56516_ ? -1.0F : 1.0F;
+-      this.f_56473_.f_8142_ = p_56517_ ? -1.0F : 1.0F;
+-      this.f_56473_.m_8178_(p_56514_.m_109179_());
++      Matrix3f f_56473_ = new Matrix3f();
++      f_56473_.f_8134_ = p_56515_ ? -1.0F : 1.0F;
++      f_56473_.f_8138_ = p_56516_ ? -1.0F : 1.0F;
++      f_56473_.f_8142_ = p_56517_ ? -1.0F : 1.0F;
++      f_56473_.m_8178_(p_56514_.m_109179_());
+    }
+ 
+    private BooleanList m_56534_() {
+       return new BooleanArrayList(new boolean[]{this.f_56476_, this.f_56478_, this.f_56479_});
+    }
+ 
+-   public OctahedralGroup m_56521_(OctahedralGroup p_56522_) {
+-      return f_56481_[this.ordinal()][p_56522_.ordinal()];
+-   }
+-
+    public String toString() {
+       return this.f_56474_;
+    }
