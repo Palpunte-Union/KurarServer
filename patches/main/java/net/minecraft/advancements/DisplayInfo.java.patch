@@ -1,6 +1,15 @@
 --- a/main/java/net/minecraft/advancements/DisplayInfo.java
 +++ b/main/java/net/minecraft/advancements/DisplayInfo.java
-@@ -76,17 +76,17 @@
+@@ -16,6 +16,8 @@
+ import net.minecraft.world.item.Item;
+ import net.minecraft.world.item.ItemStack;
+ 
++import java.util.Objects;
++
+ public class DisplayInfo {
+    private final Component f_14958_;
+    private final Component f_14959_;
+@@ -76,17 +78,17 @@
           boolean flag2 = GsonHelper.m_13855_(p_14982_, "hidden", false);
           return new DisplayInfo(itemstack, component, component1, resourcelocation, frametype, flag, flag1, flag2);
        } else {
@@ -21,7 +30,7 @@
           } else {
              ItemStack itemstack = new ItemStack(item);
              if (p_14987_.has("nbt")) {
-@@ -94,7 +94,7 @@
+@@ -94,7 +96,7 @@
                    CompoundTag compoundtag = TagParser.m_129359_(GsonHelper.m_13805_(p_14987_.get("nbt"), "nbt"));
                    itemstack.m_41751_(compoundtag);
                 } catch (CommandSyntaxException commandsyntaxexception) {
@@ -30,3 +39,12 @@
                 }
              }
  
+@@ -164,7 +166,7 @@
+       JsonObject jsonobject = new JsonObject();
+       jsonobject.addProperty("item", Registry.f_122827_.m_7981_(this.f_14960_.m_41720_()).toString());
+       if (this.f_14960_.m_41782_()) {
+-         jsonobject.addProperty("nbt", this.f_14960_.m_41783_().toString());
++         jsonobject.addProperty("nbt", Objects.requireNonNull(this.f_14960_.m_41783_()).toString());
+       }
+ 
+       return jsonobject;
