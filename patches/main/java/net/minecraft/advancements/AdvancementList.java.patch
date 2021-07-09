@@ -1,5 +1,14 @@
 --- a/main/java/net/minecraft/advancements/AdvancementList.java
 +++ b/main/java/net/minecraft/advancements/AdvancementList.java
+@@ -22,7 +22,7 @@
+    private AdvancementList.Listener f_139329_;
+ 
+    public void m_139333_(Map<ResourceLocation, Advancement.Builder> p_139334_) {
+-      Function<ResourceLocation, Advancement> function = Functions.forMap(this.f_139326_, (Advancement)null);
++      Function<ResourceLocation, Advancement> function = Functions.forMap(this.f_139326_, null);
+ 
+       while(!p_139334_.isEmpty()) {
+          boolean flag = false;
 @@ -53,13 +53,13 @@
  
           if (!flag) {
@@ -12,7 +21,7 @@
        }
  
 -      f_139325_.info("Loaded {} advancements", (int)this.f_139326_.size());
-+      f_139325_.info("実績が {} 個読み込まれました。", (int)this.f_139326_.size());
++      f_139325_.info("実績が {} 個読み込まれました。", this.f_139326_.size());
     }
  
     public Iterable<Advancement> m_139343_() {
