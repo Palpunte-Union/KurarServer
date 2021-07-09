@@ -1,0 +1,40 @@
+--- a/main/java/com/mojang/math/Quaternion.java
++++ b/main/java/com/mojang/math/Quaternion.java
+@@ -1,7 +1,6 @@
+ package com.mojang.math;
+ 
+ public final class Quaternion {
+-   public static final Quaternion f_80118_ = new Quaternion(0.0F, 0.0F, 0.0F, 1.0F);
+    private float f_80119_;
+    private float f_80120_;
+    private float f_80121_;
+@@ -60,12 +59,10 @@
+    }
+ 
+    public String toString() {
+-      StringBuilder stringbuilder = new StringBuilder();
+-      stringbuilder.append("Quaternion[").append(this.m_80156_()).append(" + ");
+-      stringbuilder.append(this.m_80140_()).append("i + ");
+-      stringbuilder.append(this.m_80150_()).append("j + ");
+-      stringbuilder.append(this.m_80153_()).append("k]");
+-      return stringbuilder.toString();
++      return "Quaternion[" + this.m_80156_() + " + " +
++              this.m_80140_() + "i + " +
++              this.m_80150_() + "j + " +
++              this.m_80153_() + "k]";
+    }
+ 
+    public float m_80140_() {
+@@ -106,10 +103,10 @@
+    }
+ 
+    private static float m_80151_(float p_80152_) {
+-      return (float)Math.cos((double)p_80152_);
++      return (float)Math.cos(p_80152_);
+    }
+ 
+    private static float m_80154_(float p_80155_) {
+-      return (float)Math.sin((double)p_80155_);
++      return (float)Math.sin(p_80155_);
+    }
+ }
