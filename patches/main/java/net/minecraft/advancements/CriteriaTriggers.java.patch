@@ -1,6 +1,62 @@
 --- a/main/java/net/minecraft/advancements/CriteriaTriggers.java
 +++ b/main/java/net/minecraft/advancements/CriteriaTriggers.java
-@@ -90,7 +90,7 @@
+@@ -1,51 +1,14 @@
+ package net.minecraft.advancements;
+ 
+ import com.google.common.collect.Maps;
+-import java.util.Map;
+-import javax.annotation.Nullable;
+-import net.minecraft.advancements.critereon.BeeNestDestroyedTrigger;
+-import net.minecraft.advancements.critereon.BredAnimalsTrigger;
+-import net.minecraft.advancements.critereon.BrewedPotionTrigger;
+-import net.minecraft.advancements.critereon.ChangeDimensionTrigger;
+-import net.minecraft.advancements.critereon.ChanneledLightningTrigger;
+-import net.minecraft.advancements.critereon.ConstructBeaconTrigger;
+-import net.minecraft.advancements.critereon.ConsumeItemTrigger;
+-import net.minecraft.advancements.critereon.CuredZombieVillagerTrigger;
+-import net.minecraft.advancements.critereon.EffectsChangedTrigger;
+-import net.minecraft.advancements.critereon.EnchantedItemTrigger;
+-import net.minecraft.advancements.critereon.EnterBlockTrigger;
+-import net.minecraft.advancements.critereon.EntityHurtPlayerTrigger;
+-import net.minecraft.advancements.critereon.FilledBucketTrigger;
+-import net.minecraft.advancements.critereon.FishingRodHookedTrigger;
+-import net.minecraft.advancements.critereon.ImpossibleTrigger;
+-import net.minecraft.advancements.critereon.InventoryChangeTrigger;
+-import net.minecraft.advancements.critereon.ItemDurabilityTrigger;
+-import net.minecraft.advancements.critereon.ItemPickedUpByEntityTrigger;
+-import net.minecraft.advancements.critereon.ItemUsedOnBlockTrigger;
+-import net.minecraft.advancements.critereon.KilledByCrossbowTrigger;
+-import net.minecraft.advancements.critereon.KilledTrigger;
+-import net.minecraft.advancements.critereon.LevitationTrigger;
+-import net.minecraft.advancements.critereon.LocationTrigger;
+-import net.minecraft.advancements.critereon.LootTableTrigger;
+-import net.minecraft.advancements.critereon.NetherTravelTrigger;
+-import net.minecraft.advancements.critereon.PlacedBlockTrigger;
+-import net.minecraft.advancements.critereon.PlayerHurtEntityTrigger;
+-import net.minecraft.advancements.critereon.PlayerInteractTrigger;
+-import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
+-import net.minecraft.advancements.critereon.ShotCrossbowTrigger;
+-import net.minecraft.advancements.critereon.SlideDownBlockTrigger;
+-import net.minecraft.advancements.critereon.SummonedEntityTrigger;
+-import net.minecraft.advancements.critereon.TameAnimalTrigger;
+-import net.minecraft.advancements.critereon.TargetBlockTrigger;
+-import net.minecraft.advancements.critereon.TickTrigger;
+-import net.minecraft.advancements.critereon.TradeTrigger;
+-import net.minecraft.advancements.critereon.UsedEnderEyeTrigger;
+-import net.minecraft.advancements.critereon.UsedTotemTrigger;
++import net.minecraft.advancements.critereon.*;
+ import net.minecraft.resources.ResourceLocation;
+ 
++import javax.annotation.Nullable;
++import java.util.Map;
++
+ public class CriteriaTriggers {
+    private static final Map<ResourceLocation, CriterionTrigger<?>> f_10566_ = Maps.newHashMap();
+-   public static final ImpossibleTrigger f_10567_ = m_10595_(new ImpossibleTrigger());
+    public static final KilledTrigger f_10568_ = m_10595_(new KilledTrigger(new ResourceLocation("player_killed_entity")));
+    public static final KilledTrigger f_10569_ = m_10595_(new KilledTrigger(new ResourceLocation("entity_killed_player")));
+    public static final EnterBlockTrigger f_10570_ = m_10595_(new EnterBlockTrigger());
+@@ -90,7 +53,7 @@
  
     private static <T extends CriterionTrigger<?>> T m_10595_(T p_10596_) {
        if (f_10566_.containsKey(p_10596_.m_7295_())) {
