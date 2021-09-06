@@ -1,0 +1,12 @@
+--- a/main/resources/version.json
++++ b/main/resources/version.json
+@@ -1,6 +1,6 @@
+ {
+     "id": "1.16.5",
+-    "name": "1.16.5",
+\ No newline at end of file
++    "name": "Kurar 1.16.5",
+\ No newline at end of file
+     "release_target": "1.16.5",
+     "world_version": 2586,
+     "protocol_version": 754,

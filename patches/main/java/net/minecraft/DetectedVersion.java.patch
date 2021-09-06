@@ -1,5 +1,14 @@
 --- a/main/java/net/minecraft/DetectedVersion.java
 +++ b/main/java/net/minecraft/DetectedVersion.java
+@@ -27,7 +27,7 @@
+ 
+    private DetectedVersion() {
+       this.f_132478_ = UUID.randomUUID().toString().replaceAll("-", "");
+-      this.f_132479_ = "1.16.5";
++      this.f_132479_ = "Kurar 1.16.5";
+       this.f_132480_ = true;
+       this.f_132481_ = 2586;
+       this.f_132482_ = SharedConstants.m_136192_();
 @@ -50,7 +50,7 @@
     public static GameVersion m_132490_() {
        try (InputStream inputstream = DetectedVersion.class.getResourceAsStream("/version.json")) {
